@@ -59,6 +59,8 @@ $(document).ready(function() {
 				names[i] = eco_data[i].Sci_Name;
 			}
 			console.log(names);
+			/*i want to make a function that takes in these array of object and gives back single array
+			to draw the graph, that requires time. we can put it later on!!*/
 
 			//get canvas
 			var ctx = $("#line-chartcanvas"); //this is using jquery
