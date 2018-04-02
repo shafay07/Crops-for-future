@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $.ajax({
-    url: `http://localhost/cff/api/data.php?id1=${crop1}&id2=${crop2}`,
+    url: `http://35.185.57.3//cff/api/data.php?id1=${crop1}&id2=${crop2}`,
     type: "POST",
     success: function(data) {
       var value = {
@@ -35,7 +35,6 @@ $(document).ready(function() {
           value.ASoil.push(data[i].soil_ph_absolute_max);
           value.ASoil.push(data[i].soil_ph_absolute_mean);
           value.ASoil.push(data[i].soil_ph_absolute_min);
-
         } else if (data[i].name_var_lndrce == crop2) {
           value.BRain.push(data[i].rainfall_optimal_max);
           value.BRain.push(data[i].rainfall_optimal_mean);

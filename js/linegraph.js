@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $.ajax({
-    url: `http://localhost/cff/api/data.php?id1=${crop1}&id2=${crop2}`,
+    url: `http://35.185.57.3//cff/api/data.php?id1=${crop1}&id2=${crop2}`,
     type: "POST",
     success: function(data) {
       var value = {
@@ -49,7 +49,7 @@ $(document).ready(function() {
           "Potassium",
           "Selenium",
           "Sodium",
-          "Zinc",
+          "Zinc"
         ],
         datasets: [
           {
