@@ -1,0 +1,353 @@
+<!doctype html>
+<html>
+   <head>
+      <title>Subsetting</title>
+      <script type = "text/javascript" 
+         src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+      </script>
+    
+      <script type = "text/javascript" 
+         src = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js">
+      </script>
+    
+      <script type = "text/javascript" language = "javascript">
+   
+         $(document).ready(function() {
+          $("#slider1").hide();
+          $("#slider2").hide();
+
+           $("#zone_btn").click(function(){
+             $("#slider1").show( "slide", {direction: "left" }, 1100 );
+            });
+
+           $("#climate_btn").click(function(){
+            
+               $("#slider1").show( "slide", {direction: "left" }, 1100 );
+            });
+
+           $("#part_btn").click(function(){
+            
+               $("#slider1").show( "slide", {direction: "left" }, 1100 );
+            });
+
+           $("#composition_btn").click(function(){
+            
+               $("#slider2").show( "slide", {direction: "left" }, 1100 );
+              
+            });
+
+           $("#mineral_btn").click(function(){
+         
+               $("#slider2").show( "slide", {direction: "left" }, 1100 );
+            });
+
+           $("#agro_btn").click(function(){
+        
+               $("#slider2").show( "slide", {direction: "left" }, 1100 );
+            });
+        
+         });
+
+         function zoneFunction() {
+              document.getElementById("slider1").style.background="#ED802C";
+              document.getElementById("slider1").innerHTML = "<table class=\"tableZone\"><tr><td><input type=\"checkbox\" name=\"zone[]\" id=\"zone\" value=\"zone_A\" >Zone A</td><td><input type=\"checkbox\" name=\"zone[]\" id=\"zone\" value=\"zone_B\" >Zone B</td></tr><tr>   <td><input type=\"checkbox\" name=\"zone[]\" id=\"zone\" value=\"zone_C\" >Zone C</td><td><input type=\"checkbox\" name=\"zone[]\" id=\"zone\" value=\"zone_D\" >Zone D</td></tr><tr>    <td><input type=\"checkbox\" name=\"zone[]\" id=\"zone\" value=\"zone_E\" >Zone E</td></tr></table><button class=\"btn btn-primary\" id=\"hide1\" onclick=\"disappear1(\'zone\')\">GO</button>";
+          }
+
+         function climateFunction(){
+         	 document.getElementById("slider1").style.background="#96B53C";
+         	 document.getElementById("slider1").innerHTML = "<table class=\"tableClimate\"><tr><td><input type=\"checkbox\" name=\"climate[]\" id=\"climate\" value=\"dry (Aw\">Tropical wet & dry (Aw)</td><td><input type=\"checkbox\" name=\"climate[]\" id=\"climate\" value=\"tropical wet (Ar)\">Tropical wet (Ar)</td><td><input type=\"checkbox\" name=\"climate[]\" id=\"climate\" value=\"desert or arid (Bw)\">Desert or Arid (Bw)</td></tr><tr><td><input type=\"checkbox\" name=\"climate[]\" id=\"climate\" value=\"steppe or semiarid (Bs)\">Steppe or Semiarid (Bs)</td><td><input type=\"checkbox\" name=\"climate[]\" id=\"climate\" value=\"subtropical humid (Cf)\">Subtropical humid (Cf)</td><td><input type=\"checkbox\" name=\"climate[]\" id=\"climate\" value=\"subtropical dry summer (Cs)\">Subtropical dry summer (Cs)</td></tr><tr><td><input type=\"checkbox\" name=\"climate[]\" id=\"climate\" value=\"subtropical dry winter (Cw)\">Subtropical dry winter (Cw)</td><td><input type=\"checkbox\" name=\"climate[]\" id=\"climate\" value=\"temperate continental (Dc)\">Temperate continental (Dc)</td><td><input type=\"checkbox\" name=\"climate[]\" id=\"climate\" value=\"temperate oceanic (Do)\">Temperate oceanic (Do)</td></tr><tr><td><input type=\"checkbox\" name=\"climate[]\" id=\"climate\" value=\"temperate with dry winters (Dw)\">Temperate with dry winters (Dw)</td><td><input type=\"checkbox\" name=\"climate[]\" id=\"climate\" value=\"temperate with humid winters (Df)\">Temperate with humid winters (Df)</td><td><input type=\"checkbox\" name=\"climate[]\" id=\"climate\" value=\"boreal (E)\">Boreal (E)</td></tr></table><button class=\"btn btn-primary\" id=\"hide1\" onclick=\"disappear1(\'climate\')\">GO</button>";
+         }   
+
+          function partFunction() {
+              document.getElementById("slider1").style.background="#253E6B";
+              document.getElementById("slider1").innerHTML = "<table class=\"tablePart\"><tr><td><input type=\"checkbox\" name=\"part[]\" value=\"1\">Bark</td><td><input type=\"checkbox\" name=\"part[]\" value=\"2\">Bulb</td><td><input type=\"checkbox\" name=\"part[]\" value=\"3\">Flower</td><td><input type=\"checkbox\" name=\"part[]\" value=\"4\">Fruits</td><td><input type=\"checkbox\" name=\"part[]\" value=\"21\">Leaves + Petioles</td></tr><tr><td><input type=\"checkbox\" name=\"part[]\" value=\"5\">Grain</td><td><input type=\"checkbox\" name=\"part[]\" value=\"6\">Leaf</td><td><input type=\"checkbox\" name=\"part[]\" value=\"7\">Petiole</td><td><input type=\"checkbox\" name=\"part[]\" value=\"8\">Root</td></tr><tr><td><input type=\"checkbox\" name=\"part[]\" value=\"9\">Seed</td><td><input type=\"checkbox\" name=\"part[]\" value=\"10\">Stem</td><td><input type=\"checkbox\" name=\"part[]\" value=\"11\">Tuber</td><td><input type=\"checkbox\" name=\"part[]\" value=\"12\">Whole</td></tr><tr><td><input type=\"checkbox\" name=\"part[]\" value=\"13\">Wood</td><td><input type=\"checkbox\" name=\"part[]\" value=\"14\">Plant Fiber</td><td><input type=\"checkbox\" name=\"part[]\" value=\"15\">Fresh Pod</td><td><input type=\"checkbox\" name=\"part[]\" value=\"16\">Whole(without root)</td></tr><tr><td><input type=\"checkbox\" name=\"part[]\" value=\"17\">Forage-Dry</td><td><input type=\"checkbox\" name=\"part[]\" value=\"18\">Forage-Fresh</td><td><input type=\"checkbox\" name=\"part[]\" value=\"19\">Seed-Wet</td><td><input type=\"checkbox\" name=\"part[]\" value=\"20\">Seed-Dry</td></tr></table><button class=\"btn btn-primary\" id=\"hide1\" onclick=\"disappear1(\'part\')\">GO</button>";
+          }
+
+           function disappear1(id){
+         
+               $("#slider1").hide( "slide", { direction: "left"  }, 1100 );
+
+               if (id == "zone" ){
+               		 document.getElementById('climate_btn').style.pointerEvents = 'none';
+               		 document.getElementById('part_btn').style.pointerEvents = 'none';
+                   document.getElementById('climate_btn').style.opacity = 0.35;
+                   document.getElementById('part_btn').style.opacity = 0.35;
+           		}
+           		if (id == "climate" ){
+               		document.getElementById('zone_btn').style.pointerEvents = 'none';
+               		document.getElementById('part_btn').style.pointerEvents = 'none';
+                  document.getElementById('zone_btn').style.opacity = 0.35;
+                  document.getElementById('part_btn').style.opacity = 0.35;
+           		}
+           		if (id == "part" ){
+               		document.getElementById('climate_btn').style.pointerEvents = 'none';
+               		document.getElementById('zone_btn').style.pointerEvents = 'none';
+                  document.getElementById('climate_btn').style.opacity = 0.35;
+                  document.getElementById('zone_btn').style.opacity = 0.35;
+           		}
+            }
+
+
+          function compFunction() {
+              document.getElementById("slider2").style.background="#85AED0";
+              document.getElementById("slider2").innerHTML = "<table class=\"tableComp\"><tr><td><input type=\"checkbox\" name=\"composition\" id=\"ash_mean\" value=\"ash_mean\" onclick=\"legend(this)\">ash_mean</td><td><input type=\"checkbox\"  name=\"composition\" id=\"carbohydrates_cho_mean\" value=\"carbohydrates_cho_mean\" onclick=\"legend(this)\">carbohydrates_cho_mean</td></tr><tr><td><input type=\"checkbox\"  name=\"composition\" id=\"fat_mean\" value=\"fat_mean\" onclick=\"legend(this)\">fat_mean</td><td><input type=\"checkbox\"  name=\"composition\" id=\"fiber_total_dietary_fiber_mean\" value=\"fiber_total_dietary_fiber_mean\" onclick=\"legend(this)\">fiber_total_dietary_fiber_mean</td></tr><tr><td><input type=\"checkbox\"  name=\"composition\" id=\"protein_mean\" value=\"protein_mean\" onclick=\"legend(this)\">protein_mean</td><td><input type=\"checkbox\"  name=\"composition\" id=\"water_moisture_mean\" value=\"water_moisture_mean\" onclick=\"legend(this)\">water_moisture_mean</td></tr></table><button class=\"btn btn-primary\" id=\"hide2\" onclick=\"disappear2(\'comp\')\">GO</button>";
+          }
+
+
+          function mineralFunction() {
+              document.getElementById("slider2").style.background="#B0D64A";
+              document.getElementById("slider2").innerHTML = "<table class=\"tableMineral\"><tr><td><input type=\"checkbox\" name=\"mineral\" id=\"calcium_ca_mean\" value=\"calcium_ca_mean\" onclick=\"legend(this)\">calcium_ca_mean</td><td><input type=\"checkbox\" name=\"mineral\" id=\"copper_cu_mean\" value=\"copper_cu_mean\" onclick=\"legend(this)\">copper_cu_mean</td><td><input type=\"checkbox\" name=\"mineral\" id=\"iron_fe_mean\" value=\"iron_fe_mean\" onclick=\"legend(this)\">iron_fe_mean</td></tr><tr><td><input type=\"checkbox\" name=\"mineral\" id=\"magnesium_mg_mean\" value=\"magnesium_mg_mean\" onclick=\"legend(this)\">magnesium_mg_mean</td><td><input type=\"checkbox\" name=\"mineral\" id=\"manganese_mn_mean\" value=\"manganese_mn_mean\" onclick=\"legend(this)\">manganese_mn_mean</td><td><input type=\"checkbox\" name=\"mineral\" id=\"phosphorus_p_mean\" value=\"phosphorus_p_mean\" onclick=\"legend(this)\">phosphorus_p_mean</td></tr><tr><td><input type=\"checkbox\" name=\"mineral\" id=\"potassium_k_mean\" value=\"potassium_k_mean\" onclick=\"legend(this)\">potassium_k_mean</td><td><input type=\"checkbox\" name=\"mineral\" id=\"sodium_mean\" value=\"sodium_mean\" onclick=\"legend(this)\">sodium_mean</td><td><input type=\"checkbox\" name=\"mineral\" id=\"zinc_zn_mean\" value=\"zinc_zn_mean\" onclick=\"legend(this)\">zinc_zn_mean</td></tr></table><button class=\"btn btn-primary\" id=\"hide2\" onclick=\"disappear2(\'mineral\')\">GO</button>";
+          }
+
+          function agroFunction() {
+              document.getElementById("slider2").style.background="#FFAA36";
+              document.getElementById("slider2").innerHTML = "<table class=\"tableAgro\"><tr><td><input type=\"checkbox\" name=\"agro\" id=\"altitude_absolute_max\" value=\"altitude_absolute_max\" onclick=\"legend(this)\">altitude_absolute_max</td><td><input type=\"checkbox\" name=\"agro\" id=\"latitude_absolute_max\" value=\"latitude_absolute_max\" onclick=\"legend(this)\">latitude_absolute_max</td><td><input type=\"checkbox\" name=\"agro\" id=\"latitude_absolute_min\" value=\"latitude_absolute_min\" onclick=\"legend(this)\">latitude_absolute_min</td><td><input type=\"checkbox\" name=\"agro\" id=\"latitude_absolute_mean\" value=\"latitude_absolute_mean\" onclick=\"legend(this)\">latitude_absolute_mean</td></tr><tr><td><input type=\"checkbox\" name=\"agro\" id=\"rainfall_optimal_max\" value=\"rainfall_optimal_max\" onclick=\"legend(this)\">rainfall_optimal_max</td><td><input type=\"checkbox\" name=\"agro\" id=\"rainfall_optimal_mean\" value=\"rainfall_optimal_mean\" onclick=\"legend(this)\">rainfall_optimal_mean</td><td><input type=\"checkbox\" name=\"agro\" id=\"rainfall_optimal_min\" value=\"rainfall_optimal_min\" onclick=\"legend(this)\">rainfall_optimal_min</td><td><input type=\"checkbox\" name=\"agro\" id=\"rainfall_absolute_max\" value=\"rainfall_absolute_max\" onclick=\"legend(this)\">rainfall_absolute_max</td></tr><tr><td><input type=\"checkbox\" name=\"agro\" id=\"rainfall_absolute_mean\" value=\"rainfall_absolute_mean\" onclick=\"legend(this)\">rainfall_absolute_mean</td><td><input type=\"checkbox\" name=\"agro\" id=\"rainfall_absolute_min\" value=\"rainfall_absolute_min\" onclick=\"legend(this)\">rainfall_absolute_min</td><td><input type=\"checkbox\" name=\"agro\" id=\"soil_ph_optimal_max\" value=\"soil_ph_optimal_max\" onclick=\"legend(this)\">soil_ph_optimal_max</td><td><input type=\"checkbox\" name=\"agro\" id=\"soil_ph_optimal_mean\" value=\"soil_ph_optimal_mean\" onclick=\"legend(this)\">soil_ph_optimal_mean</td></tr><tr><td><input type=\"checkbox\" name=\"agro\" id=\"soil_ph_optimal_min\" value=\"soil_ph_optimal_min\" onclick=\"legend(this)\">soil_ph_optimal_min</td><td><input type=\"checkbox\" name=\"agro\" id=\"soil_ph_absolute_max\" value=\"soil_ph_absolute_max\" onclick=\"legend(this)\">soil_ph_absolute_max</td><td><input type=\"checkbox\" name=\"agro\" id=\"soil_ph_absolute_min\" value=\"soil_ph_absolute_min\" onclick=\"legend(this)\">soil_ph_absolute_min</td><td><input type=\"checkbox\" name=\"agro\" id=\"temperature_optimal_mean\" value=\"temperature_optimal_mean\" onclick=\"legend(this)\">temperature_optimal_mean</td></tr><tr><td><input type=\"checkbox\" name=\"agro\" id=\"temperature_optimal_min\" value=\"temperature_optimal_min\" onclick=\"legend(this)\">temperature_optimal_min</td><td><input type=\"checkbox\" name=\"agro\" id=\"temperature_absolute_max\" value=\"temperature_absolute_max\" onclick=\"legend(this)\">temperature_absolute_max</td><td><input type=\"checkbox\" name=\"agro\" id=\"temperature_absolute_mean\" value=\"temperature_absolute_mean\" onclick=\"legend(this)\">temperature_absolute_mean</td><td><input type=\"checkbox\" name=\"agro\" id=\"temperature_absolute_min\" value=\"temperature_absolute_min\" onclick=\"legend(this)\">temperature_absolute_min</td></tr><tr><td><input type=\"checkbox\" name=\"agro\" id=\"texture_clay_max\" value=\"texture_clay_max\" onclick=\"legend(this)\">texture_clay_max</td><td><input type=\"checkbox\" name=\"agro\" id=\"texture_sand_max\" value=\"texture_sand_max\" onclick=\"legend(this)\">texture_sand_max</td><td><input type=\"checkbox\" name=\"agro\" id=\"texture_sand_min\" value=\"texture_sand_min\" onclick=\"legend(this)\">texture_sand_min</td><td><input type=\"checkbox\" name=\"agro\" id=\"texture_silt_max\" value=\"texture_silt_max\" onclick=\"legend(this)\">texture_slit_max</td></tr><tr><td><input type=\"checkbox\" name=\"agro\" id=\"texture_silt_min\" value=\"texture_silt_min\" onclick=\"legend(this)\">texture_silt_min</td></tr></table><button class=\"btn btn-primary\" id=\"hide2\" onclick=\"disappear2(\'agro\')\">GO</button>";
+          }
+
+          function disappear2(id){
+               $("#slider2").hide( "slide", { direction: "left"  }, 1100 );
+
+               if (id == "comp" ){
+               		document.getElementById('agro_btn').style.pointerEvents = 'none';
+               		document.getElementById('mineral_btn').style.pointerEvents = 'none';
+                  document.getElementById('agro_btn').style.opacity = 0.35;
+                  document.getElementById('mineral_btn').style.opacity = 0.35;
+           		}
+           		if (id == "mineral" ){
+               		document.getElementById('composition_btn').style.pointerEvents = 'none';
+                  document.getElementById('agro_btn').style.pointerEvents = 'none';
+                  document.getElementById('agro_btn').style.opacity = 0.35;
+                  document.getElementById('composition_btn').style.opacity = 0.35;
+           		}
+           		if (id == "agro" ){
+               		document.getElementById('composition_btn').style.pointerEvents = 'none';
+                  document.getElementById('mineral_btn').style.pointerEvents = 'none';
+                  document.getElementById('mineral_btn').style.opacity = 0.35;
+                  document.getElementById('composition_btn').style.opacity = 0.35;
+           		}
+            }
+
+      </script>
+    
+      <style>
+
+        @import url('https://fonts.googleapis.com/css?family=Chivo');
+
+        *{
+          font-family: 'Chivo','Arial';
+        }
+
+        
+         #slider1 { 
+          position:absolute;
+          top:24%;
+          left:15.75%;
+          width:68.55%; 
+          height:34.1%; 
+          }
+
+          #slider2 { 
+          position:absolute;
+          top:60%;
+          left:15.75%;
+          width:68.55%; 
+          height:34.05%; 
+          }
+
+          .block1 {
+          position:absolute;
+          top:24%;
+          left:15.75%;
+          width:68.5%; 
+          height:34%; 
+          border:1px solid #E3E3E3;
+          }
+
+          .block2 {
+          position:absolute;
+          top:60%;
+          left:15.75%;
+          width:68.5%; 
+          height:34%; 
+          border:1px solid #E3E3E3;
+
+          }
+
+          .tableComp td{
+            padding:15px;
+            text-align:left;
+            color:white;
+          }
+
+          .tableAgro td{
+            padding:5px;
+            text-align:left;
+                        color:white;
+
+          }
+
+          .tableMineral td{
+            padding:15px;
+            text-align:left;
+                        color:white;
+
+          }
+
+          .tableZone td{
+            padding:15px;
+            text-align:left;
+                        color:white;
+
+         
+          }
+
+          .tableClimate td{
+            padding:15px;
+            text-align:left;
+                        color:white;
+
+          }
+
+          .tablePart td{
+            padding:12px;
+            text-align:left;
+                        color:white;
+
+          }
+
+
+          #zone_btn, #climate_btn, #part_btn, #composition_btn, #mineral_btn, #agro_btn {
+          	margin-top:2%;
+          	margin-left:6.25%;
+          	width:25%;
+          	height:84%;
+            border: none;
+            padding: 0;
+            cursor:pointer;
+          }
+
+
+          #hide1, #hide2 {
+			position:absolute;
+			top:80%;
+			left:88%;
+      height:12%;
+      width:8%;
+      background-color:white;
+      color:#96B53C;
+      font-weight:bold;
+      font-size:2vh;
+      cursor:pointer;
+      border:none;
+          }
+
+          input{
+            cursor:pointer;
+          }
+
+          #next{
+            position:absolute;
+            top:86%;
+            left:86%;
+            height:8%;
+            width:7%;
+            font-weight:bold;
+         font-size:2vh;
+          cursor:pointer;
+          border:none;
+          background-color:#E3E3E3;
+        color:#96B53C;
+          }
+
+          .nav_bar{
+            position:absolute;
+            top:3%;
+            left:0%;
+            width:100%;
+            height:12%;
+            background-color:#E3E3E3;
+          }
+
+          #logo{
+            top:4%;
+            position:absolute;
+            left:5%;
+            cursor:pointer;
+          }
+
+          #nav_buttons{
+            position:absolute;
+            top:32;
+            left:60%;
+            width:40%;
+            height:100%;
+          }
+
+          #nav1, #nav2, #nav3{
+            padding:3%;
+            width:30%;
+            height:100%;
+            border: none;
+            cursor:pointer;
+            background-color: #E3E3E3;
+            font-size: 3vh;
+            cursor:pointer;
+            margin-left:2%;
+          }
+
+          .footer{
+            position:absolute;
+            top:104%;
+            left:0%;
+            width:100%;
+            height:8%;
+            background-color:#253E6B;
+          }
+
+      </style>
+   </head>
+  
+   <body>
+
+   <div class="nav_bar">
+     <img id="logo" src="assets/cfflogo.png"> 
+     <div id="nav_buttons">
+     <button id="nav1">About</button>
+     <button id="nav2">Contact Us</button>
+     <button id="nav3">FAQ</button>
+     </div>
+   </div>
+
+      <div class = "block1">
+
+        <img id = "zone_btn" onclick="zoneFunction()" src="assets/zone_btn.png"> 
+
+        <img id = "climate_btn" onclick="climateFunction()" src="assets/climate_btn.png">
+
+        <img id = "part_btn" onclick="partFunction()" src="assets/part_btn.png">
+      </div>
+  
+      <div id="slider1">
+      </div>
+
+<div class = "block2">
+
+        <img id = "agro_btn" onclick="agroFunction()" src="assets/agro_btn.png">
+
+        <img id = "mineral_btn" onclick="mineralFunction()" src="assets/mineral_btn.png">
+
+        <img id = "composition_btn" onclick="compFunction()" src="assets/nutrient_btn.png">
+
+ </div>
+
+ <div id="slider2">
+      </div>
+
+      <button id="next">GO</button>
+
+      <div class="footer">
+      	<p style="color:#85AED0;position:absolute;left:5%;">© Crops For the Future (CFF). All rights reserved. </div>
+      </div>
+
+   </body>
+</html>
