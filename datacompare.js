@@ -3,8 +3,7 @@ $(document).ready(function() {
    * call the data.php file to fetch the result from db table.
    */
   return $.ajax({
-    url: `http://localhost/cff/api/data.php`,
-    data: {cropA: crop1, cropB: crop2},
+    url: `http://35.185.57.3//cff/api/data.php?id1=${crop1}&id2=${crop2}`,
     type: "POST",
     success: function(data) {
       var len = data.length;

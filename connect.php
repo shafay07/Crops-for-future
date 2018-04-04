@@ -1,7 +1,7 @@
 <?php
 $servername = 'localhost';
-$username = 'admin';
-$password = 'cffmysql';
+$username = 'root';
+$password = 'root';
 $dbname = 'cff';
 
 // Create connection
@@ -102,7 +102,9 @@ if ($conn->connect_error) {
 	$query = "SELECT tax.cropID, tax.common_name, "
 			. $xCat . "." . $xAxis . ", " . $yCat . "." . $yAxis . ", " . $zCat . "." . $zAxis
 			. " FROM crop_taxonomy tax LEFT JOIN agro_agroecology_livedb agro ON tax.cropID=agro.cropid";	
-	$query .= " LEFT JOIN nutrient_minerals mineral ON tax.cropID=mineral.cropid LEFT JOIN general_plant_parts part ON mineral.plant_part_id=part.id LEFT JOIN nutrient_proximate_composition composition ON tax.cropID=composition.cropid";
+	$query .= " LEFT JOIN nutrient_minerals mineral ON tax.cropID=mineral.cropid LEFT JOIN general_plant_parts part ON mineral.plant_part_id=part.id ";
+	if($cat[0]=="composition"||$cat[1]=="composition")
+		$query .= " LEFT JOIN nutrient_proximate_composition composition ON tax.cropID=composition.cropid";
 	$query .=" WHERE " . $xAxis . " !=' ' AND " . $yAxis . " !=' ' AND " . $zAxis . " !=' '";
 	if(count($partarray))
 		$query .= $partquery;
@@ -119,7 +121,7 @@ if(!$result) {
     die("<br>Database query failed");
 }
 else{
-	/*echo "<br><br>Database query success!<br><p>";
+	echo "<br><br>Database query success!<br>";
 		while($row = mysqli_fetch_array($result))
 		{
 			$jsonArray[] = array(
@@ -137,14 +139,7 @@ else{
 			);
 		}
 	
-	print json_encode($jsonArray);
-	echo "</p>";*/
-	foreach($result as $row){
-		$jsonArray[]=$row;
-	}
-	echo "<pre>";
-	print json_encode($jsonArray);
-	echo "</pre>";
+	echo json_encode($jsonArray);
 }
 
 //save into a json file

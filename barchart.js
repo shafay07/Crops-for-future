@@ -1,8 +1,7 @@
 $(document).ready(function() {
   $.ajax({
-    url: `http://localhost/cff/api/data.php`,
-    data: {cropA: crop1, cropB: crop2},
-    type: "POST",
+    url: `http://35.185.57.3//cff/api/data.php?id1=${crop1}&id2=${crop2}`,
+    method: "POST",
     success: function(data) {
       var value = {
         Adata: [],
