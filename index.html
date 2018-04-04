@@ -55,6 +55,13 @@
     height: 34.05%;
     background: #B0D64A;
 }
+#table_axis {
+	position: absolute;
+	top: 95%;
+	left: 20%;
+	width: 60%;
+	height: 5%;
+}
 .block1 {
     position: absolute;
     top: 24%;
@@ -228,14 +235,14 @@ input {
 <body>
   <!--top navigation bar-->
     <div class="nav_bar">
-        <img id="logo" src="cfflogo.png">
+        <img id="logo" src="assets/cfflogo.png">
         <div id="nav_buttons">
             <button id="nav1">About</button> <button id="nav2">Contact Us</button> <button id="nav3">FAQ</button>
         </div>
     </div>
-
+<form id="cropselect" method="post" action="connect.php">
     <!--block 1-->
-    <div class="block1"><img id="zone_btn" src="zone_btn.png"> <img id="climate_btn" src="climate_btn.png"> <img id="part_btn" src="part_btn.png"></div>
+    <div class="block1"><img id="zone_btn" src="assets/zone_btn.png"> <img id="climate_btn" src="assets/climate_btn.png"> <img id="part_btn" src="assets/part_btn.png"></div>
     <div id="slider_zone"><!--slider for zone button-->
         <table class="tableZone">
             <tr>
@@ -249,7 +256,7 @@ input {
             <tr>
                 <td><input id="zone" name="zone[]" type="checkbox" value="zone_E"> Zone E</td>
             </tr>
-        </table><button class="btn btn-primary" id="hide1" onclick="disappear1('zone')">GO</button>
+        </table><button type="button" class="btn btn-primary" id="hide1" onclick="disappear1('zone')">GO</button>
     </div>
     <div id="slider_climate"><!--slider for climate button-->
         <table class="tableClimate">
@@ -273,7 +280,7 @@ input {
                 <td><input id="climate" name="climate[]" type="checkbox" value="temperate with humid winters (Df)"> Temperate with humid winters (Df)</td>
                 <td><input id="climate" name="climate[]" type="checkbox" value="boreal (E)"> Boreal (E)</td>
             </tr>
-        </table><button class="btn btn-primary" id="hide1" onclick="disappear1('climate')">GO</button>
+        </table><button type="button" class="btn btn-primary" id="hide1" onclick="disappear1('climate')">GO</button>
     </div>
     <div id="slider_part"><!--slider for parts button-->
         <table class="tablePart">
@@ -308,53 +315,53 @@ input {
                 <td><input name="part[]" type="checkbox" value="19"> Seed-Wet</td>
                 <td><input name="part[]" type="checkbox" value="20"> Seed-Dry</td>
             </tr>
-        </table><button class="btn btn-primary" id="hide1" onclick="disappear1('part')">GO</button>
+        </table><button type="button" class="btn btn-primary" id="hide1" onclick="disappear1('part')">GO</button>
     </div>
 
     <!--block 2-->
-    <div class="block2"><img id="agro_btn" src="agro_btn.png"> <img id="mineral_btn" src="mineral_btn.png"> <img id="composition_btn" src="nutrient_btn.png"></div>
+    <div class="block2"><img id="agro_btn" src="assets/agro_btn.png"> <img id="mineral_btn" src="assets/mineral_btn.png"> <img id="composition_btn" src="assets/nutrient_btn.png"></div>
     <div id="slider_agro"><!--slider for agroecology button-->
         <table class="tableAgro">
             <tr>
-                <td><input id="altitude_absolute_max" name="agro" onclick="legend(this)" type="radio" value="altitude_absolute_max"> altitude_absolute_max</td>
-                <td><input id="latitude_absolute_max" name="agro" onclick="legend(this)" type="radio" value="latitude_absolute_max"> latitude_absolute_max</td>
-                <td><input id="latitude_absolute_min" name="agro" onclick="legend(this)" type="radio" value="latitude_absolute_min"> latitude_absolute_min</td>
-                <td><input id="latitude_absolute_mean" name="agro" onclick="legend(this)" type="radio" value="latitude_absolute_mean"> latitude_absolute_mean</td>
+                <td><input class="legend" id="altitude_absolute_max" name="agro"  type="radio" value="altitude_absolute_max"> altitude_absolute_max</td>
+                <td><input class="legend" id="latitude_absolute_max" name="agro"  type="radio" value="latitude_absolute_max"> latitude_absolute_max</td>
+                <td><input class="legend" id="latitude_absolute_min" name="agro"  type="radio" value="latitude_absolute_min"> latitude_absolute_min</td>
+                <td><input class="legend" id="latitude_absolute_mean" name="agro"  type="radio" value="latitude_absolute_mean"> latitude_absolute_mean</td>
             </tr>
             <tr>
-                <td><input id="rainfall_optimal_max" name="agro" onclick="legend(this)" type="radio" value="rainfall_optimal_max"> rainfall_optimal_max</td>
-                <td><input id="rainfall_optimal_mean" name="agro" onclick="legend(this)" type="radio" value="rainfall_optimal_mean"> rainfall_optimal_mean</td>
-                <td><input id="rainfall_optimal_min" name="agro" onclick="legend(this)" type="radio" value="rainfall_optimal_min"> rainfall_optimal_min</td>
-                <td><input id="rainfall_absolute_max" name="agro" onclick="legend(this)" type="radio" value="rainfall_absolute_max"> rainfall_absolute_max</td>
+                <td><input class="legend" id="rainfall_optimal_max" name="agro"  type="radio" value="rainfall_optimal_max"> rainfall_optimal_max</td>
+                <td><input class="legend" id="rainfall_optimal_mean" name="agro"  type="radio" value="rainfall_optimal_mean"> rainfall_optimal_mean</td>
+                <td><input class="legend" id="rainfall_optimal_min" name="agro"  type="radio" value="rainfall_optimal_min"> rainfall_optimal_min</td>
+                <td><input class="legend" id="rainfall_absolute_max" name="agro"  type="radio" value="rainfall_absolute_max"> rainfall_absolute_max</td>
             </tr>
             <tr>
-                <td><input id="rainfall_absolute_mean" name="agro" onclick="legend(this)" type="radio" value="rainfall_absolute_mean"> rainfall_absolute_mean</td>
-                <td><input id="rainfall_absolute_min" name="agro" onclick="legend(this)" type="radio" value="rainfall_absolute_min"> rainfall_absolute_min</td>
-                <td><input id="soil_ph_optimal_max" name="agro" onclick="legend(this)" type="radio" value="soil_ph_optimal_max"> soil_ph_optimal_max</td>
-                <td><input id="soil_ph_optimal_mean" name="agro" onclick="legend(this)" type="radio" value="soil_ph_optimal_mean"> soil_ph_optimal_mean</td>
+                <td><input class="legend" id="rainfall_absolute_mean" name="agro"  type="radio" value="rainfall_absolute_mean"> rainfall_absolute_mean</td>
+                <td><input class="legend" id="rainfall_absolute_min" name="agro"  type="radio" value="rainfall_absolute_min"> rainfall_absolute_min</td>
+                <td><input class="legend" id="soil_ph_optimal_max" name="agro"  type="radio" value="soil_ph_optimal_max"> soil_ph_optimal_max</td>
+                <td><input class="legend" id="soil_ph_optimal_mean" name="agro"  type="radio" value="soil_ph_optimal_mean"> soil_ph_optimal_mean</td>
             </tr>
             <tr>
-                <td><input id="soil_ph_optimal_min" name="agro" onclick="legend(this)" type="radio" value="soil_ph_optimal_min"> soil_ph_optimal_min</td>
-                <td><input id="soil_ph_absolute_max" name="agro" onclick="legend(this)" type="radio" value="soil_ph_absolute_max"> soil_ph_absolute_max</td>
-                <td><input id="soil_ph_absolute_min" name="agro" onclick="legend(this)" type="radio" value="soil_ph_absolute_min"> soil_ph_absolute_min</td>
-                <td><input id="temperature_optimal_mean" name="agro" onclick="legend(this)" type="radio" value="temperature_optimal_mean"> temperature_optimal_mean</td>
+                <td><input class="legend" id="soil_ph_optimal_min" name="agro"  type="radio" value="soil_ph_optimal_min"> soil_ph_optimal_min</td>
+                <td><input class="legend" id="soil_ph_absolute_max" name="agro"  type="radio" value="soil_ph_absolute_max"> soil_ph_absolute_max</td>
+                <td><input class="legend" id="soil_ph_absolute_min" name="agro"  type="radio" value="soil_ph_absolute_min"> soil_ph_absolute_min</td>
+                <td><input class="legend" id="temperature_optimal_mean" name="agro"  type="radio" value="temperature_optimal_mean"> temperature_optimal_mean</td>
             </tr>
             <tr>
-                <td><input id="temperature_optimal_min" name="agro" onclick="legend(this)" type="radio" value="temperature_optimal_min"> temperature_optimal_min</td>
-                <td><input id="temperature_absolute_max" name="agro" onclick="legend(this)" type="radio" value="temperature_absolute_max"> temperature_absolute_max</td>
-                <td><input id="temperature_absolute_mean" name="agro" onclick="legend(this)" type="radio" value="temperature_absolute_mean"> temperature_absolute_mean</td>
-                <td><input id="temperature_absolute_min" name="agro" onclick="legend(this)" type="radio" value="temperature_absolute_min"> temperature_absolute_min</td>
+                <td><input class="legend" id="temperature_optimal_min" name="agro"  type="radio" value="temperature_optimal_min"> temperature_optimal_min</td>
+                <td><input class="legend" id="temperature_absolute_max" name="agro"  type="radio" value="temperature_absolute_max"> temperature_absolute_max</td>
+                <td><input class="legend" id="temperature_absolute_mean" name="agro"  type="radio" value="temperature_absolute_mean"> temperature_absolute_mean</td>
+                <td><input class="legend" id="temperature_absolute_min" name="agro"  type="radio" value="temperature_absolute_min"> temperature_absolute_min</td>
             </tr>
             <tr>
-                <td><input id="texture_clay_max" name="agro" onclick="legend(this)" type="radio" value="texture_clay_max"> texture_clay_max</td>
-                <td><input id="texture_sand_max" name="agro" onclick="legend(this)" type="radio" value="texture_sand_max"> texture_sand_max</td>
-                <td><input id="texture_sand_min" name="agro" onclick="legend(this)" type="radio" value="texture_sand_min"> texture_sand_min</td>
-                <td><input id="texture_silt_max" name="agro" onclick="legend(this)" type="radio" value="texture_silt_max"> texture_slit_max</td>
+                <td><input class="legend" id="texture_clay_max" name="agro"  type="radio" value="texture_clay_max"> texture_clay_max</td>
+                <td><input class="legend" id="texture_sand_max" name="agro"  type="radio" value="texture_sand_max"> texture_sand_max</td>
+                <td><input class="legend" id="texture_sand_min" name="agro"  type="radio" value="texture_sand_min"> texture_sand_min</td>
+                <td><input class="legend" id="texture_silt_max" name="agro"  type="radio" value="texture_silt_max"> texture_slit_max</td>
             </tr>
             <tr>
-                <td><input id="texture_silt_min" name="agro" onclick="legend(this)" type="radio" value="texture_silt_min"> texture_silt_min</td>
+                <td><input id="texture_silt_min" name="agro"  type="radio" value="texture_silt_min"> texture_silt_min</td>
             </tr>
-        </table><button class="btn btn-primary" id="hide2" onclick="disappear2('agro')">GO</button>
+        </table><button type="button" class="btn btn-primary" id="hide2" onclick="disappear2('agro')">GO</button>
         <div class="btn-group">
             <button class="button" id="x-axis-1" onclick="axisFunction('x')">Set X</button><button class="button" id="y-axis-1" onclick="axisFunction('y')">Set Y</button><button class="button" id="z-axis-1" onclick="axisFunction('z')">Set Z (optional)</button>
         </div>
@@ -362,21 +369,21 @@ input {
     <div id="slider_mineral"><!--slider for minerals button-->
         <table class="tableMineral">
             <tr>
-                <td><input id="calcium_ca_mean" name="mineral" onclick="legend(this)" type="radio" value="calcium_ca_mean"> calcium_ca_mean</td>
-                <td><input id="copper_cu_mean" name="mineral" onclick="legend(this)" type="radio" value="copper_cu_mean"> copper_cu_mean</td>
-                <td><input id="iron_fe_mean" name="mineral" onclick="legend(this)" type="radio" value="iron_fe_mean"> iron_fe_mean</td>
+                <td><input class="legend" id="calcium_ca_mean" name="mineral"  type="radio" value="calcium_ca_mean"> calcium_ca_mean</td>
+                <td><input class="legend" id="copper_cu_mean" name="mineral"  type="radio" value="copper_cu_mean"> copper_cu_mean</td>
+                <td><input class="legend" id="iron_fe_mean" name="mineral"  type="radio" value="iron_fe_mean"> iron_fe_mean</td>
             </tr>
             <tr>
-                <td><input id="magnesium_mg_mean" name="mineral" onclick="legend(this)" type="radio" value="magnesium_mg_mean"> magnesium_mg_mean</td>
-                <td><input id="manganese_mn_mean" name="mineral" onclick="legend(this)" type="radio" value="manganese_mn_mean"> manganese_mn_mean</td>
-                <td><input id="phosphorus_p_mean" name="mineral" onclick="legend(this)" type="radio" value="phosphorus_p_mean"> phosphorus_p_mean</td>
+                <td><input class="legend" id="magnesium_mg_mean" name="mineral"  type="radio" value="magnesium_mg_mean"> magnesium_mg_mean</td>
+                <td><input class="legend" id="manganese_mn_mean" name="mineral"  type="radio" value="manganese_mn_mean"> manganese_mn_mean</td>
+                <td><input class="legend" id="phosphorus_p_mean" name="mineral"  type="radio" value="phosphorus_p_mean"> phosphorus_p_mean</td>
             </tr>
             <tr>
-                <td><input id="potassium_k_mean" name="mineral" onclick="legend(this)" type="radio" value="potassium_k_mean"> potassium_k_mean</td>
-                <td><input id="sodium_mean" name="mineral" onclick="legend(this)" type="radio" value="sodium_mean"> sodium_mean</td>
-                <td><input id="zinc_zn_mean" name="mineral" onclick="legend(this)" type="radio" value="zinc_zn_mean"> zinc_zn_mean</td>
+                <td><input class="legend" id="potassium_k_mean" name="mineral"  type="radio" value="potassium_k_mean"> potassium_k_mean</td>
+                <td><input class="legend" id="sodium_mean" name="mineral"  type="radio" value="sodium_mean"> sodium_mean</td>
+                <td><input class="legend" id="zinc_zn_mean" name="mineral"  type="radio" value="zinc_zn_mean"> zinc_zn_mean</td>
             </tr>
-        </table><button class="btn btn-primary" id="hide2" onclick="disappear2('mineral')">GO</button>
+        </table><button type="button" class="btn btn-primary" id="hide2" onclick="disappear2('mineral')">GO</button>
         <div class="btn-group">
             <button class="button" id="x-axis-2" onclick="axisFunction('x')">Set X</button><button class="button" id="y-axis-2" onclick="axisFunction('y')">Set Y</button><button class="button" id="z-axis-2" onclick="axisFunction('z')">Set Z (optional)</button>
         </div>
@@ -384,28 +391,42 @@ input {
     <div id="slider_comp"><!--slider for nutrient composition button-->
         <table class="tableComp">
             <tr>
-                <td><input id="ash_mean" name="composition" onclick="legend(this)" type="radio" value="ash_mean"> ash_mean</td>
-                <td><input id="carbohydrates_cho_mean" name="composition" onclick="legend(this)" type="radio" value="carbohydrates_cho_mean"> carbohydrates_cho_mean</td>
+                <td><input class="legend" id="ash_mean" name="composition"  type="radio" value="ash_mean"> ash_mean</td>
+                <td><input class="legend" id="carbohydrates_cho_mean" name="composition"  type="radio" value="carbohydrates_cho_mean"> carbohydrates_cho_mean</td>
             </tr>
             <tr>
-                <td><input id="fat_mean" name="composition" onclick="legend(this)" type="radio" value="fat_mean"> fat_mean</td>
-                <td><input id="fiber_total_dietary_fiber_mean" name="composition" onclick="legend(this)" type="radio" value="fiber_total_dietary_fiber_mean"> fiber_total_dietary_fiber_mean</td>
+                <td><input class="legend" id="fat_mean" name="composition"  type="radio" value="fat_mean"> fat_mean</td>
+                <td><input class="legend" id="fiber_total_dietary_fiber_mean" name="composition"  type="radio" value="fiber_total_dietary_fiber_mean"> fiber_total_dietary_fiber_mean</td>
             </tr>
             <tr>
-                <td><input id="protein_mean" name="composition" onclick="legend(this)" type="radio" value="protein_mean"> protein_mean</td>
-                <td><input id="water_moisture_mean" name="composition" onclick="legend(this)" type="radio" value="water_moisture_mean"> water_moisture_mean</td>
+                <td><input class="legend" id="protein_mean" name="composition"  type="radio" value="protein_mean"> protein_mean</td>
+                <td><input class="legend" id="water_moisture_mean" name="composition"  type="radio" value="water_moisture_mean"> water_moisture_mean</td>
             </tr>
-        </table><button class="btn btn-primary" id="hide2" onclick="disappear2('comp')">GO</button>
+        </table><button type="button" class="btn btn-primary" id="hide2" onclick="disappear2('comp')">GO</button>
         <div class="btn-group">
             <button class="button" id="x-axis-3" onclick="axisFunction('x')">Set X</button><button class="button" id="y-axis-3" onclick="axisFunction('y')">Set Y</button><button class="button" id="z-axis-3" onclick="axisFunction('z')">Set Z (optional)</button>
         </div>
 
     <!--Go to next page-->    
-    </div><button id="next">GO</button> 
+    </div>
+	<div id="table_axis">
+	<table class="tableAxis">
+		<tr>
+			<td>X-Axis:</td>
+			<td><input name ="xAxis" id="xAxis" readonly="true"> from <input name ="xCat" id="xCat" readonly="true"></td>
+			<td>Y-Axis:</td>
+			<td><input name ="yAxis" id="yAxis" readonly="true"> from <input name ="yCat" id="yCat" readonly="true"></td>
+			<td>Z-Axis:</td>
+			<td><input name ="zAxis" id="zAxis" readonly="true"> from <input name ="zCat" id="zCat" readonly="true"></td>
+		</tr>
+	</table>
+	</div>	
+	<button type="submit" id="next">GO</button>
 
     <!--reset selections-->
-    <button id="reset" onclick="reloadFunction()">RESET</button>
+    <button type="button" id="reset" onclick="reloadFunction()">RESET</button>
 
+</form>
     <!--FOOTER-->
     <div class="footer">
         <p style="color:#85AED0;position:absolute;left:5%;">© Crops For the Future (CFF). All rights reserved.</p>
@@ -498,6 +519,8 @@ function axisFunction(id) {
     $(checked_id).attr('disabled', true);
     var checked_id = "#" + ($('input[name=agro]:checked').attr('id'));
     $(checked_id).attr('disabled', true);
+	axis = $('.legend:checked').val();
+	cat = $('.legend:checked').attr("name");
 
     //disabling already selected axis button
     if (id == "x") {
@@ -507,6 +530,10 @@ function axisFunction(id) {
         document.getElementById('x-axis-1').style.opacity = 0.35;
         document.getElementById('x-axis-2').style.opacity = 0.35;
         document.getElementById('x-axis-3').style.opacity = 0.35;
+		xCat = cat;
+		xVar = axis;
+		document.getElementById("xCat").value = xCat;
+		document.getElementById("xAxis").value = xVar;		
     }
     if (id == "y") {
         document.getElementById('y-axis-1').disabled = true;
@@ -515,6 +542,10 @@ function axisFunction(id) {
         document.getElementById('y-axis-1').style.opacity = 0.35;
         document.getElementById('y-axis-2').style.opacity = 0.35;
         document.getElementById('y-axis-3').style.opacity = 0.35;
+		yCat = cat;
+		yVar = axis;
+		document.getElementById("yCat").value = yCat;
+		document.getElementById("yAxis").value = yVar;		
     }
     if (id == "z") {
         document.getElementById('z-axis-1').disabled = true;
@@ -523,11 +554,19 @@ function axisFunction(id) {
         document.getElementById('z-axis-1').style.opacity = 0.35;
         document.getElementById('z-axis-2').style.opacity = 0.35;
         document.getElementById('z-axis-3').style.opacity = 0.35;
+		zCat = cat;
+		zVar = axis;
+		document.getElementById("zCat").value = zCat;	
+		document.getElementById("zAxis").value = zVar;	
     }
+	$('.legend').prop('checked', false);
+	
+	
 }
 
 //hide sliders for 2nd block
 function disappear2(id) {
+	
     if (id == "comp") {
         $("#slider_comp").hide("slide", {
             direction: "left"
