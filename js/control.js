@@ -1,9 +1,8 @@
-//as the page loads this is called
-window.onload = function() {
+$('#next').click(function () {
 	var result = json_access();
 	console.log(result);
 	plot(result);
-};
+});
 
 function json_access(){
 	var x_axis = [];
@@ -11,19 +10,32 @@ function json_access(){
 	var crop_name = [];
 
 	$(document).ready(function () {
-		var data;
+		var out;
 		$.ajax({
+			url: `connect.php`,
+			data: {
+				climate: climatearray,
+				zone: zonearray,
+				part: partarray,
+				xAxis: xVar,
+				yAxis: yVar,
+				zAxis: zVar,
+				xCat: xCat,
+				yCat: yCat,
+				zCat: zCat,
+			 },
+			type: "POST",
 			dataType: "json",
-			url: 'query.json',
-			data: data,
 			success: function (data) {
 				// begin accessing JSON data here
+				console.log(data.length);
+				console.log("not working");
 				for (i = 0; i < data.length; i++) {
 					x_axis[i] = data[i].xvalue;
 					y_axis[i] = data[i].yvalue;
 					crop_name[i] = data[i].cropname;
 				};
-			}
+			},
 		});
 	});
 	return [x_axis,y_axis,crop_name];
