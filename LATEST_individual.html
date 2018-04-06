@@ -1,0 +1,683 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<title>Individual</title>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Chivo');
+* {
+    font-family: 'Chivo', 'Arial';
+}
+
+body {
+	overflow: hidden
+}
+.attributes{
+	width: 30%;
+	font-weight:bold;
+	}
+	
+	.cat{
+		font-weight: bold;
+	}
+.slides {
+	position: absolute;
+	margin: auto 0;
+	width: 100vw;
+	height: 100%;
+	left: 100%;
+	transition: left 1s ease;
+}
+
+.lr_btn{
+		position:absolute;
+		top: 45%;
+		font-size: 40px;
+		font-weight: bold;
+		display: none;
+		cursor: pointer;
+		z-index: 1;
+	}
+	.lr_btn:hover{
+		color:#808080;
+	}
+
+.nav_bar {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 12%;
+    background-color: #E3E3E3;
+}
+#logo {
+    top: 4%;
+    position: absolute;
+    left: 5%;
+    cursor: pointer;
+    height: 90%;
+}
+#nav_buttons {
+    position: absolute;
+    top: 0%;
+    left: 60%;
+    width: 40%;
+    height: 100%;
+}
+#nav1, #nav2, #nav3 {
+    padding: 3%;
+    width: 30%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    background-color: #E3E3E3;
+    font-size: 3vh;
+    cursor: pointer;
+    margin-left: 2%;
+}
+
+.inst{
+	position: absolute;
+	top:20%;
+	left:22%;
+	font-weight:bold;
+	font-size: 6vh;
+	color:#808080;
+	
+}
+
+input[type=text] {
+    width: 50%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    position:absolute;
+    top:50%;
+    left:22%;
+}
+
+#search_btn, #back2search {
+	display: block;
+	width: 5vw;
+	left: 73vw;
+	cursor: pointer;
+	top:32.85vh;
+	background-color: white;
+    color: #96B53C;
+    font-weight: bold;
+    font-size: 2vh;
+    height: 5.5vh;
+    border: none;
+    position: absolute;
+}
+	#back2search{
+		display: none;
+		left: 2vw;
+		top:13.4vh;
+		width: 10vw;
+		height: 5vh;
+	}
+
+#search_btn:hover, #back2search:hover {
+	background-color: #96B53C;
+    color: white;
+}
+
+#right_btn {
+	left: 3vw;
+}
+
+#left_btn {
+	left: 95vw;
+}
+
+#search_div {
+	left: 0;
+	background: #E3E3E3;
+	top: 19.5vh;
+	height: 65vh;
+}
+#slide_conts {
+	top: 19.5vh;
+	height: 65vh;
+}
+#cont1 {
+	left: 0;
+}
+
+#cont1, #cont2, #cont3, #cont4 {
+	background: #E3E3E3;
+	overflow: auto;
+}
+
+
+	#plantimage{
+		position:absolute;
+		left: 0;
+		margin-left:8%;
+		margin-top:13.5vh;
+		width:24vw;
+		height:38vh; 
+		
+	}
+	
+	#planttitle{
+		position:absolute;
+		margin-top:13vh;
+		left:34%;
+		font-weight: bold;
+		font-size: 10vh;
+	}
+	
+	#sc_name{
+		position:absolute;
+		margin-top:14%;
+		left:34%;
+		font-style: italic;
+		font-size: 6vh;
+		color: dimgray;
+	}
+	
+	#f_name{
+		position:absolute;
+		margin-top:19%;
+		left:34%;
+		font-size: 2vh;
+	}
+	
+	#descri{
+		position:absolute;
+		margin-top:22%;
+		left:34%;
+		font-size: 2vh;
+		margin-right: 5%;
+		width:58vw;
+	}
+
+	#agro_table,#nutrient_table,#usage_table {
+		width: 60%;
+		margin-left: 20%;
+		margin-top: 2%;
+		margin-bottom: 2%;
+		border-collapse: collapse;
+	}
+
+	.table_head{
+		color:white; 
+		font-weight: bold; 
+		text-align:center;
+		font-size:3vh;
+	}
+
+	#agro_table td{
+		border: 2.5px solid #FFAA36;
+	}
+
+	#nutrient_table td{
+		border: 2.5px solid #85AED0;
+	}
+
+	#usage_table td{
+		border: 2.5px solid #B0D64A;
+	}
+
+	td{
+		font-size:2vh;
+	}
+
+	th, td {
+		padding: 15px;
+  		text-align: left;
+	}
+
+	#agro_table .cat{
+		color:#FFAA36;
+		font-weight:bold;
+	}
+
+	#nutrient_table .cat{
+		color:#85AED0;
+		font-weight:bold;
+	}
+
+	#usage_table .cat{
+		color:#B0D64A;
+		font-weight:bold;
+	}
+
+	.footer {
+    position: absolute;
+    top: 92%;
+    left: 0%;
+    width: 100%;
+    height: 8%;
+    background-color: #253E6B;
+}
+
+</style>
+</head>
+
+<body>
+
+<!--HEADER-->
+<div class="nav_bar">
+        <img id="logo" src="cfflogo.png">
+        <div id="nav_buttons">
+            <button id="nav1">About</button> <button id="nav2">Contact Us</button> <button id="nav3">FAQ</button>
+        </div>
+    </div>
+
+<div id="search_div" class="slides">
+<!--search bar-->
+	<p class="inst">Enter crop name:</p>
+    <form>
+  		<input type="text" name="search" placeholder="Search..">
+	</form>
+
+  <button id="search_btn" class="slide_btn" onClick="startSlide()">Go</button>
+</div>
+
+<div id="right_btn" class="lr_btn glyphicon" onClick="slideRight()">&#xe079;</div>
+	
+	<button id="back2search" onClick="back2search()">Back to Search</button>
+
+<div id="slide_conts" class="slides">
+  <div id="cont1" class="slides current-slide"><!--first slide-->
+    <img id="plantimage" src="assets/betel.jpeg" class="img-responsive" alt="betel_leaf">
+
+	<p id="planttitle">Betel Leaves</p>
+
+	<p id="sc_name">Piper Betle</p>
+  
+  	<p id="f_name"><span><b>Family Name:</b></span> Piperaceae</p>
+
+  	<p id="descri">The betel is the leaf of a vine belonging to the Piperaceae family, which includes pepper and kava. Betel leaf is mostly consumed in Asia, and elsewhere in the world by some Asian emigrants, as betel quid or in paan, with Areca nut and/or tobacco. The betel plant is an evergreen perennial, with glossy heart-shaped leaves and white catkin. The betel plant originated in South and South East Asia.</p>
+  </div>
+
+  <div id="cont2" class="slides"><!--second slide-->
+	<table id="agro_table">
+        <td colspan="2" class="table_head" style="background:#FFAA36;">AGROECOLOGY</td>
+          <tr>
+            <td colspan="2" class="cat">CLIMATES</td>
+          </tr>
+        <tr>
+          <td class="attributes" >climates</td>
+          <td>fill</td>
+          </tr>
+        <tr>
+          <td colspan="2" class="cat">ZONES</td>
+          </tr>
+        <tr>
+          <td class="attributes">zones</td>
+          <td>fill</td>
+          </tr>
+        <tr>
+          <td colspan="2" class="cat">MAXIMUM ALTITUDE</td>
+          </tr>
+        <tr>
+          <td class="attributes">altitude_absolute_max</td>
+          <td>fill</td>
+          </tr>
+         <tr>
+          <td colspan="2" class="cat">LIGHT OPTIMIZATION</td>
+         </tr>
+        <tr>
+          <td class="attributes">light_optimal_min</td>
+          <td>fill</td>
+        </tr>
+      	 <tr>
+          <td class="attributes">light_absolute_max</td>
+          <td>fill</td>
+        </tr>
+         <tr>
+          <td class="attributes">light_absolute_min</td>
+          <td>fill</td>
+        </tr>
+        <tr>
+          <td class="cat" colspan="2">RAINFALL</td>
+		</tr>  
+        <tr>
+          <td class="attributes">rainfall_optimal_mean</td>
+          <td>fill</td>
+        </tr>
+      	 <tr>
+          <td class="attributes">rainfall_optimal_min</td>
+          <td>fill</td>
+        </tr>
+         <tr>
+          <td class="attributes">rainfall_absolute_max</td>
+          <td>fill</td>
+        </tr> 
+        <tr>
+          <td class="attributes">rainfall_absolute_mean</td>
+          <td>fill</td>
+        </tr>
+      	 <tr>
+          <td class="attributes">rainfall_absolute_min</td>
+          <td>fill</td>
+        </tr>
+         
+        <tr>
+          <td class="cat" colspan="2">SOIL FERTILITY</td>
+		  </tr> 
+          <tr>
+          <td class="attributes">soil_fertility_optimal_high</td>
+          <td>fill</td>
+		  </tr>
+         <tr>
+          <td class="attributes">soil_fertility_optimal_moderate</td>
+          <td>fill</td>
+		  </tr>
+          <tr>
+          <td class="attributes">soil_fertility_optimal_low</td>
+          <td>fill</td>
+		  </tr>
+          <tr>
+          <td class="attributes">soil_fertility_absolute_high</td>
+          <td>fill</td>
+		  </tr>
+          <tr>
+          <td class="attributes">soil_fertility_absolute_moderate</td>
+          <td>fill</td>
+		  </tr>
+         <tr>
+          <td class="attributes">soil_fertility_absolute_low</td>
+          <td>fill</td>
+          </tr>
+        <tr>
+          <td class="cat" colspan="2">SOIL PH</td>
+		  </tr>
+          <tr>
+          <td class="attributes">soil_ph_optimal_max</td>
+          <td>fill</td>
+		  </tr>
+         <tr>
+          <td class="attributes">soil_ph_optimal_mean</td>
+          <td>fill</td>
+		  </tr>
+         <tr>
+          <td class="attributes">soil_ph_optimal_min</td>
+          <td>fill</td>
+		  </tr>
+         <tr>
+          <td class="attributes">soil_ph_absolute_max</td>
+          <td>fill</td>
+		  </tr>
+         <tr>
+          <td class="attributes">soil_ph_absolute_min</td>
+          <td>fill</td>
+          </tr>
+    
+        <tr>
+          <td class="cat" colspan="2">SOIL DEPTH</td>
+		</tr>
+          <tr>
+          <td class="attributes">soil_depth_optimal_medium</td>
+          <td>fill</td>
+		  </tr>
+         <tr>
+          <td class="attributes">soil_depth_optimal_low</td>
+          <td>fill</td>
+		  </tr>
+         <tr>
+          <td class="attributes">soil_depth_absolute_deep</td>
+          <td>fill</td>
+		  </tr>
+         <tr>
+          <td class="attributes">soil_depth_absolute_medium</td>
+          <td>fill</td>
+		  </tr>
+         <tr>
+          <td class="attributes">soil_depth_absolute_low</td>
+          <td>fill</td>
+          </tr>
+          
+        <tr>
+			<td class="cat" colspan="2">SOIL SALINITY</td>
+		  </tr>
+         <tr>
+          <td class="attributes">soil_salinity_optimal_high</td>
+          <td>fill</td>
+          </tr>
+          <tr>
+          <td class="attributes">soil_salinity_optimal_moderate</td>
+          <td>fill</td>
+          </tr>
+          <tr>
+          <td class="attributes">soil_salinity_optimal_low</td>
+          <td>fill</td>
+          </tr>
+          <tr>
+          <td class="attributes">soil_salinity_absolute_high</td>
+          <td>fill</td>
+          </tr>
+          <tr>
+          <td class="attributes">soil_salinity_absolute_moderate</td>
+          <td>fill</td>
+          </tr>
+          <tr>
+          <td class="attributes">soil_salinity_absolute_low</td>
+          <td>fill</td>
+          </tr>
+        
+        <tr>
+          <td class="cat" colspan="2">SOIL TEXTURE</td>
+		  </tr>
+         <tr>
+          <td class="attributes">soil_texture_optimal_heavy</td>
+          <td>fill</td>
+          </tr>
+          <tr>
+          <td class="attributes">soil_texture_optimal_medium</td>
+          <td>fill</td>
+          </tr>
+          <tr>
+          <td class="attributes">soil_texture_optimal_light</td>
+          <td>fill</td>
+          </tr>
+          <tr>
+          <td class="attributes">soil_texture_absolute_heavy</td>
+          <td>fill</td>
+          </tr>
+          <tr>
+          <td class="attributes">soil_texture_absolute_medium</td>
+          <td>fill</td>
+          </tr>
+          <tr>
+          <td class="attributes">soil_texture_absolute_light</td>
+          <td>fill</td>
+          </tr>
+        
+        <tr>
+          <td class="cat" colspan="2">TEMPERATURE LEVEL</td>
+		  </tr>
+         <tr>
+          <td class="attributes">temperature_optimal_max</td>
+          <td>fill</td>
+          </tr>
+          <tr>
+          <td class="attributes">temperature_optimal_mean</td>
+          <td>fill</td>
+          </tr>
+          <tr>
+          <td class="attributes">temperature_optimal_min</td>
+          <td>fill</td>
+          </tr>
+          <tr>
+          <td class="attributes">temperature_absolute_max</td>
+          <td>fill</td>
+          </tr>
+          <tr>
+          <td class="attributes">temperature_absolute_mean</td>
+          <td>fill</td>
+          </tr>
+          <tr>
+          <td class="attributes">temperature_absolute_min</td>
+          <td>fill</td>
+          </tr>
+          
+        <tr>
+          <td class="cat" colspan="2">PRODUCTION LEVEL</td>
+		  </tr>
+         <tr>
+          <td class="attributes">production_system</td>
+          <td>fill</td>
+          </tr>
+        </table>
+  </div>
+
+  <div id="cont3" class="slides"><!--third slide-->
+    <table id="nutrient_table">	
+      		<td colspan="2"  class="table_head" style="background:#85AED0;">NUTRIENTS OF THEIR PARTS</td>
+          <tr>
+            <td class="cat" colspan="2">PLANT PARTS</td>
+          </tr>
+        <tr>
+          <td class="attributes">plant_parts_id</td>
+          <td>fill</td>
+          </tr>
+        <tr>
+          <td class="cat" colspan="2">NUTRIENTS</td>
+		</tr>
+         <tr>  
+          <td class="attributes">calcium_ca_mean</td>
+          <td>fill</td>
+        </tr>
+          <tr>
+          <td class="attributes">copper_cu_mean</td>
+          <td>fill</td>
+        </tr>
+          <tr>
+          <td class="attributes">iron_fe_mean</td>
+          <td>fill</td>
+        </tr>
+          <tr>
+          <td class="attributes">magnesium_mg_mean</td>
+          <td>fill</td>
+        </tr>
+          <tr>
+          <td class="attributes">manganese_mn_mean</td>
+          <td>fill</td>
+        </tr>
+          <tr>
+          <td class="attributes">phosphorus_p_mean</td>
+          <td>fill</td>
+        </tr>
+          <tr>
+          <td class="attributes">potassium_k_mean</td>
+          <td>fill</td>
+        </tr>
+          <tr>
+          <td class="attributes">sodium_mean</td>
+          <td>fill</td>
+        </tr>
+          <tr>
+          <td class="attributes">zinc_zn_mean</td>
+          <td>fill</td>
+        </tr>
+ 		</table>
+  </div>
+
+  <div id="cont4" class="slides"><!--fourth slide-->
+    <table id="usage_table">	       
+          <tr>
+			  <td colspan="2" class="table_head" style="background:#B0D64A;">PLANTS USAGE</td>
+          </tr>
+          <tr>
+          <td class="attributes">plant_parts_id</td>
+          <td>fill</td>
+        </tr>
+		</table>
+  </div>
+</div>
+
+<div id="left_btn" class="lr_btn glyphicon" onClick="slideLeft()">&#xe080;</div>
+
+<!--FOOTER-->
+    <div class="footer">
+        <p style="color:#85AED0;position:absolute;left:5%;font-size:18px;top:4%;">© Crops For the Future (CFF). All rights reserved.</p>
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+	
+	function startSlide(){
+		document.getElementById('search_div').style.left = '-100%';
+		document.getElementById('slide_conts').style.left = '0';
+		document.getElementById('left_btn').style.display = 'block';
+		document.getElementById('back2search').style.display='block';
+	}
+	
+	function back2search(){
+		document.getElementById('back2search').style.display='none';
+		document.getElementById('search_div').style.left = '0';
+		document.getElementById('cont1').style.left = '0';
+		document.getElementById('cont2').style.left = '100%';
+		document.getElementById('cont3').style.left = '100%';
+		document.getElementById('cont4').style.left = '100%';
+		$("#cont1").addClass("current-slide");
+		$("#cont2").removeClass("current-slide");
+		$("#cont3").removeClass("current-slide");
+		$("#cont4").removeClass("current-slide");
+		document.getElementById('slide_conts').style.left = '100%';
+		document.getElementById('left_btn').style.display = 'none';
+		document.getElementById('right_btn').style.display = 'none';
+	}
+	
+	
+		function slideLeft(){
+			if($("#cont1").hasClass("current-slide")){
+				document.getElementById('cont1').style.left = '-100%';
+				document.getElementById('cont2').style.left = '0';
+				document.getElementById('right_btn').style.display='block';
+				$("#cont1").removeClass("current-slide");
+				$("#cont2").addClass("current-slide");
+			} else if($("#cont2").hasClass("current-slide")){
+				document.getElementById('cont2').style.left = '-100%';
+				document.getElementById('cont3').style.left = '0';
+				document.getElementById('right_btn').style.display='block';
+				$("#cont2").removeClass("current-slide");
+				$("#cont3").addClass("current-slide");
+			}else if($("#cont3").hasClass("current-slide")){
+				document.getElementById('cont3').style.left = '-100%';
+				document.getElementById('cont4').style.left = '0';
+				document.getElementById('right_btn').style.display='block';
+				$("#cont3").removeClass("current-slide");
+				$("#cont4").addClass("current-slide");
+				document.getElementById('left_btn').style.display='none';
+			}
+		}
+	
+	function slideRight(){
+		if($("#cont4").hasClass("current-slide")){
+				document.getElementById('cont4').style.left = '100%';
+				document.getElementById('cont3').style.left = '0';
+				document.getElementById('left_btn').style.display='block';
+			$("#cont4").removeClass("current-slide");
+				$("#cont3").addClass("current-slide");
+			}else if($("#cont3").hasClass("current-slide")){
+				document.getElementById('cont3').style.left = '100%';
+				document.getElementById('cont2').style.left = '0';
+				document.getElementById('left_btn').style.display='block';
+				$("#cont3").removeClass("current-slide");
+				$("#cont2").addClass("current-slide");
+			}else if($("#cont2").hasClass("current-slide")){
+				document.getElementById('cont2').style.left = '100%';
+				document.getElementById('cont1').style.left = '0';
+				document.getElementById('left_btn').style.display='block';
+				document.getElementById('right_btn').style.display='none';
+				$("#cont2").removeClass("current-slide");
+				$("#cont1").addClass("current-slide");
+			}
+		}
+	</script>
+</body>
+</html>
