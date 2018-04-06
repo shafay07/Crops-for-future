@@ -24,7 +24,7 @@ if ($conn->connect_error) {
 	//checkbox options
     if(isset($_POST['climate'])) 
 	{
-		$name = json_decode($_POST['climate'], true);
+		$name = $_POST['climate'];
 		foreach ($name as $climate)
 		{
 			$climatearray[] = $climate;
@@ -34,7 +34,7 @@ if ($conn->connect_error) {
 	
 	if(isset($_POST['zone'])) 
 	{
-		$name = json_decode($_POST['zone'], true);
+		$name = ($_POST['zone']);
 		foreach ($name as $zone)
 		{
 			$zonearray[] = $zone;
@@ -43,7 +43,7 @@ if ($conn->connect_error) {
 	
 	if(isset($_POST['part'])) 
 	{
-		$name = json_decode($_POST['part'], true);
+		$name = $_POST['part'];
 		foreach ($name as $part)
 		{
 			$partarray[] = $part;
@@ -77,7 +77,7 @@ if ($conn->connect_error) {
 	}
 
 	//sql query based on checkbox	
-	if ($zAxis == ""){
+	if ($zAxis == "null"){
 		$query = "SELECT tax.cropID, tax.common_name, $xCat.$xAxis, $yCat.$yAxis
 		FROM crop_taxonomy tax LEFT JOIN agro_agroecology_livedb agro ON tax.cropID=agro.cropid
 		LEFT JOIN nutrient_minerals mineral ON tax.cropID=mineral.cropid 
@@ -109,7 +109,7 @@ if(!$result) {
 }
 else{
 	//echo "<br><br>Database query success!<br>";
-	if ($zAxis == ""){
+	if ($zAxis == "null"){
 		while($row = mysqli_fetch_array($result))
 		{
 			$jsonArray[] = array(

@@ -18,9 +18,7 @@ if ($conn->connect_error) {
 	$climatearray = array();
 	$zonearray = array();
 	$partarray = array();
-	$xAxis = "not selected";
-	$yAxis = "not selected";
-	$zAxis = "not selected";
+
 	
 	//checkbox options
     if(isset($_POST['climate'])) 
@@ -66,8 +64,6 @@ if ($conn->connect_error) {
 		$zAxis = $_POST['zAxis'];
 	}
 
-	//if($xAxis=="not selected" && $yAxis=="not selected" || $zAxis=="not selected")
-//		die("axis not selected");
 	if (isset($_POST['xAxis']) && $xAxis!="not selected")			
 		echo "You chose the following x-axis: " . $xAxis . "<br>";	
 	if (isset($_POST['yAxis']) && $yAxis!="not selected")			
@@ -78,7 +74,14 @@ if ($conn->connect_error) {
 	//choosing table based on axis category
 	$xCat = $_POST['xCat'];
 	$yCat = $_POST['yCat'];
-	$zCat = $_POST['zCat'];
+
+	if ((isset($_POST['zCat']))){
+		$zCat = $_POST['zCat'];
+		echo "zCat exist";
+	}else{
+		echo "zCat not exist";
+	}
+
 
 	if($xCat == $yCat)
 	{
@@ -113,7 +116,7 @@ if ($conn->connect_error) {
 	}
 
 	//sql query based on checkbox	
-	if ($zAxis == "not selected"){
+	if ($zAxis == "\"null\""){
 		$query = "SELECT tax.cropID, tax.common_name, $xCat.$xAxis, $yCat.$yAxis
 		FROM crop_taxonomy tax LEFT JOIN agro_agroecology_livedb agro ON tax.cropID=agro.cropid
 		LEFT JOIN nutrient_minerals mineral ON tax.cropID=mineral.cropid 
@@ -153,7 +156,7 @@ if(!$result) {
 }
 else{
 	//echo "<br><br>Database query success!<br>";
-	if ($zAxis == "not selected"){
+	if ($zAxis == ""){
 		while($row = mysqli_fetch_array($result))
 		{
 			$jsonArray[] = array(
