@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
     <title>Subsetting</title>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Chivo');
@@ -287,9 +288,8 @@
             <button id="nav3">FAQ</button>
         </div>
     </div>
-    <!--
-    <form id="cropselect" method="post" action="connect.php">
-    -->
+
+    <form id="cropselect" method="post" action="home.php">
     <!--block 1-->
     <div class="block1">
         <img id="zone_btn" src="assets/zone_btn.png">
@@ -323,7 +323,7 @@
         <table class="tableClimate">
             <tr>
                 <td>
-                    <input class="climate" id="climate" name="climate[]" type="checkbox" value="dry (Aw"> Tropical wet & dry (Aw)</td>
+                    <input class="climate" id="climate" name="climate[]" type="checkbox" value="tropical wet & dry (Aw)"> Tropical wet & dry (Aw)</td>
                 <td>
                     <input class="climate" id="climate" name="climate[]" type="checkbox" value="tropical wet (Ar)"> Tropical wet (Ar)</td>
                 <td>
@@ -491,9 +491,9 @@
         </table>
         <button type="button" class="btn btn-primary" id="hide2" onclick="disappear2('agro')">GO</button>
         <div class="btn-group">
-            <button class="button" id="x-axis-1" onclick="axisFunction('x')">Set X</button>
-            <button class="button" id="y-axis-1" onclick="axisFunction('y')">Set Y</button>
-            <button class="button" id="z-axis-1" onclick="axisFunction('z')">Set Z (optional)</button>
+            <button type="button" class="button" id="x-axis-1" onclick="axisFunction('x')">Set X</button>
+            <button type="button" class="button" id="y-axis-1" onclick="axisFunction('y')">Set Y</button>
+            <button type="button" class="button" id="z-axis-1" onclick="axisFunction('z')">Set Z (optional)</button>
         </div>
     </div>
     <div id="slider_mineral">
@@ -526,9 +526,9 @@
         </table>
         <button type="button" class="btn btn-primary" id="hide2" onclick="disappear2('mineral')">GO</button>
         <div class="btn-group">
-            <button class="button" id="x-axis-2" onclick="axisFunction('x')">Set X</button>
-            <button class="button" id="y-axis-2" onclick="axisFunction('y')">Set Y</button>
-            <button class="button" id="z-axis-2" onclick="axisFunction('z')">Set Z (optional)</button>
+            <button type="button" class="button" id="x-axis-2" onclick="axisFunction('x')">Set X</button>
+            <button type="button" class="button" id="y-axis-2" onclick="axisFunction('y')">Set Y</button>
+            <button type="button" class="button" id="z-axis-2" onclick="axisFunction('z')">Set Z (optional)</button>
         </div>
     </div>
     <div id="slider_comp">
@@ -555,9 +555,9 @@
         </table>
         <button type="button" class="btn btn-primary" id="hide2" onclick="disappear2('comp')">GO</button>
         <div class="btn-group">
-            <button class="button" id="x-axis-3" onclick="axisFunction('x')">Set X</button>
-            <button class="button" id="y-axis-3" onclick="axisFunction('y')">Set Y</button>
-            <button class="button" id="z-axis-3" onclick="axisFunction('z')">Set Z (optional)</button>
+            <button type="button" class="button" id="x-axis-3" onclick="axisFunction('x')">Set X</button>
+            <button type="button" class="button" id="y-axis-3" onclick="axisFunction('y')">Set Y</button>
+            <button type="button" class="button" id="z-axis-3" onclick="axisFunction('z')">Set Z (optional)</button>
         </div>
 
         <!--Go to next page-->
@@ -587,9 +587,8 @@
 
     <!--reset selections-->
     <button type="button" id="reset" onclick="reloadFunction()">RESET</button>
-    <!--
-    </form>
--->
+</form>
+
     <!--FOOTER-->
     <div class="footer">
         <p style="color:#85AED0;position:absolute;left:5%;">© Crops For the Future (CFF). All rights reserved.</p>
@@ -602,12 +601,12 @@
         var zonearray = [];
         var climatearray = [];
         var partarray = [];
-        var xVar;
-        var yVar;
-        var zVar;
-        var xCat;
-        var yCat;
-        var zCat;
+        var xVar = null;
+        var yVar = null;
+        var zVar = null;
+        var xCat = null;
+        var yCat = null;
+        var zCat = null;
 
         $(document).ready(function () {
             $("#slider_zone").hide(); //hide sliders at first
@@ -681,7 +680,7 @@
                 document.getElementById('part_btn').style.opacity = 0.35;
 
                 //javascript variable for climate
-                $('.part:checked').each(function () {
+                $('.climate:checked').each(function () {
                     climatearray[i] = $(this).map(function () {
                         return this.value;
                     }).get().join(',');
@@ -786,13 +785,6 @@
             location.reload();
         }
     </script>
-    <h1>
-        <center>Graph</center>
-    </h1>
-    <div id="graph" style="width:800px;height: 600px;"></div>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
-    <script src="js/control.js"></script>
 </body>
 
 </html>
