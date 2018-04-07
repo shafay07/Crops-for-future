@@ -3,7 +3,6 @@ $(document).ready(function() {
    * call the data.php file to fetch the result from db table.
    */
   $("#search_btn").click(function() {
-     window.cropA = $('#crop').val();
     $.ajax({
       url: `http://localhost/cff/api/data.php`,
       data: { crop: $('#crop').val() },
@@ -12,7 +11,7 @@ $(document).ready(function() {
         console.log(data);
         var len = data.length;
         var i = 0;
-        var cropA = {
+        cropA = {
           cropID: 0,
           name_var_lndrce: "",
           common_name: "",
