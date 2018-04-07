@@ -27,11 +27,10 @@
 
         <!-- THE SEARCH BAR  -->
         <?php require('searchbar.php'); ?>
-        <div class="well well-sm col-lg-8 col-lg-offset-2">
-            <h5>Start with the taxonomy</h5>
-        </div>
-
         <div class="container">
+            <div class="well well-sm col-lg-8 col-lg-offset-2">
+                <h5>Start with the taxonomy</h5>
+            </div>
             <div class="row">
                 <div class="col-lg-5">
                     <div class="cropA text-right" id="varlndrce1"></div>
@@ -97,6 +96,9 @@
                 <div class="col-lg-5">
                     <div class="cropB text-left" id="species2"></div>
                 </div>
+            </div>
+            <div class="well well-sm col-lg-8 col-lg-offset-2">
+                <h5>Carry on to the crop ecology</h5>
             </div>
             <div class="row">
                 <div class="col-lg-5">
@@ -185,6 +187,9 @@
                 <div class="col-lg-5">
                     <div class="cropA text-left" id="photoprd2"></div>
                 </div>
+            </div>
+            <div class="well well-sm col-lg-8 col-lg-offset-2">
+                <h5>Last but not least, the soil properties</h5>
             </div>
             <div class="row">
                 <div class="col-lg-5">
