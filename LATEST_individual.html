@@ -203,12 +203,19 @@ input[type=text] {
 	}
 
 	#agro_table,#nutrient_table,#usage_table {
-		width: 60%;
-		margin-left: 20%;
-		margin-top: 2%;
-		margin-bottom: 2%;
-		border-collapse: collapse;
-	}
+    width: 100%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-collapse: collapse;
+
+  }
+
+  .table_cont{
+    width: 60%;
+    height:100%;
+    margin-left: 20%;
+    overflow-y: auto;
+  }
 
 	.table_head{
 		color:white; 
@@ -277,33 +284,34 @@ input[type=text] {
 
 <div id="search_div" class="slides">
 <!--search bar-->
-	<p class="inst">Enter crop name:</p>
+  <p class="inst">Enter crop name:</p>
     <form>
-  		<input type="text" name="search" placeholder="Search..">
-	</form>
+      <input type="text" name="search" placeholder="Search..">
+  </form>
 
   <button id="search_btn" class="slide_btn" onClick="startSlide()">Go</button>
 </div>
 
 <div id="right_btn" class="lr_btn glyphicon" onClick="slideRight()">&#xe079;</div>
-	
-	<button id="back2search" onClick="back2search()">Back to Search</button>
+  
+  <button id="back2search" onClick="back2search()">Back to Search</button>
 
 <div id="slide_conts" class="slides">
   <div id="cont1" class="slides current-slide"><!--first slide-->
     <img id="plantimage" src="assets/betel.jpeg" class="img-responsive" alt="betel_leaf">
 
-	<p id="planttitle">Betel Leaves</p>
+  <p id="planttitle">Betel Leaves</p>
 
-	<p id="sc_name">Piper Betle</p>
+  <p id="sc_name">Piper Betle</p>
   
-  	<p id="f_name"><span><b>Family Name:</b></span> Piperaceae</p>
+    <p id="f_name"><span><b>Family Name:</b></span> Piperaceae</p>
 
-  	<p id="descri">The betel is the leaf of a vine belonging to the Piperaceae family, which includes pepper and kava. Betel leaf is mostly consumed in Asia, and elsewhere in the world by some Asian emigrants, as betel quid or in paan, with Areca nut and/or tobacco. The betel plant is an evergreen perennial, with glossy heart-shaped leaves and white catkin. The betel plant originated in South and South East Asia.</p>
+    <p id="descri">The betel is the leaf of a vine belonging to the Piperaceae family, which includes pepper and kava. Betel leaf is mostly consumed in Asia, and elsewhere in the world by some Asian emigrants, as betel quid or in paan, with Areca nut and/or tobacco. The betel plant is an evergreen perennial, with glossy heart-shaped leaves and white catkin. The betel plant originated in South and South East Asia.</p>
   </div>
 
   <div id="cont2" class="slides"><!--second slide-->
-	<table id="agro_table">
+  <div class="table_cont">
+  <table id="agro_table">
         <td colspan="2" class="table_head" style="background:#FFAA36;">AGROECOLOGY</td>
           <tr>
             <td colspan="2" class="cat">CLIMATES</td>
@@ -333,7 +341,7 @@ input[type=text] {
           <td class="attributes">light_optimal_min</td>
           <td>fill</td>
         </tr>
-      	 <tr>
+         <tr>
           <td class="attributes">light_absolute_max</td>
           <td>fill</td>
         </tr>
@@ -343,12 +351,12 @@ input[type=text] {
         </tr>
         <tr>
           <td class="cat" colspan="2">RAINFALL</td>
-		</tr>  
+    </tr>  
         <tr>
           <td class="attributes">rainfall_optimal_mean</td>
           <td>fill</td>
         </tr>
-      	 <tr>
+         <tr>
           <td class="attributes">rainfall_optimal_min</td>
           <td>fill</td>
         </tr>
@@ -360,57 +368,57 @@ input[type=text] {
           <td class="attributes">rainfall_absolute_mean</td>
           <td>fill</td>
         </tr>
-      	 <tr>
+         <tr>
           <td class="attributes">rainfall_absolute_min</td>
           <td>fill</td>
         </tr>
          
         <tr>
           <td class="cat" colspan="2">SOIL FERTILITY</td>
-		  </tr> 
+      </tr> 
           <tr>
           <td class="attributes">soil_fertility_optimal_high</td>
           <td>fill</td>
-		  </tr>
+      </tr>
          <tr>
           <td class="attributes">soil_fertility_optimal_moderate</td>
           <td>fill</td>
-		  </tr>
+      </tr>
           <tr>
           <td class="attributes">soil_fertility_optimal_low</td>
           <td>fill</td>
-		  </tr>
+      </tr>
           <tr>
           <td class="attributes">soil_fertility_absolute_high</td>
           <td>fill</td>
-		  </tr>
+      </tr>
           <tr>
           <td class="attributes">soil_fertility_absolute_moderate</td>
           <td>fill</td>
-		  </tr>
+      </tr>
          <tr>
           <td class="attributes">soil_fertility_absolute_low</td>
           <td>fill</td>
           </tr>
         <tr>
           <td class="cat" colspan="2">SOIL PH</td>
-		  </tr>
+      </tr>
           <tr>
           <td class="attributes">soil_ph_optimal_max</td>
           <td>fill</td>
-		  </tr>
+      </tr>
          <tr>
           <td class="attributes">soil_ph_optimal_mean</td>
           <td>fill</td>
-		  </tr>
+      </tr>
          <tr>
           <td class="attributes">soil_ph_optimal_min</td>
           <td>fill</td>
-		  </tr>
+      </tr>
          <tr>
           <td class="attributes">soil_ph_absolute_max</td>
           <td>fill</td>
-		  </tr>
+      </tr>
          <tr>
           <td class="attributes">soil_ph_absolute_min</td>
           <td>fill</td>
@@ -418,31 +426,31 @@ input[type=text] {
     
         <tr>
           <td class="cat" colspan="2">SOIL DEPTH</td>
-		</tr>
+    </tr>
           <tr>
           <td class="attributes">soil_depth_optimal_medium</td>
           <td>fill</td>
-		  </tr>
+      </tr>
          <tr>
           <td class="attributes">soil_depth_optimal_low</td>
           <td>fill</td>
-		  </tr>
+      </tr>
          <tr>
           <td class="attributes">soil_depth_absolute_deep</td>
           <td>fill</td>
-		  </tr>
+      </tr>
          <tr>
           <td class="attributes">soil_depth_absolute_medium</td>
           <td>fill</td>
-		  </tr>
+      </tr>
          <tr>
           <td class="attributes">soil_depth_absolute_low</td>
           <td>fill</td>
           </tr>
           
         <tr>
-			<td class="cat" colspan="2">SOIL SALINITY</td>
-		  </tr>
+      <td class="cat" colspan="2">SOIL SALINITY</td>
+      </tr>
          <tr>
           <td class="attributes">soil_salinity_optimal_high</td>
           <td>fill</td>
@@ -470,7 +478,7 @@ input[type=text] {
         
         <tr>
           <td class="cat" colspan="2">SOIL TEXTURE</td>
-		  </tr>
+      </tr>
          <tr>
           <td class="attributes">soil_texture_optimal_heavy</td>
           <td>fill</td>
@@ -498,7 +506,7 @@ input[type=text] {
         
         <tr>
           <td class="cat" colspan="2">TEMPERATURE LEVEL</td>
-		  </tr>
+      </tr>
          <tr>
           <td class="attributes">temperature_optimal_max</td>
           <td>fill</td>
@@ -526,17 +534,19 @@ input[type=text] {
           
         <tr>
           <td class="cat" colspan="2">PRODUCTION LEVEL</td>
-		  </tr>
+      </tr>
          <tr>
           <td class="attributes">production_system</td>
           <td>fill</td>
           </tr>
         </table>
+        </div>
   </div>
 
   <div id="cont3" class="slides"><!--third slide-->
-    <table id="nutrient_table">	
-      		<td colspan="2"  class="table_head" style="background:#85AED0;">NUTRIENTS OF THEIR PARTS</td>
+  <div class="table_cont">
+    <table id="nutrient_table"> 
+          <td colspan="2"  class="table_head" style="background:#85AED0;">NUTRIENTS OF THEIR PARTS</td>
           <tr>
             <td class="cat" colspan="2">PLANT PARTS</td>
           </tr>
@@ -546,7 +556,7 @@ input[type=text] {
           </tr>
         <tr>
           <td class="cat" colspan="2">NUTRIENTS</td>
-		</tr>
+    </tr>
          <tr>  
           <td class="attributes">calcium_ca_mean</td>
           <td>fill</td>
@@ -583,19 +593,22 @@ input[type=text] {
           <td class="attributes">zinc_zn_mean</td>
           <td>fill</td>
         </tr>
- 		</table>
+    </table>
+    </div>
   </div>
 
   <div id="cont4" class="slides"><!--fourth slide-->
-    <table id="usage_table">	       
+  <div class="table_cont">
+    <table id="usage_table">         
           <tr>
-			  <td colspan="2" class="table_head" style="background:#B0D64A;">PLANTS USAGE</td>
+        <td colspan="2" class="table_head" style="background:#B0D64A;">PLANTS USAGE</td>
           </tr>
           <tr>
           <td class="attributes">plant_parts_id</td>
           <td>fill</td>
         </tr>
-		</table>
+    </table>
+    </div>
   </div>
 </div>
 
