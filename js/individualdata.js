@@ -3,7 +3,10 @@ $(document).ready(function() {
    * call the data.php file to fetch the result from db table.
    */
   $("#search_btn").click(function() {
+<<<<<<< HEAD
      window.cropA = $('#crop').val();
+=======
+>>>>>>> 5b55420e8e7868de51113a41a3c4bc4215bc7513
     $.ajax({
       url: `http://localhost/cff/api/data.php`,
       data: { crop: $('#crop').val() },
@@ -12,7 +15,11 @@ $(document).ready(function() {
         console.log(data);
         var len = data.length;
         var i = 0;
+<<<<<<< HEAD
         var cropA = {
+=======
+        cropA = {
+>>>>>>> 5b55420e8e7868de51113a41a3c4bc4215bc7513
           cropID: 0,
           name_var_lndrce: "",
           common_name: "",
