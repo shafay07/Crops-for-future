@@ -11,37 +11,37 @@
 }
 
 body {
-	overflow: hidden
+  overflow: hidden
 }
 .attributes{
-	width: 30%;
-	font-weight:bold;
-	}
-	
-	.cat{
-		font-weight: bold;
-	}
+  width: 30%;
+  font-weight:bold;
+  }
+  
+  .cat{
+    font-weight: bold;
+  }
 .slides {
-	position: absolute;
-	margin: auto 0;
-	width: 100vw;
-	height: 100%;
-	left: 100%;
-	transition: left 1s ease;
+  position: absolute;
+  margin: auto 0;
+  width: 100vw;
+  height: 100%;
+  left: 100%;
+  transition: left 1s ease;
 }
 
 .lr_btn{
-		position:absolute;
-		top: 45%;
-		font-size: 40px;
-		font-weight: bold;
-		display: none;
-		cursor: pointer;
-		z-index: 1;
-	}
-	.lr_btn:hover{
-		color:#808080;
-	}
+    position:absolute;
+    top: 45%;
+    font-size: 40px;
+    font-weight: bold;
+    display: none;
+    cursor: pointer;
+    z-index: 1;
+  }
+  .lr_btn:hover{
+    color:#808080;
+  }
 
 .nav_bar {
     position: absolute;
@@ -77,17 +77,17 @@ body {
     margin-left: 2%;
 }
 
-.inst{
-	position: absolute;
-	top:20%;
-	left:22%;
-	font-weight:bold;
-	font-size: 6vh;
-	color:#808080;
-	
+#inst_ind{
+  position: absolute;
+  top:20%;
+  left:22%;
+  font-weight:bold;
+  font-size: 6vh;
+  color:#808080;
+  
 }
 
-input[type=text] {
+#search_div input[type=text] {
     width: 50%;
     box-sizing: border-box;
     border: 2px solid #ccc;
@@ -96,7 +96,7 @@ input[type=text] {
     background-color: white;
     background-image: url('searchicon.png');
     background-size: 4%;
-    background-position: 1% 48%;  
+    background-position: 1% 48%; 
     background-repeat: no-repeat;
     padding: 12px 20px 12px 40px;
     position:absolute;
@@ -105,12 +105,12 @@ input[type=text] {
 }
 
 #search_btn, #back2search {
-	display: block;
-	width: 5vw;
-	left: 73vw;
-	cursor: pointer;
-	top:32.85vh;
-	background-color: white;
+  display: block;
+  width: 5vw;
+  left: 73vw;
+  cursor: pointer;
+  top:32.85vh;
+  background-color: white;
     color: #96B53C;
     font-weight: bold;
     font-size: 2vh;
@@ -118,91 +118,91 @@ input[type=text] {
     border: none;
     position: absolute;
 }
-	#back2search{
-		display: none;
-		left: 2vw;
-		top:13.4vh;
-		width: 10vw;
-		height: 5vh;
-	}
+  #back2search{
+    display: none;
+    left: 2vw;
+    top:13.4vh;
+    width: 10vw;
+    height: 5vh;
+  }
 
 #search_btn:hover, #back2search:hover {
-	background-color: #96B53C;
+  background-color: #96B53C;
     color: white;
 }
 
 #right_btn {
-	left: 3vw;
+  left: 3vw;
 }
 
 #left_btn {
-	left: 95vw;
+  left: 95vw;
 }
 
 #search_div {
-	left: 0;
-	background: #E3E3E3;
-	top: 19.5vh;
-	height: 65vh;
+  left: 0;
+  background: #E3E3E3;
+  top: 19.5vh;
+  height: 65vh;
 }
 #slide_conts {
-	top: 19.5vh;
-	height: 65vh;
+  top: 19.5vh;
+  height: 65vh;
 }
 #cont1 {
-	left: 0;
+  left: 0;
 }
 
 #cont1, #cont2, #cont3, #cont4 {
-	background: #E3E3E3;
-	overflow: auto;
+  background: #E3E3E3;
 }
 
 
-	#plantimage{
-		position:absolute;
-		left: 0;
-		margin-left:8%;
-		margin-top:13.5vh;
-		width:24vw;
-		height:38vh; 
-		
-	}
-	
-	#planttitle{
-		position:absolute;
-		margin-top:13vh;
-		left:34%;
-		font-weight: bold;
-		font-size: 10vh;
-	}
-	
-	#sc_name{
-		position:absolute;
-		margin-top:14%;
-		left:34%;
-		font-style: italic;
-		font-size: 6vh;
-		color: dimgray;
-	}
-	
-	#f_name{
-		position:absolute;
-		margin-top:19%;
-		left:34%;
-		font-size: 2vh;
-	}
-	
-	#descri{
-		position:absolute;
-		margin-top:22%;
-		left:34%;
-		font-size: 2vh;
-		margin-right: 5%;
-		width:58vw;
-	}
+  #plantimage{
+    position:absolute;
+    left: 0;
+    margin-left:8%;
+    margin-top:20vh;
+    width:24vw;
+    height:38vh; 
+    
+  }
+  
+  #planttitle{
+    position:absolute;
+    margin-top:6vh;
+    left:8%;
+    font-weight: bold;
+    font-size: 10vh;
+  }
+  
+  #sc_name{
+    position:absolute;
+    margin-top:11%;
+    left:34%;
+    font-style: italic;
+    font-size: 6vh;
+    color: dimgray;
+  }
+  
+  #f_name{
+    position:absolute;
+    margin-top:16%;
+    left:34%;
+    font-size: 2vh;
+  }
+  
+  #descri{
+    position:absolute;
+    margin-top:19%;
+    left:34%;
+    font-size: 2vh;
+    margin-right: 5%;
+    width:58vw;
+  }
 
-	#agro_table,#nutrient_table,#usage_table {
+
+  #agro_table,#nutrient_table,#usage_table {
     width: 100%;
     margin-top: 2%;
     margin-bottom: 2%;
@@ -210,6 +210,7 @@ input[type=text] {
 
   }
 
+/*prevent page scroll when scrolling inside table*/
   .table_cont{
     width: 60%;
     height:100%;
@@ -217,50 +218,50 @@ input[type=text] {
     overflow-y: auto;
   }
 
-	.table_head{
-		color:white; 
-		font-weight: bold; 
-		text-align:center;
-		font-size:3vh;
-	}
+  .table_head{
+    color:white; 
+    font-weight: bold; 
+    text-align:center;
+    font-size:3vh;
+  }
 
-	#agro_table td{
-		border: 2.5px solid #FFAA36;
-	}
+  #agro_table td{
+    border: 2.5px solid #FFAA36;
+  }
 
-	#nutrient_table td{
-		border: 2.5px solid #85AED0;
-	}
+  #nutrient_table td{
+    border: 2.5px solid #85AED0;
+  }
 
-	#usage_table td{
-		border: 2.5px solid #B0D64A;
-	}
+  #usage_table td{
+    border: 2.5px solid #B0D64A;
+  }
 
-	td{
-		font-size:2vh;
-	}
+  td{
+    font-size:2vh;
+  }
 
-	th, td {
-		padding: 15px;
-  		text-align: left;
-	}
+  th, td {
+    padding: 15px;
+      text-align: left;
+  }
 
-	#agro_table .cat{
-		color:#FFAA36;
-		font-weight:bold;
-	}
+  #agro_table .cat{
+    color:#FFAA36;
+    font-weight:bold;
+  }
 
-	#nutrient_table .cat{
-		color:#85AED0;
-		font-weight:bold;
-	}
+  #nutrient_table .cat{
+    color:#85AED0;
+    font-weight:bold;
+  }
 
-	#usage_table .cat{
-		color:#B0D64A;
-		font-weight:bold;
-	}
+  #usage_table .cat{
+    color:#B0D64A;
+    font-weight:bold;
+  }
 
-	.footer {
+  .footer {
     position: absolute;
     top: 92%;
     left: 0%;
@@ -284,7 +285,7 @@ input[type=text] {
 
 <div id="search_div" class="slides">
 <!--search bar-->
-  <p class="inst">Enter crop name:</p>
+  <p id="inst_ind">Enter crop name:</p>
     <form>
       <input type="text" name="search" placeholder="Search..">
   </form>
@@ -622,76 +623,76 @@ input[type=text] {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
-	
-	function startSlide(){
-		document.getElementById('search_div').style.left = '-100%';
-		document.getElementById('slide_conts').style.left = '0';
-		document.getElementById('left_btn').style.display = 'block';
-		document.getElementById('back2search').style.display='block';
-	}
-	
-	function back2search(){
-		document.getElementById('back2search').style.display='none';
-		document.getElementById('search_div').style.left = '0';
-		document.getElementById('cont1').style.left = '0';
-		document.getElementById('cont2').style.left = '100%';
-		document.getElementById('cont3').style.left = '100%';
-		document.getElementById('cont4').style.left = '100%';
-		$("#cont1").addClass("current-slide");
-		$("#cont2").removeClass("current-slide");
-		$("#cont3").removeClass("current-slide");
-		$("#cont4").removeClass("current-slide");
-		document.getElementById('slide_conts').style.left = '100%';
-		document.getElementById('left_btn').style.display = 'none';
-		document.getElementById('right_btn').style.display = 'none';
-	}
-	
-	
-		function slideLeft(){
-			if($("#cont1").hasClass("current-slide")){
-				document.getElementById('cont1').style.left = '-100%';
-				document.getElementById('cont2').style.left = '0';
-				document.getElementById('right_btn').style.display='block';
-				$("#cont1").removeClass("current-slide");
-				$("#cont2").addClass("current-slide");
-			} else if($("#cont2").hasClass("current-slide")){
-				document.getElementById('cont2').style.left = '-100%';
-				document.getElementById('cont3').style.left = '0';
-				document.getElementById('right_btn').style.display='block';
-				$("#cont2").removeClass("current-slide");
-				$("#cont3").addClass("current-slide");
-			}else if($("#cont3").hasClass("current-slide")){
-				document.getElementById('cont3').style.left = '-100%';
-				document.getElementById('cont4').style.left = '0';
-				document.getElementById('right_btn').style.display='block';
-				$("#cont3").removeClass("current-slide");
-				$("#cont4").addClass("current-slide");
-				document.getElementById('left_btn').style.display='none';
-			}
-		}
-	
-	function slideRight(){
-		if($("#cont4").hasClass("current-slide")){
-				document.getElementById('cont4').style.left = '100%';
-				document.getElementById('cont3').style.left = '0';
-				document.getElementById('left_btn').style.display='block';
-			$("#cont4").removeClass("current-slide");
-				$("#cont3").addClass("current-slide");
-			}else if($("#cont3").hasClass("current-slide")){
-				document.getElementById('cont3').style.left = '100%';
-				document.getElementById('cont2').style.left = '0';
-				document.getElementById('left_btn').style.display='block';
-				$("#cont3").removeClass("current-slide");
-				$("#cont2").addClass("current-slide");
-			}else if($("#cont2").hasClass("current-slide")){
-				document.getElementById('cont2').style.left = '100%';
-				document.getElementById('cont1').style.left = '0';
-				document.getElementById('left_btn').style.display='block';
-				document.getElementById('right_btn').style.display='none';
-				$("#cont2").removeClass("current-slide");
-				$("#cont1").addClass("current-slide");
-			}
-		}
-	</script>
+  
+  function startSlide(){
+    document.getElementById('search_div').style.left = '-100%';
+    document.getElementById('slide_conts').style.left = '0';
+    document.getElementById('left_btn').style.display = 'block';
+    document.getElementById('back2search').style.display='block';
+  }
+  
+  function back2search(){
+    document.getElementById('back2search').style.display='none';
+    document.getElementById('search_div').style.left = '0';
+    document.getElementById('cont1').style.left = '0';
+    document.getElementById('cont2').style.left = '100%';
+    document.getElementById('cont3').style.left = '100%';
+    document.getElementById('cont4').style.left = '100%';
+    $("#cont1").addClass("current-slide");
+    $("#cont2").removeClass("current-slide");
+    $("#cont3").removeClass("current-slide");
+    $("#cont4").removeClass("current-slide");
+    document.getElementById('slide_conts').style.left = '100%';
+    document.getElementById('left_btn').style.display = 'none';
+    document.getElementById('right_btn').style.display = 'none';
+  }
+  
+  
+    function slideLeft(){
+      if($("#cont1").hasClass("current-slide")){
+        document.getElementById('cont1').style.left = '-100%';
+        document.getElementById('cont2').style.left = '0';
+        document.getElementById('right_btn').style.display='block';
+        $("#cont1").removeClass("current-slide");
+        $("#cont2").addClass("current-slide");
+      } else if($("#cont2").hasClass("current-slide")){
+        document.getElementById('cont2').style.left = '-100%';
+        document.getElementById('cont3').style.left = '0';
+        document.getElementById('right_btn').style.display='block';
+        $("#cont2").removeClass("current-slide");
+        $("#cont3").addClass("current-slide");
+      }else if($("#cont3").hasClass("current-slide")){
+        document.getElementById('cont3').style.left = '-100%';
+        document.getElementById('cont4').style.left = '0';
+        document.getElementById('right_btn').style.display='block';
+        $("#cont3").removeClass("current-slide");
+        $("#cont4").addClass("current-slide");
+        document.getElementById('left_btn').style.display='none';
+      }
+    }
+  
+  function slideRight(){
+    if($("#cont4").hasClass("current-slide")){
+        document.getElementById('cont4').style.left = '100%';
+        document.getElementById('cont3').style.left = '0';
+        document.getElementById('left_btn').style.display='block';
+      $("#cont4").removeClass("current-slide");
+        $("#cont3").addClass("current-slide");
+      }else if($("#cont3").hasClass("current-slide")){
+        document.getElementById('cont3').style.left = '100%';
+        document.getElementById('cont2').style.left = '0';
+        document.getElementById('left_btn').style.display='block';
+        $("#cont3").removeClass("current-slide");
+        $("#cont2").addClass("current-slide");
+      }else if($("#cont2").hasClass("current-slide")){
+        document.getElementById('cont2').style.left = '100%';
+        document.getElementById('cont1').style.left = '0';
+        document.getElementById('left_btn').style.display='block';
+        document.getElementById('right_btn').style.display='none';
+        $("#cont2").removeClass("current-slide");
+        $("#cont1").addClass("current-slide");
+      }
+    }
+  </script>
 </body>
 </html>
