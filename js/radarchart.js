@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $.ajax({
-    url: `http://localhost/Crops-for-future/api/data.php`,
+    url: `http://35.185.57.3/cff/api/data.php`,
     data: {cropA: crop1, cropB: crop2},
     type: "POST",
     success: function(data) {

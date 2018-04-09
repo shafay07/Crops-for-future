@@ -51,7 +51,7 @@ $(document).ready(function() {
 
   $("#search_btn").click(function() {
     $.ajax({
-      url: `http://localhost/Crops-for-future/api/data.php`,
+      url: `http://35.185.57.3/cff/api/data.php`,
       data: { crop: $('#crop').val() },
       type: "POST",
       success: function(data) {
