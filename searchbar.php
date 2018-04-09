@@ -17,7 +17,7 @@ i<!DOCTYPE html>
 </head>
 <body>
     <div class="container-fluid">
-        <form class="row" action="linegraph.php" method="post">
+        <form class="row" action="comparison.php" method="post">
             <div class="form-group col-lg-3 col-lg-offset-2">
                 <input type="text" name="cropA" id="crop1" class="form-control" style="height:50px" placeholder="Select First Crop" />
                 <div id="crop1List"></div>

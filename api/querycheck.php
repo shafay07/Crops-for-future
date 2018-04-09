@@ -1,19 +1,11 @@
 <?php
-$servername = 'localhost';
-$username = 'admin';
-$password = 'cffmysql';
-$dbname = 'cff';
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
 
 //setting header to json
 header('Content-Type: application/json');
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
+// get the connection from conn.php
+require_once('../conn.php');
+
 	//array of checkbox ticked
 	$climatearray = array();
 	$zonearray = array();
@@ -23,35 +15,40 @@ if ($conn->connect_error) {
 	//checkbox options
     if(isset($_POST['climate'])) 
 	{
-		$name = json_decode($_POST['climate'], true);
+		$name = $_POST['climate'];
 		echo "name of climete " . $name;
 		echo "You chose the following climate(s): <br>";
-		foreach ($name as $climate)
-		{
-			echo $climate."<br />";
-			$climatearray[] = $climate;
-			
+		if (is_array($name) || is_object($username)){
+			foreach ($name as $climate)
+			{
+				echo $climate."<br />";
+				$climatearray[] = $climate;
+			}
 		}
 	}
 	if(isset($_POST['zone'])) 
 	{
 
-		$name = json_decode($_POST['zone'], true);
+		$name = $_POST['zone'];
 		echo "You chose the following zone(s): <br>";
-		foreach ($name as $zone)
-		{
-			echo $zone."<br>";
-			$zonearray[] = $zone;
+		if (is_array($name) || is_object($username)){
+			foreach ($name as $zone)
+			{
+				echo $zone."<br>";
+				$zonearray[] = $zone;
+			}
 		}
 	}
 	if(isset($_POST['part'])) 
 	{
-		$name = json_decode($_POST['part'], true);
+		$name = $_POST['part'];
 		echo "You chose the following part(s): <br>";
-		foreach ($name as $part)
-		{
-			echo $part."<br>";
-			$partarray[] = $part;
+		if (is_array($name) || is_object($username)){
+			foreach ($name as $part)
+			{
+				echo $part."<br>";
+				$partarray[] = $part;
+			}
 		}
 	}
 		
@@ -149,7 +146,7 @@ if ($conn->connect_error) {
 	echo "<br><br>";
 
 //print results here and convert to json format	
-$result = mysqli_query($conn,$query);
+$result = mysqli_query($mysqli,$query);
 $jsonArray = array();
 if(!$result) {
     die("<br>Database query failed");
@@ -193,7 +190,7 @@ else{
 }
 
 
-mysqli_close($conn);
+mysqli_close($mysqli);
 
 
 ?>
