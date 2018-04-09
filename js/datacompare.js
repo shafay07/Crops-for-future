@@ -3,7 +3,7 @@ $(document).ready(function(){
    * call the data.php file to fetch the result from db table.
    */
   $.ajax({
-    url: `http://localhost/cff/api/data.php`,
+    url: `http://localhost/Crops-for-future/api/data.php`,
     data: {cropA: crop1, cropB: crop2},
     type: "POST",
     success: function(data){
