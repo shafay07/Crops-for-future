@@ -21,34 +21,40 @@ if ($conn->connect_error) {
 	$zonearray = array();
 	$partarray = array();
 	
-	//checkbox options
-    if(isset($_POST['climate'])) 
+	if(isset($_POST['climate'])) 
 	{
 		$name = $_POST['climate'];
-		foreach ($name as $climate)
-		{
-			$climatearray[] = $climate;
-			
+		if (is_array($name) || is_object($username)){
+			foreach ($name as $climate)
+			{
+				$climatearray[] = $climate;
+				
+			}
 		}
 	}
 	
 	if(isset($_POST['zone'])) 
 	{
 		$name = ($_POST['zone']);
-		foreach ($name as $zone)
-		{
-			$zonearray[] = $zone;
+		if (is_array($name) || is_object($name)){
+			foreach ($name as $zone)
+			{
+				$zonearray[] = $zone;
+			}
 		}
 	}
 	
 	if(isset($_POST['part'])) 
 	{
 		$name = $_POST['part'];
-		foreach ($name as $part)
-		{
-			$partarray[] = $part;
+		if (is_array($name) || is_object($name)){
+			foreach ($name as $part)
+			{
+				$partarray[] = $part;
+			}
 		}
 	}
+
 		
 	//x and y axis
 	$xAxis = $_POST['xAxis'];
