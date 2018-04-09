@@ -1,0 +1,273 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<title>Comparison</title>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Chivo');
+* {
+    font-family: 'Chivo', 'Arial';
+    transition: top 1s ease, opacity 1s ease,height 1s ease;
+}
+
+body {
+	overflow: hidden;
+}
+
+.nav_bar {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 12%;
+    background-color: #E3E3E3;
+}
+#logo {
+    top: 4%;
+    position: absolute;
+    left: 5%;
+    cursor: pointer;
+    height: 90%;
+}
+#nav_buttons {
+    position: absolute;
+    top: 0%;
+    left: 60%;
+    width: 40%;
+    height: 100%;
+}
+#nav1, #nav2, #nav3 {
+    padding: 3%;
+    width: 30%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    background-color: #E3E3E3;
+    font-size: 3vh;
+    cursor: pointer;
+    margin-left: 2%;
+}
+
+#comp_div{
+	position:absolute;
+	width:100%;
+	height:50%;
+	top:25%;
+	background-color: #E3E3E3;
+	z-index:1;
+}
+
+#inst_comp{
+	position: absolute;
+	top:20%;
+	left:14%;
+	font-weight:bold;
+	font-size: 6vh;
+	color:#808080;
+	
+}
+
+#comp_div input[type=text] {
+    width: 30%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-size: 4%;
+    background-position: 1% 48%; 
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    top:50%;
+    position:absolute;
+}
+
+#search1{
+	left:14%;
+}
+
+#search2{
+	left:56%;
+}
+
+#compare_btn {
+	display: block;
+	width: 8%;
+	left:46%;
+	cursor: pointer;
+	top:50%;
+	background-color: #96B53C;
+    color: white;
+    font-weight: bold;
+    font-size: 2vh;
+    height: 6vh;
+    border: dimgray;
+    position: absolute;
+}
+
+#compare_btn:hover {
+    border:none;
+    background-color: white;
+    color: #96B53C;
+}
+
+.glow_reset{
+	 -webkit-animation: glowing 1500ms infinite;
+  -moz-animation: glowing 1500ms infinite;
+  -o-animation: glowing 1500ms infinite;
+  animation: glowing 1500ms infinite;
+}
+
+@-webkit-keyframes glowing {
+  0% { background-color: #bae835; -webkit-box-shadow: 0 0 3px #bae835; }
+  50% { background-color: #96B53C; -webkit-box-shadow: 0 0 40px #96B53C; }
+  100% { background-color: #bae835; -webkit-box-shadow: 0 0 3px #bae835; }
+}
+
+@-moz-keyframes glowing {
+  0% { background-color: #bae835; -moz-box-shadow: 0 0 3px #bae835; }
+  50% { background-color: #96B53C; -moz-box-shadow: 0 0 40px #96B53C; }
+  100% { background-color: #bae835; -moz-box-shadow: 0 0 3px #bae835; }
+}
+
+@-o-keyframes glowing {
+  0% { background-color: #bae835; box-shadow: 0 0 3px #bae835; }
+  50% { background-color: #96B53C; box-shadow: 0 0 40px #96B53C; }
+  100% { background-color: #bae835; box-shadow: 0 0 3px #bae835; }
+}
+
+@keyframes glowing {
+  0% { background-color: #bae835; box-shadow: 0 0 3px #bae835; }
+  50% { background-color: #96B53C; box-shadow: 0 0 40px #96B53C; }
+  100% { background-color: #bae835; box-shadow: 0 0 3px #bae835; }
+}
+
+#graphs{
+	position:absolute;
+	height:68%;
+	width:80%;
+	top:26%;
+	display:block;
+	opacity:0;
+	left:10%;
+}
+
+.nav a {
+	color:#ED802C;
+	font-weight:bold;
+	font-size:2vh;
+}
+
+</style>
+</head>
+
+<body>
+
+<!--HEADER-->
+<div class="nav_bar">
+        <img id="logo" src="cfflogo.png">
+        <div id="nav_buttons">
+            <button id="nav1">About</button> <button id="nav2">Contact Us</button> <button id="nav3">FAQ</button>
+        </div>
+</div>
+
+<div id="comp_div">
+<p id="inst_comp">Enter crop names:</p>
+<!--searchbars-->
+<form>
+  		<input id="search1" type="text" name="search" placeholder="Crop 1">
+  		<input id="search2" type="text" name="search" placeholder="Crop 2">
+</form>
+
+<button id="compare_btn" onclick="compSlide()">COMPARE</button>
+</div>
+	
+<div id="graphs">
+
+  <ul class="nav nav-tabs nav-justified">
+    <li class="active"><a data-toggle="tab" href="graph1">Category1</a></li>
+    <li><a data-toggle="tab" href="#graph2">Category2</a></li>
+    <li><a data-toggle="tab" href="#graph3">Category3</a></li>
+    <li><a data-toggle="tab" href="#graph4">Category4</a></li>
+    <li><a data-toggle="tab" href="#graph5">Category5</a></li>
+    <li><a data-toggle="tab" href="#graph6">Category6</a></li>
+    <li><a data-toggle="tab" href="#graph7">Category7</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div id="graph1" class="tab-pane fade in active">
+    	<!--add graph here-->
+    </div> 
+    <div id="graph2" class="tab-pane fade">
+      <!--add graph here-->
+    </div>
+    <div id="graph3" class="tab-pane fade">
+     <!--add graph here-->
+    </div>
+    <div id="graph4" class="tab-pane fade">
+     <!--add graph here-->
+    </div>
+    <div id="graph5" class="tab-pane fade">
+    <!--add graph here-->
+    </div> 
+    <div id="graph6" class="tab-pane fade">
+      <!--add graph here-->
+    </div> 
+    <div id="graph7" class="tab-pane fade">
+      <!--add graph here-->
+    </div> 
+  </div>
+</div>
+
+<script type="text/javascript">
+
+var btn_check = true;
+
+	function compSlide(){
+		if (btn_check == true){
+		btn_check = false;
+		document.getElementById("comp_div").style.height = '10%';
+		document.getElementById("comp_div").style.top = '12%';
+		document.getElementById("inst_comp").style.opacity = 0;
+		document.getElementById("search1").style.top = '18%';
+		document.getElementById("search2").style.top = '18%';
+		document.getElementById("compare_btn").style.top = '18%';
+		$("#search1").attr("disabled","true");
+		$("#search2").attr("disabled","true");
+		document.getElementById("compare_btn").textContent = 'RESET' ;
+		$("#compare_btn").addClass("glow_reset");
+		$('.nav-tabs a:first').tab('show');
+		setTimeout(function(){
+			document.getElementById("graphs").style.opacity = 1;
+		}, 1000);
+	}
+	else{
+		btn_check = true;
+		document.getElementById("graphs").style.opacity = 0;
+		$("#compare_btn").removeClass("glow_reset");
+		setTimeout(function(){
+		document.getElementById("comp_div").style.height = '50%';
+		document.getElementById("comp_div").style.top = '25%';
+		document.getElementById("search1").style.top = '50%';
+		document.getElementById("search2").style.top = '50%';
+		document.getElementById("compare_btn").style.top = '50%';
+		$("#search1").removeAttr("disabled");
+		$("#search2").removeAttr("disabled");
+		document.getElementById("compare_btn").textContent = 'COMPARE' ;
+		document.getElementById("search1").value = '';
+		document.getElementById("search2").value = '';
+		document.getElementById("inst_comp").style.opacity = 1;
+		}, 1000);
+	}
+}
+</script>
+
+
+</body>
+</html>
