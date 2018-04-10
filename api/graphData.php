@@ -15,24 +15,28 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} 
+}
 	//array of checkbox ticked
 	$climatearray = array();
 	$zonearray = array();
 	$partarray = array();
-	
+
 	//checkbox options
-    if(isset($_POST['climate'])) 
-	{
+    if(isset($_POST['climate']))
+{
 		$name = $_POST['climate'];
+    //adding an if statement here for the warning of foreach()
+    if (is_array($name) || is_object($name))
+    {
 		foreach ($name as $climate)
 		{
 			$climatearray[] = $climate;
-			
+
 		}
-	}
-	
-	if(isset($_POST['zone'])) 
+  }
+}
+
+	if(isset($_POST['zone']))
 	{
 		$name = ($_POST['zone']);
 		foreach ($name as $zone)
@@ -40,28 +44,31 @@ if ($conn->connect_error) {
 			$zonearray[] = $zone;
 		}
 	}
-	
-	if(isset($_POST['part'])) 
+
+	if(isset($_POST['part']))
 	{
 		$name = $_POST['part'];
+    //adding an if statement here for the warning of foreach()
+    if (is_array($name) || is_object($name)){
 		foreach ($name as $part)
 		{
 			$partarray[] = $part;
 		}
+  }
 	}
-		
+
 	//x and y axis
 	$xAxis = $_POST['xAxis'];
 	$yAxis = $_POST['yAxis'];
 	$zAxis = $_POST['zAxis'];
 
-	
+
 	//choosing table based on axis category
 	$xCat = $_POST['xCat'];
 	$yCat = $_POST['yCat'];
 	$zCat = $_POST['zCat'];
 
-	
+
 	//query portion of checkboxes, to integrate with axis query part
     if(count($climatearray))
 	{
@@ -76,18 +83,18 @@ if ($conn->connect_error) {
 		$partquery =" AND mineral.plant_part_id IN ('" . implode("', '", $partarray)."') ";
 	}
 
-	//sql query based on checkbox	
+	//sql query based on checkbox
 	if ($zAxis == "null"){
 		$query = "SELECT tax.cropID, tax.common_name, $xCat.$xAxis, $yCat.$yAxis
 		FROM crop_taxonomy tax LEFT JOIN agro_agroecology_livedb agro ON tax.cropID=agro.cropid
-		LEFT JOIN nutrient_minerals mineral ON tax.cropID=mineral.cropid 
+		LEFT JOIN nutrient_minerals mineral ON tax.cropID=mineral.cropid
 		LEFT JOIN general_plant_parts part ON mineral.plant_part_id=part.id
 		LEFT JOIN nutrient_proximate_composition composition ON tax.cropID=composition.cropid
 		WHERE $xAxis IS NOT NULL AND $yAxis IS NOT NULL";
 	}else {
 		$query = "SELECT tax.cropID, tax.common_name, $xCat.$xAxis, $yCat.$yAxis, $zCat.$zAxis
 			FROM crop_taxonomy tax LEFT JOIN agro_agroecology_livedb agro ON tax.cropID=agro.cropid
-			LEFT JOIN nutrient_minerals mineral ON tax.cropID=mineral.cropid 
+			LEFT JOIN nutrient_minerals mineral ON tax.cropID=mineral.cropid
 			LEFT JOIN general_plant_parts part ON mineral.plant_part_id=part.id
 			LEFT JOIN nutrient_proximate_composition composition ON tax.cropID=composition.cropid
 			WHERE $xAxis IS NOT NULL AND $yAxis IS NOT NULL AND $zAxis IS NOT NULL";
@@ -101,7 +108,7 @@ if ($conn->connect_error) {
 		$query .= $zonequery;
 	//echo "<br>FULL QUERY: <br>" . $query;
 
-//print results here and convert to json format	
+//print results here and convert to json format
 $result = mysqli_query($conn,$query);
 $jsonArray = array();
 if(!$result) {
@@ -141,7 +148,7 @@ else{
 			);
 		}
 	}
-	
+
 	print json_encode($jsonArray);
 }
 
