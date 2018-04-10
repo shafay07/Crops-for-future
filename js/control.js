@@ -5,9 +5,11 @@ window.onload = function() {
 	plot(result);
 };
 
+//brings the subseted data
 function json_access(){
 	var x_axis = [];
 	var y_axis = [];
+	var z_axis = [];
 	var crop_name = [];
 
 	$(document).ready(function () {
@@ -24,7 +26,7 @@ function json_access(){
 				xCat: xCat,
 				yCat: yCat,
 				zCat: zCat,
-			 },
+			},
 			type: "POST",
 			dataType: "json",
 			success: function (data) {
@@ -33,6 +35,7 @@ function json_access(){
 				for (i = 0; i < data.length; i++) {
 					x_axis[i] = data[i].xvalue;
 					y_axis[i] = data[i].yvalue;
+					z_axis[i] = data[i].zvalue;
 					crop_name[i] = data[i].cropname;
 				};
 			},
@@ -42,25 +45,92 @@ function json_access(){
 
 		});
 	});
-	return [x_axis,y_axis,crop_name];
+	return [x_axis,y_axis,z_axis,crop_name,xCat,yCat];
 };
+
+
+//plotly graph
 function plot(res) {
+
+	var graph_id = [];
+	graph_id[0] = document.getElementById('graph');
+	graph_id[1] = document.getElementById('graph1');
+	graph_id[2] = document.getElementById('graph2');
+	graph_id[3] = document.getElementById('graph3');
+
 	var trace1 = {
 		x: res[0],
 		y: res[1],
 		mode: 'markers',
 		type: 'scatter',
-		text: res[2],
-		marker: {
-			size: 12,
-			color : 'green'
-		}
+		text: res[3],
+		marker:{
+			color:'rgb(50, 15, 91)',
+			size:10,
+		},
 	};
 	var layout = {
+		hovermode:'closest'
+	};
+	//second type, histogram
+	var trace2 = {
+		x: res[0],
+		y: res[1],
+		//mode: 'markers',
+		type: 'histogram',
+		marker: {
+			color: 'rgb(80, 20, 55)',
+		}
+	};
+	var layout2 = {
+		visible: true
+	};
+	//third type, box graph
+	var trace3 = [
+	{
+		x : res[0],
+		name : res[4],
+		type: 'box'
+	},
+	{
+		x : res[1],
+		name : res[5],
+		type :'box'
+	}
+]
+
+	var layout3 = {
 
 	};
-	graph_id = document.getElementById('graph');
+	//fourth type of graph
+	var trace4 = {
+		x: res[0],
+		y: res[1],
+		z: res[2],
+		mode: 'markers',
+		marker: {
+		color: 'rgba(14, 65, 40,0.5)',
+		size: 12,
+		line: {
+		color: 'rgba(14, 65, 40,0.5)',
+	},
+		opacity: 1
+	},
+	type: 'scatter3d',
+	text: res[3],
+	};
+	var layout4 = {
+		hovermode:'closest'
+	};
+
+
 	data = [trace1];
-	Plotly.newPlot(graph_id, data,layout);
+	data1 = [trace2];
+	data2 = trace3;
+	data3 = [trace4];
+	Plotly.newPlot(graph_id[0], data,layout);
+	Plotly.newPlot(graph_id[1], data1,layout2);
+	Plotly.newPlot(graph_id[2], data2,layout3);
+	Plotly.newPlot(graph_id[3], data3,layout4);
 
 };
