@@ -3,27 +3,6 @@
 //setting header to json
 header('Content-Type: application/json');
 
-<<<<<<< HEAD
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-	//array of checkbox ticked
-	$climatearray = array();
-	$zonearray = array();
-	$partarray = array();
-
-	//checkbox options
-    if(isset($_POST['climate']))
-{
-		$name = $_POST['climate'];
-    //adding an if statement here for the warning of foreach()
-    if (is_array($name) || is_object($name))
-    {
-=======
 // get the connection from conn.php
 require_once('../conn.php');
 
@@ -35,21 +14,12 @@ $partarray = array();
 if(isset($_POST['climate'])) 
 {
 	$name = $_POST['climate'];
-	if (is_array($name) || is_object($username)){
->>>>>>> a5bfa7f04637feebea1ba573db47f8e9ed037b4e
+	if (is_array($name) || is_object($name)){
 		foreach ($name as $climate)
 		{
 			$climatearray[] = $climate;
 
 		}
-<<<<<<< HEAD
-  }
-}
-
-	if(isset($_POST['zone']))
-	{
-		$name = ($_POST['zone']);
-=======
 	}
 }
 
@@ -57,66 +27,24 @@ if(isset($_POST['zone']))
 {
 	$name = ($_POST['zone']);
 	if (is_array($name) || is_object($name)){
->>>>>>> a5bfa7f04637feebea1ba573db47f8e9ed037b4e
 		foreach ($name as $zone)
 		{
 			$zonearray[] = $zone;
 		}
 	}
-<<<<<<< HEAD
-
-	if(isset($_POST['part']))
-	{
-		$name = $_POST['part'];
-    //adding an if statement here for the warning of foreach()
-    if (is_array($name) || is_object($name)){
-=======
 }
 
 if(isset($_POST['part'])) 
 {
 	$name = $_POST['part'];
 	if (is_array($name) || is_object($name)){
->>>>>>> a5bfa7f04637feebea1ba573db47f8e9ed037b4e
 		foreach ($name as $part)
 		{
 			$partarray[] = $part;
 		}
   }
-	}
-<<<<<<< HEAD
-
-	//x and y axis
-	$xAxis = $_POST['xAxis'];
-	$yAxis = $_POST['yAxis'];
-	$zAxis = $_POST['zAxis'];
-
-
-	//choosing table based on axis category
-	$xCat = $_POST['xCat'];
-	$yCat = $_POST['yCat'];
-	$zCat = $_POST['zCat'];
-
-
-	//query portion of checkboxes, to integrate with axis query part
-    if(count($climatearray))
-	{
-		$climatequery =" AND agro.climate_zone LIKE '%" . implode("%' OR '%", $climatearray) . "%'";
-	}
-	if(count($zonearray))
-	{
-		$zonequery =" AND agro." . implode("=1 AND agro.", $zonearray) . "=1";
-	}
-	if(count($partarray))
-	{
-		$partquery =" AND mineral.plant_part_id IN ('" . implode("', '", $partarray)."') ";
-	}
-
-	//sql query based on checkbox
-	if ($zAxis == "null"){
-		$query = "SELECT tax.cropID, tax.common_name, $xCat.$xAxis, $yCat.$yAxis
-=======
 }
+
 
 		
 //x and y axis
@@ -155,25 +83,12 @@ if ($zAxis == "null"){
 	WHERE $xAxis IS NOT NULL AND $yAxis IS NOT NULL";
 }else {
 	$query = "SELECT tax.cropID, tax.common_name, $xCat.$xAxis, $yCat.$yAxis, $zCat.$zAxis
->>>>>>> a5bfa7f04637feebea1ba573db47f8e9ed037b4e
 		FROM crop_taxonomy tax LEFT JOIN agro_agroecology_livedb agro ON tax.cropID=agro.cropid
 		LEFT JOIN nutrient_minerals mineral ON tax.cropID=mineral.cropid
 		LEFT JOIN general_plant_parts part ON mineral.plant_part_id=part.id
 		LEFT JOIN nutrient_proximate_composition composition ON tax.cropID=composition.cropid
-<<<<<<< HEAD
-		WHERE $xAxis IS NOT NULL AND $yAxis IS NOT NULL";
-	}else {
-		$query = "SELECT tax.cropID, tax.common_name, $xCat.$xAxis, $yCat.$yAxis, $zCat.$zAxis
-			FROM crop_taxonomy tax LEFT JOIN agro_agroecology_livedb agro ON tax.cropID=agro.cropid
-			LEFT JOIN nutrient_minerals mineral ON tax.cropID=mineral.cropid
-			LEFT JOIN general_plant_parts part ON mineral.plant_part_id=part.id
-			LEFT JOIN nutrient_proximate_composition composition ON tax.cropID=composition.cropid
-			WHERE $xAxis IS NOT NULL AND $yAxis IS NOT NULL AND $zAxis IS NOT NULL";
-	}
-=======
 		WHERE $xAxis IS NOT NULL AND $yAxis IS NOT NULL AND $zAxis IS NOT NULL";
 }
->>>>>>> a5bfa7f04637feebea1ba573db47f8e9ed037b4e
 
 if(count($partarray))
 	$query .= $partquery;
@@ -183,13 +98,8 @@ if(count($zonearray))
 	$query .= $zonequery;
 //echo "<br>FULL QUERY: <br>" . $query;
 
-<<<<<<< HEAD
-//print results here and convert to json format
-$result = mysqli_query($conn,$query);
-=======
 //print results here and convert to json format	
 $result = mysqli_query($mysqli,$query);
->>>>>>> a5bfa7f04637feebea1ba573db47f8e9ed037b4e
 $jsonArray = array();
 if(!$result) {
     die("Database query failed");

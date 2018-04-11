@@ -18,7 +18,7 @@ require_once('../conn.php');
 		$name = $_POST['climate'];
 		echo "name of climete " . $name;
 		echo "You chose the following climate(s): <br>";
-		if (is_array($name) || is_object($username)){
+		if (is_array($name) || is_object($name)){
 			foreach ($name as $climate)
 			{
 				echo $climate."<br />";
@@ -31,7 +31,7 @@ require_once('../conn.php');
 
 		$name = $_POST['zone'];
 		echo "You chose the following zone(s): <br>";
-		if (is_array($name) || is_object($username)){
+		if (is_array($name) || is_object($name)){
 			foreach ($name as $zone)
 			{
 				echo $zone."<br>";
@@ -43,7 +43,7 @@ require_once('../conn.php');
 	{
 		$name = $_POST['part'];
 		echo "You chose the following part(s): <br>";
-		if (is_array($name) || is_object($username)){
+		if (is_array($name) || is_object($name)){
 			foreach ($name as $part)
 			{
 				echo $part."<br>";
