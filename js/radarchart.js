@@ -2,7 +2,6 @@ $(document).ready(function() {
   $("#compare_btn").click(function() {
     cropr1 = $("#search1").val();
     cropr2 = $("#search2").val();
-    console.log("linee");
     $.ajax({
       url: `http://localhost/Crops-for-future/api/data.php`,
       data: { cropA: cropr1, cropB: cropr2 },
