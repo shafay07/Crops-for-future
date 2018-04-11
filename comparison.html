@@ -1,0 +1,791 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+
+    <title>Comparison Crops</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Chivo');
+        * {
+            font-family: 'Chivo', 'Arial';
+            transition: top 1s ease, opacity 1s ease, height 1s ease;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        ul {
+            background-color: #eee;
+            cursor: pointer;
+        }
+
+        li {
+            padding: 12px;
+        }
+
+        .nav_bar {
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 12%;
+            background-color: #E3E3E3;
+        }
+
+        .charts {
+            padding-left: 0;
+            padding-right: 0;
+            margin: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            max-width: 900px;
+            max-height: 600px;
+        }
+
+        #logo {
+            top: 4%;
+            position: absolute;
+            left: 5%;
+            cursor: pointer;
+            height: 90%;
+        }
+
+        #nav_buttons {
+            position: absolute;
+            top: 0%;
+            left: 60%;
+            width: 40%;
+            height: 100%;
+        }
+
+        #nav1,
+        #nav2,
+        #nav3 {
+            padding: 3%;
+            width: 30%;
+            height: 100%;
+            border: none;
+            cursor: pointer;
+            background-color: #E3E3E3;
+            font-size: 3vh;
+            cursor: pointer;
+            margin-left: 2%;
+        }
+
+        #comp_div {
+            position: absolute;
+            width: 100%;
+            height: 70%;
+            top: 20%;
+            background-color: #E3E3E3;
+            z-index: 1;
+        }
+
+        #inst_comp {
+            position: absolute;
+            top: 20%;
+            left: 14%;
+            font-weight: bold;
+            font-size: 6vh;
+            color: #808080;
+
+        }
+
+        #comp_div input[type=text] {
+            width: 30%;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+            background-image: url('assets/searchicon.png');
+            background-size: 4%;
+            background-position: 1% 48%;
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px;
+            top: 40%;
+            position: absolute;
+        }
+
+        #search1 {
+            left: 14%;
+        }
+
+        #search2 {
+            left: 56%;
+        }
+
+        #compare_btn {
+            display: block;
+            width: 8%;
+            left: 46%;
+            cursor: pointer;
+            top: 40%;
+            background-color: #96B53C;
+            color: white;
+            font-weight: bold;
+            font-size: 2vh;
+            height: 6vh;
+            border: dimgray;
+            position: absolute;
+        }
+
+        #compare_btn:hover {
+            border: none;
+            background-color: white;
+            color: #96B53C;
+        }
+
+        .glow_reset {
+            -webkit-animation: glowing 1500ms infinite;
+            -moz-animation: glowing 1500ms infinite;
+            -o-animation: glowing 1500ms infinite;
+            animation: glowing 1500ms infinite;
+        }
+
+        @-webkit-keyframes glowing {
+            0% {
+                background-color: #bae835;
+                -webkit-box-shadow: 0 0 3px #bae835;
+            }
+            50% {
+                background-color: #96B53C;
+                -webkit-box-shadow: 0 0 40px #96B53C;
+            }
+            100% {
+                background-color: #bae835;
+                -webkit-box-shadow: 0 0 3px #bae835;
+            }
+        }
+
+        @-moz-keyframes glowing {
+            0% {
+                background-color: #bae835;
+                -moz-box-shadow: 0 0 3px #bae835;
+            }
+            50% {
+                background-color: #96B53C;
+                -moz-box-shadow: 0 0 40px #96B53C;
+            }
+            100% {
+                background-color: #bae835;
+                -moz-box-shadow: 0 0 3px #bae835;
+            }
+        }
+
+        @-o-keyframes glowing {
+            0% {
+                background-color: #bae835;
+                box-shadow: 0 0 3px #bae835;
+            }
+            50% {
+                background-color: #96B53C;
+                box-shadow: 0 0 40px #96B53C;
+            }
+            100% {
+                background-color: #bae835;
+                box-shadow: 0 0 3px #bae835;
+            }
+        }
+
+        @keyframes glowing {
+            0% {
+                background-color: #bae835;
+                box-shadow: 0 0 3px #bae835;
+            }
+            50% {
+                background-color: #96B53C;
+                box-shadow: 0 0 40px #96B53C;
+            }
+            100% {
+                background-color: #bae835;
+                box-shadow: 0 0 3px #bae835;
+            }
+        }
+
+        #graphs {
+            position: absolute;
+            height: 68%;
+            width: 80%;
+            top: 24%;
+            display: block;
+            opacity: 0;
+            left: 10%;
+        }
+
+        .nav a {
+            color: #ED802C;
+            font-weight: bold;
+            font-size: 2vh;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--HEADER-->
+    <div class="nav_bar">
+        <img id="logo" src="assets/cfflogo.png">
+        <div id="nav_buttons">
+            <button id="nav1">About</button>
+            <button id="nav2">Contact Us</button>
+            <button id="nav3">FAQ</button>
+        </div>
+    </div>
+
+    <div id="comp_div">
+        <p id="inst_comp">Enter crop names:</p>
+        <!--searchbars-->
+        <form>
+            <input type="text" name="cropA" id="search1" class="form-control" style="height:50px" placeholder="Select First Crop" />
+            <div id="crop1List" style="position:absolute; top:49%; left:14%; width: 30%;"></div>
+            <input type="text" name="cropB" id="search2" class="form-control" style="height:50px" placeholder="Select Second Crop" />
+            <div id="crop2List" style="position:absolute; top:49%; left:56%; width: 30%;"></div>
+            <button type="button" id="compare_btn" onclick="compSlide()">COMPARE</button>
+        </form>
+
+    </div>
+
+    <div id="graphs">
+
+        <ul class="nav nav-tabs nav-justified">
+            <li class="active">
+                <a data-toggle="tab" href="#graph1">Taxonomy</a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#graph2">Ecology System</a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#graph3">Rainfall</a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#graph4">Temperature</a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#graph5">Latitudes</a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#graph6">Soil PH</a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#graph7">Minerals</a>
+            </li>
+            <li>
+                <a data-toggle="tab" href="#graph8">Nutrients</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="graph1" class="tab-pane fade in active">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="cropA text-right" id="varlndrce1"></div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-center">VAR LNDRCE NAME</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropB text-left" id="varlndrce2"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="cropA text-right" id="commonname1"></div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-center">COMMON NAME</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropB text-left" id="commonname2"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="cropA text-right" id="scientific1"></div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-center">SCIENTIFIC NAME</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-left" id="scientific2"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="cropA text-right" id="family1"></div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-center">FAMILY</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropB text-left" id="family2"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="cropA text-right" id="genus1"></div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-center">GENUS</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-left" id="genus2"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="cropA text-right" id="species1"></div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-center">SPECIES</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropB text-left" id="species2"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="cropA text-right" id="zone1"></div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-center">ZONE</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropB text-left" id="zone2"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="cropA text-right" id="climate1"></div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-center">CLIMATE ZONE</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-left" id="climate2"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="cropA text-right" id="minlightopt1"></div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-center">MINIMUM LIGHT OPTIMAL</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropB text-left" id="minlightopt2"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="cropA text-right" id="maxlightopt1"></div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-center">MAXIMUM LIGHT OPTIMAL</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-left" id="maxlightopt2"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="cropA text-right" id="maxlightabs1"></div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-center">MAXIMUM LIGHT ABSOLUTE</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-left" id="maxlightabs2"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="cropA text-right" id="minlightabs1"></div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-center">MINIMUM LIGHT ABSOLUTE</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-left" id="minlightabs2"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="cropA text-right" id="photoprd1"></div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-center">PHOTOPERIOD</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-left" id="photoprd2"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="graph2" class="tab-pane fade">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="cropA text-right" id="maxabsalt1"></div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-center">MAXIMUM ABSOLUTE ALTITUDE </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-left" id="maxabsalt2"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="cropA text-right" id="optsoildeep1"></div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-center">OPTIMAL SOIL DEPTH</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-left" id="optsoildeep2"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="cropA text-right" id="abssoildeep1"></div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-center">ABSOLUTE SOIL DEPTH</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-left" id="abssoildeep2"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="cropA text-right" id="optsoilfert1"></div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-center">OPTIMAL SOIL FERTILITY</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-left" id="optsoilfert2"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="cropA text-right" id="abssoilfert1"></div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-center">ABSOLUTE SOIL FERTILITY</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropB text-left" id="abssoilfert2"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="cropA text-right" id="optsoilsal1"></div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-center">OPTIMAL SOIL SALINITY</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-left" id="optsoilsal2"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="cropA text-right" id="abssoilsal1"></div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-center">ABSOLUTE SOIL SALINITY</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropB text-left" id="abssoilsal2"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="cropA text-right" id="optsoiltext1"></div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-center">OPTIMAL SOIL TEXTURE</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-left" id="optsoiltext2"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="cropA text-right" id="abssoiltext1"></div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-center">ABSOLUTE SOIL TEXTURE</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cropA text-left" id="abssoiltext2"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="graph3" class="tab-pane fade">
+                <div class="chartContainer">
+                    <canvas class="charts" id="rainfall"></canvas>
+                </div>
+            </div>
+            <div id="graph4" class="tab-pane fade">
+                <div class="chartContainer">
+                    <canvas class="charts" id="temperature"></canvas>
+                </div>
+            </div>
+            <div id="graph5" class="tab-pane fade">
+                <div class="chartContainer">
+                    <canvas class="charts" id="latitude"></canvas>
+                </div>
+            </div>
+            <div id="graph6" class="tab-pane fade">
+                <div class="chartContainer">
+                    <canvas class="charts" id="soilph"></canvas>
+                </div>
+            </div>
+            <div id="graph7" class="tab-pane fade">
+                <div class="chartContainer">
+                    <canvas class="charts" id="minerals"></canvas>
+                </div>
+            </div>
+            <div id="graph8" class="tab-pane fade">
+                <div class="chartContainer">
+                    <canvas class="charts" id="nutrients"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var crop1;
+        var crop2;
+        var cropA = {
+            cropID: 0,
+            name_var_lndrce: "",
+            common_name: "",
+            scientific_name: "",
+            family: "",
+            genus: "",
+            species: "",
+            location: 0,
+            zone: "",
+            climate_zone: "",
+            altitude_absolute_max: 0,
+            latitude_optimal_max: 0,
+            latitude_optimal_mean: 0,
+            latitude_optimal_min: 0,
+            latitude_absolute_max: 0,
+            latitude_absolute_mean: 0,
+            latitude_absolute_min: 0,
+            light_optimal_max: "",
+            light_optimal_min: "",
+            light_absolute_max: "",
+            light_absolute_min: "",
+            photoperiod: "",
+            soil_depth_optimal: "",
+            soil_depth_absolute: "",
+            soil_fertility_optimal: "",
+            soil_fertility_absolute: "",
+            soil_ph_optimal_max: 0,
+            soil_ph_optimal_mean: 0,
+            soil_ph_optimal_min: 0,
+            soil_ph_absolute_max: 0,
+            soil_ph_absolute_min: 0,
+            soil_salinity_optimal: "",
+            soil_salinity_absolute: "",
+            soil_texture_optimal: "",
+            soil_texture_absolute: "",
+            texture_clay_max: 0,
+            texture_clay_mean: 0,
+            texture_clay_min: 0,
+            texture_sand_max: 0,
+            texture_sand_mean: 0,
+            texture_sand_min: 0,
+            texture_silt_max: 0,
+            texture_silt_mean: 0,
+            texture_silt_min: 0,
+            plant_part_id: 0,
+            calcium_ca_mean: 0,
+            copper_cu_mean: 0,
+            iron_fe_mean: 0,
+            magnesium_mg_mean: 0,
+            manganese_mn_mean: 0,
+            phosphorus_p_mean: 0,
+            potassium_k_mean: 0,
+            selenium_mean: 0,
+            sodium_mean: 0,
+            zinc_zn_mean: 0,
+            ash_mean: 0,
+            carbohydrates_cho_mean: 0,
+            fat_mean: 0,
+            fiber_total_dietary_fiber_mean: 0,
+            protein_mean: 0,
+            water_moisture_mean: 0
+        };
+        var cropB = {
+            cropID: 0,
+            common_name: "",
+            name_var_lndrce: "",
+            scientific_name: "",
+            family: "",
+            genus: "",
+            species: "",
+            location: 0,
+            zone: "",
+            climate_zone: "",
+            altitude_absolute_max: 0,
+            latitude_optimal_max: 0,
+            latitude_optimal_mean: 0,
+            latitude_optimal_min: 0,
+            latitude_absolute_max: 0,
+            latitude_absolute_mean: 0,
+            latitude_absolute_min: 0,
+            light_optimal_max: "",
+            light_optimal_min: "",
+            light_absolute_max: "",
+            light_absolute_min: "",
+            photoperiod: "",
+            soil_depth_optimal: "",
+            soil_depth_absolute: "",
+            soil_fertility_optimal: "",
+            soil_fertility_absolute: "",
+            soil_ph_optimal_max: 0,
+            soil_ph_optimal_mean: 0,
+            soil_ph_optimal_min: 0,
+            soil_ph_absolute_max: 0,
+            soil_ph_absolute_min: 0,
+            soil_salinity_optimal: "",
+            soil_salinity_absolute: "",
+            soil_texture_optimal: "",
+            soil_texture_absolute: "",
+            texture_clay_max: 0,
+            texture_clay_mean: 0,
+            texture_clay_min: 0,
+            texture_sand_max: 0,
+            texture_sand_mean: 0,
+            texture_sand_min: 0,
+            texture_silt_max: 0,
+            texture_silt_mean: 0,
+            texture_silt_min: 0,
+            plant_part_id: 0,
+            calcium_ca_mean: 0,
+            copper_cu_mean: 0,
+            iron_fe_mean: 0,
+            magnesium_mg_mean: 0,
+            manganese_mn_mean: 0,
+            phosphorus_p_mean: 0,
+            potassium_k_mean: 0,
+            selenium_mean: 0,
+            sodium_mean: 0,
+            zinc_zn_mean: 0,
+            ash_mean: 0,
+            carbohydrates_cho_mean: 0,
+            fat_mean: 0,
+            fiber_total_dietary_fiber_mean: 0,
+            protein_mean: 0,
+            water_moisture_mean: 0
+        };
+    </script>
+    <script src="js/datacompare.js"></script>
+    <script src="js/barchart.js"></script>
+    <script src="js/linegraph.js"></script>
+    <script src="js/radarchart.js"></script>
+    <script type="text/javascript">
+        var btn_check = true;
+
+        function compSlide() {
+            if (btn_check == true) {
+                btn_check = false;
+                document.getElementById("comp_div").style.height = '10%';
+                document.getElementById("comp_div").style.top = '12%';
+                document.getElementById("inst_comp").style.opacity = 0;
+                document.getElementById("search1").style.top = '18%';
+                document.getElementById("search2").style.top = '18%';
+                document.getElementById("compare_btn").style.top = '18%';
+                $("#search1").attr("disabled", "true");
+                $("#search2").attr("disabled", "true");
+                document.getElementById("compare_btn").textContent = 'RESET';
+                $("#compare_btn").addClass("glow_reset");
+                $('.nav-tabs a:first').tab('show');
+                setTimeout(function () {
+                    document.getElementById("graphs").style.opacity = 1;
+                }, 1000);
+            } else {
+                btn_check = true;
+                document.getElementById("graphs").style.opacity = 0;
+                $("#compare_btn").removeClass("glow_reset");
+                setTimeout(function () {
+                    document.getElementById("comp_div").style.height = '50%';
+                    document.getElementById("comp_div").style.top = '25%';
+                    document.getElementById("search1").style.top = '50%';
+                    document.getElementById("search2").style.top = '50%';
+                    document.getElementById("compare_btn").style.top = '50%';
+                    $("#search1").removeAttr("disabled");
+                    $("#search2").removeAttr("disabled");
+                    document.getElementById("compare_btn").textContent = 'COMPARE';
+                    document.getElementById("search1").value = '';
+                    document.getElementById("search2").value = '';
+                    document.getElementById("inst_comp").style.opacity = 1;
+                }, 1000);
+            }
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#search1').keyup(function () {
+                var query = $(this).val();
+                if (query != '') {
+                    $.ajax({
+                        url: "api/search.php",
+                        method: "POST",
+                        data: {
+                            query: query
+                        },
+                        success: function (data) {
+                            $('#crop1List').fadeIn();
+                            $('#crop1List').html(data);
+                        }
+                    });
+                }
+            });
+            $('#crop1List').on('click', 'li', function () {
+                $('#search1').val($(this).text());
+                $('#crop1List').fadeOut();
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#search2').keyup(function () {
+                var query = $(this).val();
+                if (query != '') {
+                    $.ajax({
+                        url: "api/search.php",
+                        method: "POST",
+                        data: {
+                            query: query
+                        },
+                        success: function (data) {
+                            $('#crop2List').fadeIn();
+                            $('#crop2List').html(data);
+                        }
+                    });
+                }
+            });
+            $('#crop2List').on('click', 'li', function () {
+                $('#search2').val($(this).text());
+                $('#crop2List').fadeOut();
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -25,6 +25,7 @@ if(isset($_POST['crop'])){
 	LEFT JOIN `agro_agroecology_livedb` ON `agro_agroecology_livedb`.`cropid` = `crop_taxonomy`.`cropID`
 	LEFT JOIN `nutrient_minerals` ON `nutrient_minerals`.`cropid` = `crop_taxonomy`.`cropID`
 	LEFT JOIN `nutrient_proximate_composition` ON `nutrient_proximate_composition`.`cropid` = `crop_taxonomy`.`cropID`
+	LEFT JOIN `crop_usage` ON `crop_usage`.`cropID` = `crop_taxonomy`.`cropID`
 	WHERE `crop_taxonomy`.`name_var_lndrce` = '$crop';";
 }
 

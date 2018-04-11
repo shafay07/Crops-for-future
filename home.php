@@ -23,7 +23,10 @@
   <script src="js/control.js"></script>
 </head>
 <body>
-  <h1><center>Graph</center></h1>
+  <h1><center>Graphs for the subseted data</center></h1>
   <div id = "graph" style="width:800px;height: 600px;"></div>
+  <div id = "graph1" style="width:800px;height: 600px;"></div>
+  <div id = "graph2" style="width:800px;height: 600px;"></div>
+  <div id = "graph3" style="width:800px;height: 800px;"></div>
 </body>
 </html>

@@ -5,7 +5,7 @@ $output = '';
 if (isset($_POST['query'])) {
     $searchq = $_POST['query'];
     $searchq = preg_replace("#[^0-9a-z]#i", "", $searchq);
-    $query ="SELECT name_var_lndrce FROM crop_taxonomy WHERE name_var_lndrce LIKE '%$searchq%' LIMIT 10";
+    $query ="SELECT name_var_lndrce FROM crop_taxonomy WHERE name_var_lndrce LIKE '%$searchq%' LIMIT 6";
     $result = $mysqli->query($query);
 
     $output = '<ul class="list-unstyled">';

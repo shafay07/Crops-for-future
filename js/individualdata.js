@@ -4,8 +4,8 @@ $(document).ready(function() {
    */
   $("#search_btn").click(function() {
     $.ajax({
-      url: `http://localhost/cff/api/data.php`,
-      data: { crop: $('#crop').val() },
+      url: `http://localhost/Crops-for-future/api/data.php`,
+      data: { crop: $("#crop").val() },
       type: "POST",
       success: function(data) {
         console.log(data);
@@ -73,7 +73,8 @@ $(document).ready(function() {
           fat_mean: 0,
           fiber_total_dietary_fiber_mean: 0,
           protein_mean: 0,
-          water_moisture_mean: 0
+          water_moisture_mean: 0,
+          crop_usage: ""
         };
 
         cropA.cropID = data[i].cropID;
@@ -232,7 +233,7 @@ $(document).ready(function() {
         cropA.texture_silt_max = data[i].texture_silt_max;
         cropA.texture_silt_mean = data[i].texture_silt_mean;
         cropA.texture_silt_min = data[i].texture_silt_min;
-        
+
         cropA.production_system = data[i].production_system;
 
         cropA.plant_part_id = data[i].plant_part_id;
@@ -253,6 +254,56 @@ $(document).ready(function() {
           data[i].fiber_total_dietary_fiber_mean;
         cropA.protein_mean = data[i].protein_mean;
         cropA.water_moisture_mean = data[i].water_moisture_mean;
+
+        cropA.gen_use_aroma = data[i].gen_use_aroma;
+        cropA.gen_use_bever = data[i].gen_use_bever;
+        cropA.gen_use_bioma = data[i].gen_use_bioma;
+        cropA.gen_use_const = data[i].gen_use_const;
+        cropA.gen_use_food = data[i].gen_use_food;
+        cropA.gen_use_forag = data[i].gen_use_forag;
+        cropA.gen_use_herb = data[i].gen_use_herb;
+        cropA.gen_use_indus = data[i].gen_use_indus;
+        cropA.gen_use_medic = data[i].gen_use_medic;
+        cropA.gen_use_ornam = data[i].gen_use_ornam;
+        cropA.gen_use_relig = data[i].gen_use_relig;
+        cropA.gen_use_stimu = data[i].gen_use_stimu;
+        
+        if (data[i].gen_use_aroma == "1") {
+          cropA.crop_usage += "  Aroma ";
+        }
+        if (data[i].gen_use_bever == "1") {
+          cropA.crop_usage += "  Beverage ";
+        }
+        if (data[i].gen_use_bioma == "1") {
+          cropA.crop_usage += "  Biomass ";
+        }
+        if (data[i].gen_use_const == "1") {
+          cropA.crop_usage += "  Construction ";
+        }
+        if (data[i].gen_use_food == "1") {
+          cropA.crop_usage += "  Food ";
+        }
+        if (data[i].gen_use_forag == "1") {
+          cropA.crop_usage += "  Forage ";
+        }
+        if (data[i].gen_use_herb == "1") {
+          cropA.crop_usage += "  Herbal ";
+        }
+        if (data[i].gen_use_indus == "1") {
+          cropA.crop_usage += "  Industry";
+        }
+        if (data[i].gen_use_medic == "1") {
+          cropA.crop_usage += "  Medication";
+        }
+        if (data[i].gen_use_ornam == "1") {
+          cropA.crop_usage += "  Ornaments";
+        }
+        if (data[i].gen_use_relig == "1") {
+          cropA.crop_usage += "  Religious Material";
+        }
+        if (data[i].gen_use_stimu == "1") {
+          cropA.crop_usage += "  Stimulus";
+        }
 
         //$("#planttitle").html(cropA.common_name);
         $("#planttitle").html(cropA.name_var_lndrce);
@@ -313,8 +364,8 @@ $(document).ready(function() {
         $("#sodium").html(cropA.sodium_mean);
         $("#zinc").html(cropA.zinc_zn_mean);
         $("#watermoist").html(cropA.water_moisture_mean);
-
-        
+       
+        $("#cropusage").html(cropA.crop_usage);
       }
     });
   });
