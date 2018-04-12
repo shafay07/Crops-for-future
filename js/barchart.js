@@ -4,7 +4,6 @@ $(document).ready(function() {
     crop2 = $("#search2").val();
     console.log(crop1);
     console.log(crop2);
-    console.log("barr");
     $.ajax({
       url: `http://localhost/Crops-for-future/api/data.php`,
       data: { cropA: crop1, cropB: crop2 },

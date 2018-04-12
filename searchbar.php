@@ -19,14 +19,14 @@ i<!DOCTYPE html>
     <div class="container-fluid">
         <form class="row" action="comparison.php" method="post">
             <div class="form-group col-lg-3 col-lg-offset-2">
-                <input type="text" name="cropA" id="crop1" class="form-control" style="height:50px" placeholder="Select First Crop" />
+                <input type="text" autocomplete="false" name="cropA" id="crop1" class="form-control" style="height:50px" placeholder="Select First Crop" />
                 <div id="crop1List"></div>
             </div>
             <div class="col-lg-2 text-center">
                 <button type="submit" class="btn-lg btn-success">Compare!</button>
             </div>
              <div class="form-group col-lg-3">
-                <input type="text" name="cropB" id="crop2" class="form-control" style="height:50px" placeholder="Select Second Crop" />
+                <input type="text" autocomplete="false" name="cropB" id="crop2" class="form-control" style="height:50px" placeholder="Select Second Crop" />
                 <div id="crop2List"></div>
             </div>
                 
