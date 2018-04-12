@@ -180,24 +180,25 @@
       position: absolute;
       left: 0;
       margin-left: 8%;
-      margin-top: 13.5vh;
-      width: 21vw; /* or 20%*/
+      margin-top: 14vh;
+      width: 21vw;
+      /* or 20%*/
       height: 41vh;
 
     }
 
     #planttitle {
       position: absolute;
-      margin-top: 13vh;
-      left: 34%;
+      margin-top: 2vh;
+      left: 8%;
       font-weight: bold;
       font-size: 10vh;
     }
 
     #sc_name {
       position: absolute;
-      margin-top: 14%;
-      left: 34%;
+      margin-top: 10%;
+      left: 32%;
       font-style: italic;
       font-size: 6vh;
       color: dimgray;
@@ -205,15 +206,15 @@
 
     #f_name {
       position: absolute;
-      margin-top: 19%;
-      left: 34%;
+      margin-top: 15%;
+      left: 32%;
       font-size: 2vh;
     }
 
     #articles {
       position: absolute;
-      margin-top: 22%;
-      left: 34%;
+      margin-top: 20%;
+      left: 32%;
       font-size: 2vh;
       margin-right: 5%;
       width: 58vw;
@@ -222,11 +223,17 @@
     #agro_table,
     #nutrient_table,
     #usage_table {
-      width: 60%;
-      margin-left: 20%;
-      margin-top: 2%;
-      margin-bottom: 2%;
+      width: 100%;
       border-collapse: collapse;
+    }
+
+    /*prevent page scroll when scrolling inside table*/
+
+    .table_cont {
+      width: 60%;
+      margin: 2% 20% 2% 20%;
+      height: 100%;
+      overflow-y: auto;
     }
 
     .table_head {
@@ -294,7 +301,8 @@
   <div id="search_div" class="slides">
     <!--search bar-->
     <p class="inst">Enter crop name:</p>
-    <input type="text" autocomplete="false" name="crop" id="crop" class="form-control" style="height:50px" placeholder="Search Here..." />
+    <input type="text" autocomplete="false" name="crop" id="crop" class="form-control" style="height:50px" placeholder="Search Here..."
+    />
     <div id="cropList" style="position:absolute; top:30%; left:22%; width: 50%;"></div>
 
     <button type="button" id="search_btn" class="slide_btn" onClick="startSlide()">Go</button>
@@ -330,266 +338,271 @@
         tobacco. The betel plant is an evergreen perennial, with glossy heart-shaped leaves and white catkin. The betel plant
         originated in South and South East Asia.</p>
     </div>
-
     <div id="cont2" class="slides">
-      <!--second slide-->
-      <table id="agro_table">
-        <td colspan="2" class="table_head" style="background:#FFAA36;">AGROECOLOGY</td>
-        <tr>
-          <td colspan="2" class="cat">CLIMATES</td>
-        </tr>
-        <tr>
-          <td class="attributes">climates</td>
-          <td id="climate">No Data</td>
-        </tr>
-        <tr>
-          <td colspan="2" class="cat">ZONES</td>
-        </tr>
-        <tr>
-          <td class="attributes">zones</td>
-          <td id="zone">No Data</td>
-        </tr>
-        <tr>
-          <td colspan="2" class="cat">LOCATION</td>
-        </tr>
-        <tr>
-          <td class="attributes">location</td>
-          <td id="location">No Data</td>
-        </tr>
-        <tr>
-          <td colspan="2" class="cat">MAXIMUM ALTITUDE</td>
-        </tr>
-        <tr>
-          <td class="attributes">altitude_absolute_max</td>
-          <td id="maxabsalt">No Data</td>
-        </tr>
-        <tr>
-        <tr>
-          <td colspan="2" class="cat">PHOTO PERIOD</td>
-        </tr>
-        <tr>
-          <td class="attributes">photoperiod</td>
-          <td id="photoprd">No Data</td>
-        </tr>
-        <tr>
-          <td colspan="2" class="cat">LIGHT OPTIMIZATION</td>
-        </tr>
-        <tr>
-          <td class="attributes">light_optimal_min</td>
-          <td id="minlightopt">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">light_optimal_max</td>
-          <td id="maxlightopt">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">light_absolute_max</td>
-          <td id="maxlightabs">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">light_absolute_min</td>
-          <td id="minlightabs">No Data</td>
-        </tr>
-        <tr>
-          <td class="cat" colspan="2">RAINFALL</td>
-        </tr>
-        <tr>
-          <td class="attributes">rainfall_optimal_mean</td>
-          <td id="meanrainopt">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">rainfall_optimal_min</td>
-          <td id="minrainopt">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">rainfall_absolute_max</td>
-          <td id="maxrainabs">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">rainfall_absolute_mean</td>
-          <td id="meanrainabs">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">rainfall_absolute_min</td>
-          <td id="minrainabs">No Data</td>
-        </tr>
+      <div class="table_cont">
+        <!--second slide-->
+        <table id="agro_table">
+          <td colspan="2" class="table_head" style="background:#FFAA36;">AGROECOLOGY</td>
+          <tr>
+            <td colspan="2" class="cat">CLIMATES</td>
+          </tr>
+          <tr>
+            <td class="attributes">climates</td>
+            <td id="climate">No Data</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="cat">ZONES</td>
+          </tr>
+          <tr>
+            <td class="attributes">zones</td>
+            <td id="zone">No Data</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="cat">LOCATION</td>
+          </tr>
+          <tr>
+            <td class="attributes">location</td>
+            <td id="location">No Data</td>
+          </tr>
+          <tr>
+            <td colspan="2" class="cat">MAXIMUM ALTITUDE</td>
+          </tr>
+          <tr>
+            <td class="attributes">altitude_absolute_max</td>
+            <td id="maxabsalt">No Data</td>
+          </tr>
+          <tr>
+            <tr>
+              <td colspan="2" class="cat">PHOTO PERIOD</td>
+            </tr>
+            <tr>
+              <td class="attributes">photoperiod</td>
+              <td id="photoprd">No Data</td>
+            </tr>
+            <tr>
+              <td colspan="2" class="cat">LIGHT OPTIMIZATION</td>
+            </tr>
+            <tr>
+              <td class="attributes">light_optimal_min</td>
+              <td id="minlightopt">No Data</td>
+            </tr>
+            <tr>
+              <td class="attributes">light_optimal_max</td>
+              <td id="maxlightopt">No Data</td>
+            </tr>
+            <tr>
+              <td class="attributes">light_absolute_max</td>
+              <td id="maxlightabs">No Data</td>
+            </tr>
+            <tr>
+              <td class="attributes">light_absolute_min</td>
+              <td id="minlightabs">No Data</td>
+            </tr>
+            <tr>
+              <td class="cat" colspan="2">RAINFALL</td>
+            </tr>
+            <tr>
+              <td class="attributes">rainfall_optimal_mean</td>
+              <td id="meanrainopt">No Data</td>
+            </tr>
+            <tr>
+              <td class="attributes">rainfall_optimal_min</td>
+              <td id="minrainopt">No Data</td>
+            </tr>
+            <tr>
+              <td class="attributes">rainfall_absolute_max</td>
+              <td id="maxrainabs">No Data</td>
+            </tr>
+            <tr>
+              <td class="attributes">rainfall_absolute_mean</td>
+              <td id="meanrainabs">No Data</td>
+            </tr>
+            <tr>
+              <td class="attributes">rainfall_absolute_min</td>
+              <td id="minrainabs">No Data</td>
+            </tr>
 
-        <tr>
-          <td class="cat" colspan="2">TEMPERATURE LEVEL</td>
-        </tr>
-        <tr>
-          <td class="attributes">temperature_optimal_max</td>
-          <td id="maxtempopt">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">temperature_optimal_mean</td>
-          <td id="meantempopt">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">temperature_optimal_min</td>
-          <td id="mintempopt">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">temperature_absolute_max</td>
-          <td id="maxtempabs">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">temperature_absolute_mean</td>
-          <td id="meantempabs">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">temperature_absolute_min</td>
-          <td id="mintempabs">No Data</td>
-        </tr>
+            <tr>
+              <td class="cat" colspan="2">TEMPERATURE LEVEL</td>
+            </tr>
+            <tr>
+              <td class="attributes">temperature_optimal_max</td>
+              <td id="maxtempopt">No Data</td>
+            </tr>
+            <tr>
+              <td class="attributes">temperature_optimal_mean</td>
+              <td id="meantempopt">No Data</td>
+            </tr>
+            <tr>
+              <td class="attributes">temperature_optimal_min</td>
+              <td id="mintempopt">No Data</td>
+            </tr>
+            <tr>
+              <td class="attributes">temperature_absolute_max</td>
+              <td id="maxtempabs">No Data</td>
+            </tr>
+            <tr>
+              <td class="attributes">temperature_absolute_mean</td>
+              <td id="meantempabs">No Data</td>
+            </tr>
+            <tr>
+              <td class="attributes">temperature_absolute_min</td>
+              <td id="mintempabs">No Data</td>
+            </tr>
 
-        <tr>
-          <td class="cat" colspan="2">SOIL FERTILITY</td>
-        </tr>
-        <tr>
-          <td class="attributes">soil_fertility_optimal</td>
-          <td id="soilfertopt">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">soil_fertility_absolute</td>
-          <td id="soilfertabs">No Data</td>
-        </tr>
-        <tr>
-          <td class="cat" colspan="2">SOIL PH</td>
-        </tr>
-        <tr>
-          <td class="attributes">soil_ph_optimal_max</td>
-          <td id="maxphopt">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">soil_ph_optimal_mean</td>
-          <td id="meanphopt">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">soil_ph_optimal_min</td>
-          <td id="minphopt">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">soil_ph_absolute_max</td>
-          <td id="maxphabs">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">soil_ph_absolute_min</td>
-          <td id="minphabs">No Data</td>
-        </tr>
+            <tr>
+              <td class="cat" colspan="2">SOIL FERTILITY</td>
+            </tr>
+            <tr>
+              <td class="attributes">soil_fertility_optimal</td>
+              <td id="soilfertopt">No Data</td>
+            </tr>
+            <tr>
+              <td class="attributes">soil_fertility_absolute</td>
+              <td id="soilfertabs">No Data</td>
+            </tr>
+            <tr>
+              <td class="cat" colspan="2">SOIL PH</td>
+            </tr>
+            <tr>
+              <td class="attributes">soil_ph_optimal_max</td>
+              <td id="maxphopt">No Data</td>
+            </tr>
+            <tr>
+              <td class="attributes">soil_ph_optimal_mean</td>
+              <td id="meanphopt">No Data</td>
+            </tr>
+            <tr>
+              <td class="attributes">soil_ph_optimal_min</td>
+              <td id="minphopt">No Data</td>
+            </tr>
+            <tr>
+              <td class="attributes">soil_ph_absolute_max</td>
+              <td id="maxphabs">No Data</td>
+            </tr>
+            <tr>
+              <td class="attributes">soil_ph_absolute_min</td>
+              <td id="minphabs">No Data</td>
+            </tr>
 
-        <tr>
-          <td class="cat" colspan="2">SOIL DEPTH</td>
-        </tr>
-        <tr>
-          <td class="attributes">soil_depth_optimal</td>
-          <td id="soildeepopt">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">soil_depth_absolute</td>
-          <td id="soildeepabs">No Data</td>
-        </tr>
-        <tr>
-          <td class="cat" colspan="2">SOIL SALINITY</td>
-        </tr>
-        <tr>
-          <td class="attributes">soil_salinity_optimal</td>
-          <td id="soilsalopt">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">soil_salinity_absolute</td>
-          <td id="soilsalabs">No Data</td>
-        </tr>
+            <tr>
+              <td class="cat" colspan="2">SOIL DEPTH</td>
+            </tr>
+            <tr>
+              <td class="attributes">soil_depth_optimal</td>
+              <td id="soildeepopt">No Data</td>
+            </tr>
+            <tr>
+              <td class="attributes">soil_depth_absolute</td>
+              <td id="soildeepabs">No Data</td>
+            </tr>
+            <tr>
+              <td class="cat" colspan="2">SOIL SALINITY</td>
+            </tr>
+            <tr>
+              <td class="attributes">soil_salinity_optimal</td>
+              <td id="soilsalopt">No Data</td>
+            </tr>
+            <tr>
+              <td class="attributes">soil_salinity_absolute</td>
+              <td id="soilsalabs">No Data</td>
+            </tr>
 
-        <tr>
-          <td class="cat" colspan="2">SOIL TEXTURE</td>
-        </tr>
-        <tr>
-          <td class="attributes">soil_texture_optimal</td>
-          <td id="soiltextopt">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">soil_texture_absolute</td>
-          <td id="soiltextabs">No Data</td>
-        </tr>
+            <tr>
+              <td class="cat" colspan="2">SOIL TEXTURE</td>
+            </tr>
+            <tr>
+              <td class="attributes">soil_texture_optimal</td>
+              <td id="soiltextopt">No Data</td>
+            </tr>
+            <tr>
+              <td class="attributes">soil_texture_absolute</td>
+              <td id="soiltextabs">No Data</td>
+            </tr>
 
-        <tr>
-          <td class="cat" colspan="2">PRODUCTION LEVEL</td>
-        </tr>
-        <tr>
-          <td class="attributes">production_system</td>
-          <td id="prodsys">No Data</td>
-        </tr>
-      </table>
+            <tr>
+              <td class="cat" colspan="2">PRODUCTION LEVEL</td>
+            </tr>
+            <tr>
+              <td class="attributes">production_system</td>
+              <td id="prodsys">No Data</td>
+            </tr>
+        </table>
+      </div>
     </div>
 
     <div id="cont3" class="slides">
-      <!--third slide-->
-      <table id="nutrient_table">
-        <td colspan="2" class="table_head" style="background:#85AED0;">NUTRIENTS OF THEIR PARTS</td>
-        <tr>
-          <td class="cat" colspan="2">PLANT PARTS</td>
-        </tr>
-        <tr>
-          <td class="attributes">plant_parts_id</td>
-          <td id="partid">No Data</td>
-        </tr>
-        <tr>
-          <td class="cat" colspan="2">NUTRIENTS</td>
-        </tr>
-        <tr>
-          <td class="attributes">calcium_ca_mean</td>
-          <td id="calcium">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">copper_cu_mean</td>
-          <td id="copper">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">iron_fe_mean</td>
-          <td id="iron">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">magnesium_mg_mean</td>
-          <td id="magnesium">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">manganese_mn_mean</td>
-          <td id="manganese">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">phosphorus_p_mean</td>
-          <td id="phosphorus">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">potassium_k_mean</td>
-          <td id="potassium">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">sodium_mean</td>
-          <td id="sodium">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">zinc_zn_mean</td>
-          <td id="zinc">No Data</td>
-        </tr>
-        <tr>
-          <td class="attributes">water_moisture_mean</td>
-          <td id="watermoist">No Data</td>
-        </tr>
-      </table>
+      <div class="table_cont">
+        <!--third slide-->
+        <table id="nutrient_table">
+          <td colspan="2" class="table_head" style="background:#85AED0;">NUTRIENTS OF THEIR PARTS</td>
+          <tr>
+            <td class="cat" colspan="2">PLANT PARTS</td>
+          </tr>
+          <tr>
+            <td class="attributes">plant_parts_id</td>
+            <td id="partid">No Data</td>
+          </tr>
+          <tr>
+            <td class="cat" colspan="2">NUTRIENTS</td>
+          </tr>
+          <tr>
+            <td class="attributes">calcium_ca_mean</td>
+            <td id="calcium">No Data</td>
+          </tr>
+          <tr>
+            <td class="attributes">copper_cu_mean</td>
+            <td id="copper">No Data</td>
+          </tr>
+          <tr>
+            <td class="attributes">iron_fe_mean</td>
+            <td id="iron">No Data</td>
+          </tr>
+          <tr>
+            <td class="attributes">magnesium_mg_mean</td>
+            <td id="magnesium">No Data</td>
+          </tr>
+          <tr>
+            <td class="attributes">manganese_mn_mean</td>
+            <td id="manganese">No Data</td>
+          </tr>
+          <tr>
+            <td class="attributes">phosphorus_p_mean</td>
+            <td id="phosphorus">No Data</td>
+          </tr>
+          <tr>
+            <td class="attributes">potassium_k_mean</td>
+            <td id="potassium">No Data</td>
+          </tr>
+          <tr>
+            <td class="attributes">sodium_mean</td>
+            <td id="sodium">No Data</td>
+          </tr>
+          <tr>
+            <td class="attributes">zinc_zn_mean</td>
+            <td id="zinc">No Data</td>
+          </tr>
+          <tr>
+            <td class="attributes">water_moisture_mean</td>
+            <td id="watermoist">No Data</td>
+          </tr>
+        </table>
+      </div>
     </div>
 
     <div id="cont4" class="slides">
-      <!--fourth slide-->
-      <table id="usage_table">
-        <tr>
-          <td colspan="2" class="table_head" style="background:#B0D64A;">PLANTS USAGE</td>
-        </tr>
-        <tr>
-          <td class="attributes">general usage</td>
-          <td id="cropusage">No Data</td>
-        </tr>
-      </table>
+      <div class="table_cont">
+        <!--fourth slide-->
+        <table id="usage_table">
+          <tr>
+            <td colspan="2" class="table_head" style="background:#B0D64A;">PLANTS USAGE</td>
+          </tr>
+          <tr>
+            <td class="attributes">general usage</td>
+            <td id="cropusage">No Data</td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 
@@ -597,7 +610,8 @@
 
   <!--FOOTER-->
   <div class="footer">
-    <p style="color:#85AED0;position:absolute;left:5%;font-size:18px;top:4%;">© Crops For the Future (CFF). <b>All rights</b> reserved.</p>
+    <p style="color:#85AED0;position:absolute;left:5%;font-size:18px;top:4%;">© Crops For the Future (CFF).
+      <b>All rights</b> reserved.</p>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

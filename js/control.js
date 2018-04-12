@@ -119,6 +119,7 @@ function plot(res) {
 	type: 'scatter3d',
 	text: res[3],
 	};
+
 	var layout4 = {
 		hovermode:'closest'
 	};
