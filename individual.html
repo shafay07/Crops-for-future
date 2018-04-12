@@ -1,6 +1,5 @@
 <!doctype html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -180,7 +179,7 @@
       position: absolute;
       left: 0;
       margin-left: 8%;
-      margin-top: 13.5vh;
+      margin-top: 14vh;
       width: 21vw; /* or 20%*/
       height: 41vh;
 
@@ -188,16 +187,16 @@
 
     #planttitle {
       position: absolute;
-      margin-top: 13vh;
-      left: 34%;
+      margin-top: 2vh;
+      left: 8%;
       font-weight: bold;
       font-size: 10vh;
     }
 
     #sc_name {
       position: absolute;
-      margin-top: 14%;
-      left: 34%;
+      margin-top: 10%;
+      left: 32%;
       font-style: italic;
       font-size: 6vh;
       color: dimgray;
@@ -205,15 +204,15 @@
 
     #f_name {
       position: absolute;
-      margin-top: 19%;
-      left: 34%;
+      margin-top: 15%;
+      left: 32%;
       font-size: 2vh;
     }
 
     #articles {
       position: absolute;
-      margin-top: 22%;
-      left: 34%;
+      margin-top: 20%;
+      left: 32%;
       font-size: 2vh;
       margin-right: 5%;
       width: 58vw;
@@ -223,12 +222,16 @@
     #nutrient_table,
     #usage_table {
       width: 60%;
-      margin-left: 20%;
-      margin-top: 2%;
-      margin-bottom: 2%;
+      margin: 2% 20% 2% 20%;
       border-collapse: collapse;
     }
-
+/*prevent page scroll when scrolling inside table*/
+.table_cont{
+    width: 60%;
+    height:100%;
+    margin-left: 20%;
+    overflow-y: auto;
+  }
     .table_head {
       color: white;
       font-weight: bold;
