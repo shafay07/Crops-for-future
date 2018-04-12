@@ -509,26 +509,21 @@
       border: 1px solid blue;
     }
   </style>
-  <script>
-    $(function () {
-      $("#section1").load("index.html");
-    });
-    $(function () {
-      $("#section2").load("comparison.html");
-    });
-    $(function () {
-      $("#section3").load("individual.html");
-    });
-  </script>
 </head>
 
 <body>
 
-  <div id="section1"></div>
+  <div id="section1">
+    <?php include 'index.html';?>
+  </div>
 
-  <div id="section2"></div>
+  <div id="section2">
+    <?php include 'comparison.html';?>
+  </div>
 
-  <div id="section3"></div>
+  <div id="section3">
+    <?php include 'individual.html';?>
+  </div>
 
 
 
