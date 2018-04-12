@@ -95,13 +95,6 @@
       height: 90%;
     }
 
-    #nav_buttons {
-      position: absolute;
-      top: 0%;
-      left: 60%;
-      width: 40%;
-      height: 100%;
-    }
 
     #nav1,
     #nav2,

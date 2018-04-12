@@ -3,7 +3,7 @@ $(document).ready(function() {
     crop1 = $("#search1").val();
     crop2 = $("#search2").val();
     $.ajax({
-      url: `http://localhost/Crops-for-future/api/data.php`,
+      url: `api/data.php`,
       data: { cropA: crop1, cropB: crop2 },
       type: "POST",
       success: function(data) {

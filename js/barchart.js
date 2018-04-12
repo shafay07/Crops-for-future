@@ -5,7 +5,7 @@ $(document).ready(function() {
     console.log(crop1);
     console.log(crop2);
     $.ajax({
-      url: `http://localhost/Crops-for-future/api/data.php`,
+      url: `api/data.php`,
       data: { cropA: crop1, cropB: crop2 },
       type: "POST",
       success: function(data) {
