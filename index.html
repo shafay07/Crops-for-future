@@ -65,8 +65,9 @@
         }
 
         #table_axis {
+            display: none;
             position: absolute;
-            top: 95%;
+            top: 93%;
             left: 20%;
             width: 60%;
             height: 5%;
@@ -198,14 +199,6 @@
             height: 90%;
         }
 
-        #nav_buttons {
-            position: absolute;
-            top: 0%;
-            left: 60%;
-            width: 40%;
-            height: 100%;
-        }
-
         #nav1,
         #nav2,
         #nav3 {
@@ -282,11 +275,6 @@
     <!--top navigation bar-->
     <div class="nav_bar">
         <img id="logo" src="assets/cfflogo.png">
-        <div id="nav_buttons">
-            <button id="nav1">About</button>
-            <button id="nav2">Contact Us</button>
-            <button id="nav3">FAQ</button>
-        </div>
     </div>
 
     <form id="cropselect" method="post" action="home.php">
@@ -589,10 +577,7 @@
     <button type="button" id="reset" onclick="reloadFunction()">RESET</button>
 </form>
 
-    <!--FOOTER-->
-    <div class="footer">
-        <p style="color:#85AED0;position:absolute;left:5%;">© Crops For the Future (CFF). All rights reserved.</p>
-    </div>
+
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>

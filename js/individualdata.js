@@ -4,7 +4,7 @@ $(document).ready(function() {
    */
   $("#search_btn").click(function() {
     $.ajax({
-      url: `http://localhost/Crops-for-future/api/data.php`,
+      url: `api/data.php`,
       data: { crop: $("#crop").val() },
       type: "POST",
       success: function(data) {

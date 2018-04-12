@@ -40,12 +40,9 @@
         }
 
         .charts {
-            padding-left: 0;
-            padding-right: 0;
-            margin: 10px;
-            margin-left: auto;
-            margin-right: auto;
             display: block;
+            text-align: center;
+            margin: 10px 10% 0 10%;
             max-width: 900px;
             max-height: 600px;
         }
@@ -56,14 +53,6 @@
             left: 5%;
             cursor: pointer;
             height: 90%;
-        }
-
-        #nav_buttons {
-            position: absolute;
-            top: 0%;
-            left: 60%;
-            width: 40%;
-            height: 100%;
         }
 
         #nav1,
@@ -234,20 +223,17 @@
     <!--HEADER-->
     <div class="nav_bar">
         <img id="logo" src="assets/cfflogo.png">
-        <div id="nav_buttons">
-            <button id="nav1">About</button>
-            <button id="nav2">Contact Us</button>
-            <button id="nav3">FAQ</button>
-        </div>
     </div>
 
     <div id="comp_div">
         <p id="inst_comp">Enter crop names:</p>
         <!--searchbars-->
         <form>
-            <input type="text" autocomplete="false" name="cropA" id="search1" class="form-control" style="height:50px" placeholder="Select First Crop" />
+            <input type="text" autocomplete="false" name="cropA" id="search1" class="form-control" style="height:50px" placeholder="Select First Crop"
+            />
             <div id="crop1List" style="position:absolute; top:49%; left:14%; width: 30%;"></div>
-            <input type="text" autocomplete="false" name="cropB" id="search2" class="form-control" style="height:50px" placeholder="Select Second Crop" />
+            <input type="text" autocomplete="false" name="cropB" id="search2" class="form-control" style="height:50px" placeholder="Select Second Crop"
+            />
             <div id="crop2List" style="position:absolute; top:49%; left:56%; width: 30%;"></div>
             <button type="button" id="compare_btn" onclick="compSlide()">COMPARE</button>
         </form>
@@ -533,32 +519,32 @@
 
             </div>
             <div id="graph3" class="tab-pane fade">
-                <div class="chartContainer">
+                <div class="chartContainer1">
                     <canvas class="charts" id="rainfall"></canvas>
                 </div>
             </div>
             <div id="graph4" class="tab-pane fade">
-                <div class="chartContainer">
+                <div class="chartContainer2">
                     <canvas class="charts" id="temperature"></canvas>
                 </div>
             </div>
             <div id="graph5" class="tab-pane fade">
-                <div class="chartContainer">
+                <div class="chartContainer3">
                     <canvas class="charts" id="latitude"></canvas>
                 </div>
             </div>
             <div id="graph6" class="tab-pane fade">
-                <div class="chartContainer">
+                <div class="chartContainer4">
                     <canvas class="charts" id="soilph"></canvas>
                 </div>
             </div>
             <div id="graph7" class="tab-pane fade">
-                <div class="chartContainer">
+                <div class="chartContainer5">
                     <canvas class="charts" id="minerals"></canvas>
                 </div>
             </div>
             <div id="graph8" class="tab-pane fade">
-                <div class="chartContainer">
+                <div class="chartContainer6">
                     <canvas class="charts" id="nutrients"></canvas>
                 </div>
             </div>
@@ -703,6 +689,19 @@
 
         function compSlide() {
             if (btn_check == true) {
+                $("canvas#rainfall").remove();
+                $("canvas#temperature").remove();
+                $("canvas#latitude").remove();
+                $("canvas#soilph").remove();
+                $("canvas#minerals").remove();
+                $("canvas#nutrients").remove();
+                console.log("destroy the canvas..hahaha!");
+                $("div.chartContainer1").append('<canvas id="rainfall" class="charts"></canvas>');
+                $("div.chartContainer2").append('<canvas id="temperature" class="charts"></canvas>');
+                $("div.chartContainer3").append('<canvas id="latitude" class="charts"></canvas>');
+                $("div.chartContainer4").append('<canvas id="soilph" class="charts"></canvas>');
+                $("div.chartContainer5").append('<canvas id="minerals" class="charts"></canvas>');
+                $("div.chartContainer6").append('<canvas id="nutrients" class="charts"></canvas>');
                 btn_check = false;
                 document.getElementById("comp_div").style.height = '10%';
                 document.getElementById("comp_div").style.top = '12%';
@@ -719,6 +718,7 @@
                     document.getElementById("graphs").style.opacity = 1;
                 }, 1000);
             } else {
+                // Destroy all the canvas and add a new one
                 btn_check = true;
                 document.getElementById("graphs").style.opacity = 0;
                 $("#compare_btn").removeClass("glow_reset");
