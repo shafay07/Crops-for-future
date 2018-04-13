@@ -95,7 +95,9 @@
 <body>
     <!--HEADER-->
     <div class="nav_bar">
-        <img id="logo" src="assets/cfflogo.png">
+        <a href="index.html">
+            <img id="logo" src="assets/cfflogo.png">
+        </a>
     </div>
 
     <div id="s_graph">
@@ -119,7 +121,7 @@
                 <div id="graph"></div>
             </div>
             <div id="type2" class="tab-pane fade">
-                <div id="graph1"></div>
+                <div id="graph1" ></div>
             </div>
             <div id="type3" class="tab-pane fade">
                 <div id="graph2"></div>
