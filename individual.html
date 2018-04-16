@@ -291,103 +291,6 @@
     }
   </style>
 
-  <script>
-    function startSlide() {
-      document.getElementById('search_div').style.left = '-100%';
-      document.getElementById('slide_conts').style.left = '0';
-      document.getElementById('left_btn').style.display = 'block';
-      document.getElementById('back2search').style.display = 'block';
-    }
-
-    function back2search() {
-      document.getElementById('back2search').style.display = 'none';
-      document.getElementById('search_div').style.left = '0';
-      document.getElementById('cont1').style.left = '0';
-      document.getElementById('cont2').style.left = '100%';
-      document.getElementById('cont3').style.left = '100%';
-      document.getElementById('cont4').style.left = '100%';
-      $("#cont1").addClass("current-slide");
-      $("#cont2").removeClass("current-slide");
-      $("#cont3").removeClass("current-slide");
-      $("#cont4").removeClass("current-slide");
-      document.getElementById('slide_conts').style.left = '100%';
-      document.getElementById('left_btn').style.display = 'none';
-      document.getElementById('right_btn').style.display = 'none';
-    }
-
-
-    function slideLeft() {
-      if ($("#cont1").hasClass("current-slide")) {
-        document.getElementById('cont1').style.left = '-100%';
-        document.getElementById('cont2').style.left = '0';
-        document.getElementById('right_btn').style.display = 'block';
-        $("#cont1").removeClass("current-slide");
-        $("#cont2").addClass("current-slide");
-      } else if ($("#cont2").hasClass("current-slide")) {
-        document.getElementById('cont2').style.left = '-100%';
-        document.getElementById('cont3').style.left = '0';
-        document.getElementById('right_btn').style.display = 'block';
-        $("#cont2").removeClass("current-slide");
-        $("#cont3").addClass("current-slide");
-      } else if ($("#cont3").hasClass("current-slide")) {
-        document.getElementById('cont3').style.left = '-100%';
-        document.getElementById('cont4').style.left = '0';
-        document.getElementById('right_btn').style.display = 'block';
-        $("#cont3").removeClass("current-slide");
-        $("#cont4").addClass("current-slide");
-        document.getElementById('left_btn').style.display = 'none';
-      }
-    }
-
-    function slideRight() {
-      if ($("#cont4").hasClass("current-slide")) {
-        document.getElementById('cont4').style.left = '100%';
-        document.getElementById('cont3').style.left = '0';
-        document.getElementById('left_btn').style.display = 'block';
-        $("#cont4").removeClass("current-slide");
-        $("#cont3").addClass("current-slide");
-      } else if ($("#cont3").hasClass("current-slide")) {
-        document.getElementById('cont3').style.left = '100%';
-        document.getElementById('cont2').style.left = '0';
-        document.getElementById('left_btn').style.display = 'block';
-        $("#cont3").removeClass("current-slide");
-        $("#cont2").addClass("current-slide");
-      } else if ($("#cont2").hasClass("current-slide")) {
-        document.getElementById('cont2').style.left = '100%';
-        document.getElementById('cont1').style.left = '0';
-        document.getElementById('left_btn').style.display = 'block';
-        document.getElementById('right_btn').style.display = 'none';
-        $("#cont2").removeClass("current-slide");
-        $("#cont1").addClass("current-slide");
-      }
-    }
-  </script>
-  <script>
-    $(document).ready(function () {
-      $('#crop').keyup(function () {
-        var query = $(this).val();
-        if (query != '') {
-          $.ajax({
-            url: "api/search.php",
-            method: "POST",
-            data: {
-              query: query
-            },
-            success: function (data) {
-              $('#cropList').fadeIn();
-              $('#cropList').html(data);
-            }
-          });
-        }
-      });
-      $('#cropList').on('click', 'li', function () {
-        $('#crop').val($(this).text());
-        $('#cropList').fadeOut();
-      });
-    });
-  </script>
-  <script src="js/individualdata.js"></script>
-  <script src="js/wikiAPI.js"></script>
 </head>
 
 <body>
@@ -715,6 +618,103 @@
       <b>All rights</b> reserved.</p>
   </div>
 
+  <script>
+    function startSlide() {
+      document.getElementById('search_div').style.left = '-100%';
+      document.getElementById('slide_conts').style.left = '0';
+      document.getElementById('left_btn').style.display = 'block';
+      document.getElementById('back2search').style.display = 'block';
+    }
+
+    function back2search() {
+      document.getElementById('back2search').style.display = 'none';
+      document.getElementById('search_div').style.left = '0';
+      document.getElementById('cont1').style.left = '0';
+      document.getElementById('cont2').style.left = '100%';
+      document.getElementById('cont3').style.left = '100%';
+      document.getElementById('cont4').style.left = '100%';
+      $("#cont1").addClass("current-slide");
+      $("#cont2").removeClass("current-slide");
+      $("#cont3").removeClass("current-slide");
+      $("#cont4").removeClass("current-slide");
+      document.getElementById('slide_conts').style.left = '100%';
+      document.getElementById('left_btn').style.display = 'none';
+      document.getElementById('right_btn').style.display = 'none';
+    }
+
+
+    function slideLeft() {
+      if ($("#cont1").hasClass("current-slide")) {
+        document.getElementById('cont1').style.left = '-100%';
+        document.getElementById('cont2').style.left = '0';
+        document.getElementById('right_btn').style.display = 'block';
+        $("#cont1").removeClass("current-slide");
+        $("#cont2").addClass("current-slide");
+      } else if ($("#cont2").hasClass("current-slide")) {
+        document.getElementById('cont2').style.left = '-100%';
+        document.getElementById('cont3').style.left = '0';
+        document.getElementById('right_btn').style.display = 'block';
+        $("#cont2").removeClass("current-slide");
+        $("#cont3").addClass("current-slide");
+      } else if ($("#cont3").hasClass("current-slide")) {
+        document.getElementById('cont3').style.left = '-100%';
+        document.getElementById('cont4').style.left = '0';
+        document.getElementById('right_btn').style.display = 'block';
+        $("#cont3").removeClass("current-slide");
+        $("#cont4").addClass("current-slide");
+        document.getElementById('left_btn').style.display = 'none';
+      }
+    }
+
+    function slideRight() {
+      if ($("#cont4").hasClass("current-slide")) {
+        document.getElementById('cont4').style.left = '100%';
+        document.getElementById('cont3').style.left = '0';
+        document.getElementById('left_btn').style.display = 'block';
+        $("#cont4").removeClass("current-slide");
+        $("#cont3").addClass("current-slide");
+      } else if ($("#cont3").hasClass("current-slide")) {
+        document.getElementById('cont3').style.left = '100%';
+        document.getElementById('cont2').style.left = '0';
+        document.getElementById('left_btn').style.display = 'block';
+        $("#cont3").removeClass("current-slide");
+        $("#cont2").addClass("current-slide");
+      } else if ($("#cont2").hasClass("current-slide")) {
+        document.getElementById('cont2').style.left = '100%';
+        document.getElementById('cont1').style.left = '0';
+        document.getElementById('left_btn').style.display = 'block';
+        document.getElementById('right_btn').style.display = 'none';
+        $("#cont2").removeClass("current-slide");
+        $("#cont1").addClass("current-slide");
+      }
+    }
+  </script>
+  <script>
+    $(document).ready(function () {
+      $('#crop').keyup(function () {
+        var query = $(this).val();
+        if (query != '') {
+          $.ajax({
+            url: "api/search.php",
+            method: "POST",
+            data: {
+              query: query
+            },
+            success: function (data) {
+              $('#cropList').fadeIn();
+              $('#cropList').html(data);
+            }
+          });
+        }
+      });
+      $('#cropList').on('click', 'li', function () {
+        $('#crop').val($(this).text());
+        $('#cropList').fadeOut();
+      });
+    });
+  </script>
+  <script src="js/individualdata.js"></script>
+  <script src="js/wikiAPI.js"></script>
 
 </body>
 
