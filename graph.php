@@ -103,16 +103,16 @@
     <div id="s_graph">
         <ul class="nav nav-pills nav-justified">
             <li class="active">
-                <a data-toggle="pill" href="#type1">Type 1</a>
+                <a data-toggle="pill" href="#type1">Scatter Plot</a>
             </li>
             <li>
-                <a data-toggle="pill" href="#type2">Type 2</a>
+                <a data-toggle="pill" href="#type2">Bar Chart</a>
             </li>
             <li>
-                <a data-toggle="pill" href="#type3">Type 3</a>
+                <a data-toggle="pill" href="#type3">Box Plot</a>
             </li>
             <li>
-                <a data-toggle="pill" href="#type4">Type 4</a>
+                <a data-toggle="pill" href="#type4">3D</a>
             </li>
         </ul>
 
