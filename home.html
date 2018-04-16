@@ -3,7 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Subsetting</title>
+    <title>Subsettings</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Chivo');
         * {
@@ -269,6 +271,192 @@
             color: white;
         }
     </style>
+
+    <script type="text/javascript" language="javascript">
+        var zonearray = [];
+        var climatearray = [];
+        var partarray = [];
+        var xVar = null;
+        var yVar = null;
+        var zVar = null;
+        var xCat = null;
+        var yCat = null;
+        var zCat = null;
+
+        $(document).ready(function () {
+            $("#slider_zone").hide(); //hide sliders at first
+            $("#slider_climate").hide();
+            $("#slider_part").hide();
+            $("#slider_comp").hide();
+            $("#slider_mineral").hide();
+            $("#slider_agro").hide();
+
+            //show sliders respective to button clicked
+            $("#zone_btn").click(function () {
+                $("#slider_zone").show("slide", {
+                    direction: "left"
+                }, 1100);
+            });
+            $("#climate_btn").click(function () {
+                $("#slider_climate").show("slide", {
+                    direction: "left"
+                }, 1100);
+            });
+            $("#part_btn").click(function () {
+                $("#slider_part").show("slide", {
+                    direction: "left"
+                }, 1100);
+            });
+            $("#composition_btn").click(function () {
+                $("#slider_comp").show("slide", {
+                    direction: "left"
+                }, 1100);
+            });
+            $("#mineral_btn").click(function () {
+                $("#slider_mineral").show("slide", {
+                    direction: "left"
+                }, 1100);
+            });
+            $("#agro_btn").click(function () {
+                $("#slider_agro").show("slide", {
+                    direction: "left"
+                }, 1100);
+            });
+        });
+
+        //hide sliders for 1st block when clicking on GO & disabling buttons
+        function disappear1(id) {
+            var i = 0;
+            if (id == "zone") {
+                $("#slider_zone").hide("slide", {
+                    direction: "left"
+                }, 1100);
+                document.getElementById('climate_btn').style.pointerEvents = 'none';
+                document.getElementById('part_btn').style.pointerEvents = 'none';
+                document.getElementById('climate_btn').style.opacity = 0.35;
+                document.getElementById('part_btn').style.opacity = 0.35;
+
+                //javascript variable for zone
+                $('.zone:checked').each(function () {
+                    zonearray[i] = $(this).map(function () {
+                        return this.value;
+                    }).get().join(',');
+                    i++;
+                });
+            }
+            if (id == "climate") {
+                $("#slider_climate").hide("slide", {
+                    direction: "left"
+                }, 1100);
+                document.getElementById('zone_btn').style.pointerEvents = 'none';
+                document.getElementById('part_btn').style.pointerEvents = 'none';
+                document.getElementById('zone_btn').style.opacity = 0.35;
+                document.getElementById('part_btn').style.opacity = 0.35;
+
+                //javascript variable for climate
+                $('.climate:checked').each(function () {
+                    climatearray[i] = $(this).map(function () {
+                        return this.value;
+                    }).get().join(',');
+                    i++;
+                });
+            }
+            if (id == "part") {
+                $("#slider_part").hide("slide", {
+                    direction: "left"
+                }, 1100);
+                document.getElementById('climate_btn').style.pointerEvents = 'none';
+                document.getElementById('zone_btn').style.pointerEvents = 'none';
+                document.getElementById('climate_btn').style.opacity = 0.35;
+                document.getElementById('zone_btn').style.opacity = 0.35;
+
+                //javascript variable for climate
+                $('.part:checked').each(function () {
+                    partarray[i] = $(this).val();
+                    i++;
+                });
+            }
+        }
+
+
+        function axisFunction(id) {
+            //prevent choosing already selected options
+            var checked_id = "#" + ($('input[name=composition]:checked').attr('id'));
+            $(checked_id).attr('disabled', true);
+            var checked_id = "#" + ($('input[name=mineral]:checked').attr('id'));
+            $(checked_id).attr('disabled', true);
+            var checked_id = "#" + ($('input[name=agro]:checked').attr('id'));
+            $(checked_id).attr('disabled', true);
+            axis = $('.legend:checked').val();
+            cat = $('.legend:checked').attr("name");
+
+            //disabling already selected axis button
+            if (id == "x") {
+                document.getElementById('x-axis-1').disabled = true;
+                document.getElementById('x-axis-2').disabled = true;
+                document.getElementById('x-axis-3').disabled = true;
+                document.getElementById('x-axis-1').style.opacity = 0.35;
+                document.getElementById('x-axis-2').style.opacity = 0.35;
+                document.getElementById('x-axis-3').style.opacity = 0.35;
+                window.xCat = cat;
+                window.xVar = axis;
+                document.getElementById("xCat").value = xCat;
+                document.getElementById("xAxis").value = xVar;
+            }
+            if (id == "y") {
+                document.getElementById('y-axis-1').disabled = true;
+                document.getElementById('y-axis-2').disabled = true;
+                document.getElementById('y-axis-3').disabled = true;
+                document.getElementById('y-axis-1').style.opacity = 0.35;
+                document.getElementById('y-axis-2').style.opacity = 0.35;
+                document.getElementById('y-axis-3').style.opacity = 0.35;
+                window.yCat = cat;
+                window.yVar = axis;
+                document.getElementById("yCat").value = yCat;
+                document.getElementById("yAxis").value = yVar;
+            }
+            if (id == "z") {
+                document.getElementById('z-axis-1').disabled = true;
+                document.getElementById('z-axis-2').disabled = true;
+                document.getElementById('z-axis-3').disabled = true;
+                document.getElementById('z-axis-1').style.opacity = 0.35;
+                document.getElementById('z-axis-2').style.opacity = 0.35;
+                document.getElementById('z-axis-3').style.opacity = 0.35;
+                window.zCat = cat;
+                window.zVar = axis;
+                document.getElementById("zCat").value = zCat;
+                document.getElementById("zAxis").value = zVar;
+            }
+            $('.legend').prop('checked', false);
+
+
+        }
+
+        //hide sliders for 2nd block
+        function disappear2(id) {
+
+            if (id == "comp") {
+                $("#slider_comp").hide("slide", {
+                    direction: "left"
+                }, 1100);
+            }
+            if (id == "mineral") {
+                $("#slider_mineral").hide("slide", {
+                    direction: "left"
+                }, 1100);
+            }
+            if (id == "agro") {
+                $("#slider_agro").hide("slide", {
+                    direction: "left"
+                }, 1100);
+            }
+        }
+
+        //reset selections
+        function reloadFunction() {
+            location.reload();
+        }
+    </script>
 </head>
 
 <body>
@@ -579,196 +767,6 @@
         <button type="button" id="reset" onclick="reloadFunction()">RESET</button>
     </form>
 
-
-
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-
-    <script type="text/javascript" language="javascript">
-        var zonearray = [];
-        var climatearray = [];
-        var partarray = [];
-        var xVar = null;
-        var yVar = null;
-        var zVar = null;
-        var xCat = null;
-        var yCat = null;
-        var zCat = null;
-
-        $(document).ready(function () {
-            $("#slider_zone").hide(); //hide sliders at first
-            $("#slider_climate").hide();
-            $("#slider_part").hide();
-            $("#slider_comp").hide();
-            $("#slider_mineral").hide();
-            $("#slider_agro").hide();
-
-            //show sliders respective to button clicked
-            $("#zone_btn").click(function () {
-                $("#slider_zone").show("slide", {
-                    direction: "left"
-                }, 1100);
-            });
-            $("#climate_btn").click(function () {
-                $("#slider_climate").show("slide", {
-                    direction: "left"
-                }, 1100);
-            });
-            $("#part_btn").click(function () {
-                $("#slider_part").show("slide", {
-                    direction: "left"
-                }, 1100);
-            });
-            $("#composition_btn").click(function () {
-                $("#slider_comp").show("slide", {
-                    direction: "left"
-                }, 1100);
-            });
-            $("#mineral_btn").click(function () {
-                $("#slider_mineral").show("slide", {
-                    direction: "left"
-                }, 1100);
-            });
-            $("#agro_btn").click(function () {
-                $("#slider_agro").show("slide", {
-                    direction: "left"
-                }, 1100);
-            });
-        });
-
-        //hide sliders for 1st block when clicking on GO & disabling buttons
-        function disappear1(id) {
-            var i = 0;
-            if (id == "zone") {
-                $("#slider_zone").hide("slide", {
-                    direction: "left"
-                }, 1100);
-                document.getElementById('climate_btn').style.pointerEvents = 'none';
-                document.getElementById('part_btn').style.pointerEvents = 'none';
-                document.getElementById('climate_btn').style.opacity = 0.35;
-                document.getElementById('part_btn').style.opacity = 0.35;
-
-                //javascript variable for zone
-                $('.zone:checked').each(function () {
-                    zonearray[i] = $(this).map(function () {
-                        return this.value;
-                    }).get().join(',');
-                    i++;
-                });
-            }
-            if (id == "climate") {
-                $("#slider_climate").hide("slide", {
-                    direction: "left"
-                }, 1100);
-                document.getElementById('zone_btn').style.pointerEvents = 'none';
-                document.getElementById('part_btn').style.pointerEvents = 'none';
-                document.getElementById('zone_btn').style.opacity = 0.35;
-                document.getElementById('part_btn').style.opacity = 0.35;
-
-                //javascript variable for climate
-                $('.climate:checked').each(function () {
-                    climatearray[i] = $(this).map(function () {
-                        return this.value;
-                    }).get().join(',');
-                    i++;
-                });
-            }
-            if (id == "part") {
-                $("#slider_part").hide("slide", {
-                    direction: "left"
-                }, 1100);
-                document.getElementById('climate_btn').style.pointerEvents = 'none';
-                document.getElementById('zone_btn').style.pointerEvents = 'none';
-                document.getElementById('climate_btn').style.opacity = 0.35;
-                document.getElementById('zone_btn').style.opacity = 0.35;
-
-                //javascript variable for climate
-                $('.part:checked').each(function () {
-                    partarray[i] = $(this).val();
-                    i++;
-                });
-            }
-        }
-
-
-        function axisFunction(id) {
-            //prevent choosing already selected options
-            var checked_id = "#" + ($('input[name=composition]:checked').attr('id'));
-            $(checked_id).attr('disabled', true);
-            var checked_id = "#" + ($('input[name=mineral]:checked').attr('id'));
-            $(checked_id).attr('disabled', true);
-            var checked_id = "#" + ($('input[name=agro]:checked').attr('id'));
-            $(checked_id).attr('disabled', true);
-            axis = $('.legend:checked').val();
-            cat = $('.legend:checked').attr("name");
-
-            //disabling already selected axis button
-            if (id == "x") {
-                document.getElementById('x-axis-1').disabled = true;
-                document.getElementById('x-axis-2').disabled = true;
-                document.getElementById('x-axis-3').disabled = true;
-                document.getElementById('x-axis-1').style.opacity = 0.35;
-                document.getElementById('x-axis-2').style.opacity = 0.35;
-                document.getElementById('x-axis-3').style.opacity = 0.35;
-                window.xCat = cat;
-                window.xVar = axis;
-                document.getElementById("xCat").value = xCat;
-                document.getElementById("xAxis").value = xVar;
-            }
-            if (id == "y") {
-                document.getElementById('y-axis-1').disabled = true;
-                document.getElementById('y-axis-2').disabled = true;
-                document.getElementById('y-axis-3').disabled = true;
-                document.getElementById('y-axis-1').style.opacity = 0.35;
-                document.getElementById('y-axis-2').style.opacity = 0.35;
-                document.getElementById('y-axis-3').style.opacity = 0.35;
-                window.yCat = cat;
-                window.yVar = axis;
-                document.getElementById("yCat").value = yCat;
-                document.getElementById("yAxis").value = yVar;
-            }
-            if (id == "z") {
-                document.getElementById('z-axis-1').disabled = true;
-                document.getElementById('z-axis-2').disabled = true;
-                document.getElementById('z-axis-3').disabled = true;
-                document.getElementById('z-axis-1').style.opacity = 0.35;
-                document.getElementById('z-axis-2').style.opacity = 0.35;
-                document.getElementById('z-axis-3').style.opacity = 0.35;
-                window.zCat = cat;
-                window.zVar = axis;
-                document.getElementById("zCat").value = zCat;
-                document.getElementById("zAxis").value = zVar;
-            }
-            $('.legend').prop('checked', false);
-
-
-        }
-
-        //hide sliders for 2nd block
-        function disappear2(id) {
-
-            if (id == "comp") {
-                $("#slider_comp").hide("slide", {
-                    direction: "left"
-                }, 1100);
-            }
-            if (id == "mineral") {
-                $("#slider_mineral").hide("slide", {
-                    direction: "left"
-                }, 1100);
-            }
-            if (id == "agro") {
-                $("#slider_agro").hide("slide", {
-                    direction: "left"
-                }, 1100);
-            }
-        }
-
-        //reset selections
-        function reloadFunction() {
-            location.reload();
-        }
-    </script>
 </body>
 
 </html>
