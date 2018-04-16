@@ -26,9 +26,10 @@
             cursor: pointer;
         }
 
-        li {
+        .list-unstyled li {
             padding: 12px;
         }
+
 
         .nav_bar {
             position: absolute;
@@ -53,20 +54,6 @@
             left: 5%;
             cursor: pointer;
             height: 90%;
-        }
-
-        #nav1,
-        #nav2,
-        #nav3 {
-            padding: 3%;
-            width: 30%;
-            height: 100%;
-            border: none;
-            cursor: pointer;
-            background-color: #E3E3E3;
-            font-size: 3vh;
-            cursor: pointer;
-            margin-left: 2%;
         }
 
         #comp_div {
@@ -249,7 +236,7 @@
                 <a data-toggle="tab" href="#graph1">Taxonomy</a>
             </li>
             <li>
-                <a data-toggle="tab" href="#graph2">AgroEcology</a>
+                <a data-toggle="tab" href="#graph2">Agro Ecology</a>
             </li>
             <li>
                 <a data-toggle="tab" href="#graph3">Rainfall</a>
@@ -704,6 +691,7 @@
                 $("div.chartContainer4").append('<canvas id="soilph" class="charts"></canvas>');
                 $("div.chartContainer5").append('<canvas id="minerals" class="charts"></canvas>');
                 $("div.chartContainer6").append('<canvas id="nutrients" class="charts"></canvas>');
+
                 btn_check = false;
                 document.getElementById("comp_div").style.height = '10%';
                 document.getElementById("comp_div").style.top = '12%';
