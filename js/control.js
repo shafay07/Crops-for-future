@@ -1,9 +1,9 @@
 //as the page loads this is called
-window.onload = function() {
+$(document).ready(function() {
 	var result = json_access();
 	console.log(result);
 	plot(result);
-};
+});
 
 //brings the subseted data
 function json_access(){

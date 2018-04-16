@@ -48,27 +48,20 @@
             height: 90%;
         }
 
-        #nav1,
-        #nav2,
-        #nav3 {
-            padding: 3%;
-            width: 30%;
-            height: 100%;
-            border: none;
-            cursor: pointer;
-            background-color: #E3E3E3;
-            font-size: 3vh;
-            cursor: pointer;
-            margin-left: 2%;
-        }
 
         #s_graph {
             position: absolute;
-            height: 68%;
+            height: 100%;
             width: 86%;
             top: 16%;
+            left: 7%;,
             display: block;
-            left: 7%;
+        }
+
+        .gg {
+            position: absolute;
+            height: 75%;
+            width: 100%;
         }
 
         .nav a {
@@ -83,11 +76,6 @@
             background-color: #96B53C;
         }
 
-        /* Override svg container in plotly */
-        .svg-container {
-            width: 1000px  !important;
-            height: 700px  !important;
-        }
     </style>
 
 </head>
@@ -118,16 +106,16 @@
 
         <div class="tab-content">
             <div id="type1" class="tab-pane fade in active">
-                <div id="graph"></div>
+                <div class="gg" id="graph"></div>
             </div>
-            <div id="type2" class="tab-pane fade">
-                <div id="graph1" ></div>
+            <div id="type2" class="tab-pane fade active">
+                <div class="gg" id="graph1" ></div>
             </div>
-            <div id="type3" class="tab-pane fade">
-                <div id="graph2"></div>
+            <div id="type3" class="tab-pane fade active">
+                <div class="gg" id="graph2"></div>
             </div>
-            <div id="type4" class="tab-pane fade">
-                <div id="graph3"></div>
+            <div id="type4" class="tab-pane fade active">
+                <div class="gg" id="graph3"></div>
             </div>
         </div>
     </div>
