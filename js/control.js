@@ -65,11 +65,11 @@ function plot(res) {
 		type: 'scatter',
 		text: res[3],
 		marker:{
-			color:'rgb(50, 15, 91)',
+			color: 'rgb(158, 180, 72)',
 			size:10,
 		},
 	};
-	var layout = {
+	var layout1 = {
 		hovermode:'closest'
 	};
 	//second type, histogram
@@ -79,7 +79,7 @@ function plot(res) {
 		//mode: 'markers',
 		type: 'histogram',
 		marker: {
-			color: 'rgb(80, 20, 55)',
+			color:'rgb(234, 167, 66)',
 		}
 	};
 	var layout2 = {
@@ -109,8 +109,8 @@ function plot(res) {
 		z: res[2],
 		mode: 'markers',
 		marker: {
-		color: 'rgba(14, 65, 40,0.5)',
-		size: 12,
+		color: 'rgba(0, 0, 155,0.5)',
+		size: 7,
 		line: {
 		color: 'rgba(14, 65, 40,0.5)',
 	},
@@ -125,13 +125,13 @@ function plot(res) {
 	};
 
 
-	data = [trace1];
-	data1 = [trace2];
-	data2 = trace3;
-	data3 = [trace4];
-	Plotly.newPlot(graph_id[0], data,layout);
-	Plotly.newPlot(graph_id[1], data1,layout2);
-	Plotly.newPlot(graph_id[2], data2,layout3);
-	Plotly.newPlot(graph_id[3], data3,layout4);
+	data1 = [trace1];
+	data2 = [trace2];
+	data3 = trace3;
+	data4 = [trace4];
+	Plotly.newPlot(graph_id[0], data1,layout1);
+	Plotly.newPlot(graph_id[1], data2,layout2);
+	Plotly.newPlot(graph_id[2], data3,layout3);
+	Plotly.newPlot(graph_id[3], data4,layout4);
 
 };
