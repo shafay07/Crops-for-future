@@ -330,9 +330,10 @@
         }
     </script>
     <script>
-        setTimeout(function(){
+        setTimeout(function () {
             autorangeChart('graph');
         }, 1500);
+
         function autorangeChart(graphid) {
             Plotly.relayout(graphid, {
                 width: 1200, // or any new width
@@ -341,11 +342,25 @@
                 'yaxis.autorange': true
             });
         }
+
         function autorangeChart3d(graphid) {
             Plotly.relayout(graphid, {
                 width: 1200, // or any new width
                 height: 600, // " "
-                scene:{aspectmode: "auto"}
+                scene: {
+                    aspectmode: "auto"
+                },
+                scene: {
+                    xaxis: {
+                        title: xVar
+                    },
+                    yaxis: {
+                        title: yVar
+                    },
+                    zaxis: {
+                        title: zVar
+                    }   
+                }
             });
         }
     </script>
