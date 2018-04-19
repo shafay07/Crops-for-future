@@ -259,10 +259,7 @@
         <p class="main_steps">C. Visualising subsetted data
             <br>
         </p>
-        <p class="steps">1. When page loads, double-click on graph to auto-scale it.
-            <br>2. The sidebar(small icons in a line) has many functions, discover them.
-            <br>3. For the 3D-graph, the X,Y and Z need to be selected and click on "Orbital Rotation" to refresh the data.
-            <br>4. The graphs are interactive,for e.g., you can zoom, select an area and even hover on point to get the crop
+        <p class="steps">1. The sidebar(small icons in a line) has many functions, discover them.<br>2. The graphs are interactive,for e.g., you can zoom, select an area and even hover on point to get the crop
             name.
             <br>
             <br>
