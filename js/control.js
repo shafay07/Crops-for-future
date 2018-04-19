@@ -127,12 +127,14 @@ function plot(res) {
     z: res[2],
     mode: "markers",
     marker: {
-      color: "rgba(0, 0, 155,0.4)",
-      size: 7,
+      size: 10,
+
       line: {
-        color: "rgba(14, 65, 40,0.5)"
+        color: "rgba(255, 255, 250, 0.7)",
+        width: 1
       },
-      opacity: 1
+      color: "rgb(16, 30, 181)",
+      opacity: 0.5
     },
     type: "scatter3d",
     text: res[3]

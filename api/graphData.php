@@ -96,7 +96,6 @@ if(count($climatearray))
 	$query .= $climatequery;
 if(count($zonearray))
 	$query .= $zonequery;
-//echo "<br>FULL QUERY: <br>" . $query;
 
 //print results here and convert to json format	
 $result = mysqli_query($mysqli,$query);

@@ -15,7 +15,7 @@ require_once('../conn.php');
 	//checkbox options
     if(isset($_POST['climate'])) 
 	{
-		$name = $_POST['climate'];
+		$name = json_decode($_POST['climate']);
 		echo "name of climete " . $name;
 		echo "You chose the following climate(s): <br>";
 		if (is_array($name) || is_object($name)){
@@ -29,7 +29,7 @@ require_once('../conn.php');
 	if(isset($_POST['zone'])) 
 	{
 
-		$name = $_POST['zone'];
+		$name = json_decode($_POST['zone']);
 		echo "You chose the following zone(s): <br>";
 		if (is_array($name) || is_object($name)){
 			foreach ($name as $zone)
@@ -41,7 +41,7 @@ require_once('../conn.php');
 	}
 	if(isset($_POST['part'])) 
 	{
-		$name = $_POST['part'];
+		$name = json_decode($_POST['part']);
 		echo "You chose the following part(s): <br>";
 		if (is_array($name) || is_object($name)){
 			foreach ($name as $part)
@@ -113,7 +113,7 @@ require_once('../conn.php');
 	}
 
 	//sql query based on checkbox	
-	if ($zAxis == "\"null\""){
+	if ($zAxis == "null"){
 		$query = "SELECT tax.cropID, tax.common_name, $xCat.$xAxis, $yCat.$yAxis
 		FROM crop_taxonomy tax LEFT JOIN agro_agroecology_livedb agro ON tax.cropID=agro.cropid
 		LEFT JOIN nutrient_minerals mineral ON tax.cropID=mineral.cropid 

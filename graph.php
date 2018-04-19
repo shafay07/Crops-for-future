@@ -352,13 +352,26 @@
                 },
                 scene: {
                     xaxis: {
-                        title: xVar
+                        title: xVar,
+                        backgroundcolor: "rgba(235, 127, 56, 0.8)",
+                        gridcolor: "rgb(255, 255, 255)",
+                        showbackground: true,
+                        zerolinecolor: "rgb(255, 255, 255)"
+
                     },
                     yaxis: {
-                        title: yVar
+                        title: yVar,
+                        backgroundcolor: "rgba(150, 180, 69, 0.8)",
+                        gridcolor: "rgb(255, 255, 255)",
+                        showbackground: true,
+                        zerolinecolor: "rgb(255, 255, 255)"
                     },
                     zaxis: {
-                        title: zVar
+                        title: zVar,
+                        backgroundcolor: "rgb(181, 181, 181)",
+                        gridcolor: "rgb(255, 255, 255)",
+                        showbackground: true,
+                        zerolinecolor: "rgb(255, 255, 255)"
                     }   
                 }
             });
