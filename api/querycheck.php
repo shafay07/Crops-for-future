@@ -98,7 +98,7 @@ require_once('../conn.php');
 	//query portion of checkboxes, to integrate with axis query part
     if(count($climatearray) > 0)
 	{
-		$climatequery =" AND agro.climate_zone LIKE '%" . implode("%' OR '%", $climatearray) . "%'";
+		$climatequery =" AND agro.climate_zone LIKE '%" . implode("%' OR agro.climate_zone LIKE'%", $climatearray) . "%'";
 		echo $climatequery . "<br>";
 	}
 	if(count($zonearray) > 0)

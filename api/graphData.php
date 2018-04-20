@@ -62,7 +62,7 @@ $zCat = $_POST['zCat'];
 //query portion of checkboxes, to integrate with axis query part
 if(count($climatearray))
 {
-	$climatequery =" AND agro.climate_zone LIKE '%" . implode("%' OR '%", $climatearray) . "%'";
+	$climatequery =" AND agro.climate_zone LIKE '%" . implode("%' AND agro.climate_zone LIKE '%", $climatearray) . "%'";
 }
 if(count($zonearray))
 {
