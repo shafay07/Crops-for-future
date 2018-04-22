@@ -101,7 +101,7 @@ function plot(res) {
       title: xVar
     },
     yaxis: {
-      title: yVar
+      title: "Total"
     }
   };
   //third type, box graph
