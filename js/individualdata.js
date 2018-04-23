@@ -311,8 +311,8 @@ $(document).ready(function() {
         $("#family").text(cropA.family);
         $("#genus").text(cropA.genus);
         $("#species").html(cropA.species);
-        $("#climate").html(cropA.climate_zone);
-        $("#zone").html(cropA.zone);
+        $("#iclimate").html(cropA.climate_zone);
+        $("#izone").html(cropA.zone);
         $("#location").html(cropA.location);
         $("#maxabsalt").html(cropA.altitude_absolute_max);
 
